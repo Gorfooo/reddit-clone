@@ -1,8 +1,16 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import { BootstrapVue } from 'bootstrap-vue';
+import App from './App';
+import vuetify from './plugins/vuetify';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'material-design-icons-iconfont/dist/material-design-icons.css';
 
-Vue.config.productionTip = false
+Vue.use(BootstrapVue);
+
+Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  vuetify,
+  render: (h) => h(App),
+}).$mount('#app');

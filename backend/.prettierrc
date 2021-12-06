@@ -1,0 +1,10 @@
+{
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "arrowParens": "always",
+  "quoteProps": "as-needed",
+  "semi": true,
+  "endOfLine": "auto",
+  "singleQuote": true,
+  "curly": "always"
+}
