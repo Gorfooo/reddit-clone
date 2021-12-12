@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import { BootstrapVue } from 'bootstrap-vue';
+import router from 'vue-router';
 import App from './App';
 import vuetify from './plugins/vuetify';
 import 'bootstrap';
@@ -12,5 +13,6 @@ Vue.config.productionTip = false;
 
 new Vue({
   vuetify,
+  router,
   render: (h) => h(App),
 }).$mount('#app');
