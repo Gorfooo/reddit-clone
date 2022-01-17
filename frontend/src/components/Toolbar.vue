@@ -1,21 +1,20 @@
 <template>
   <v-app-bar dense :elevation="20">
     <v-toolbar-title>
-      <img alt="Reddit logo" src="../assets/reddit-logo.png" id="reddit-logo" />
+      <a href="#">
+        <img
+          alt="Reddit logo"
+          src="../assets/reddit-logo.png"
+          id="reddit-logo"
+        />
+      </a>
     </v-toolbar-title>
 
     <div class="dropdown">
-      <button
-        class="btn dropdown-toggle"
-        type="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expande
-        d="false"
-      >
+      <div class="btn dropdown-toggle" type="button" data-toggle="dropdown">
         <v-icon>home</v-icon>
         <span id="menuButtonLabel">Início</span>
-      </button>
+      </div>
       <div
         class="dropdown-menu pre-scrollable"
         aria-labelledby="dropdownMenuButton"
@@ -33,12 +32,14 @@
       </div>
     </div>
 
-    <v-text-field
-      label="Pesquisar no Reddit"
-      outlined
-      dense
-      class="mt-6"
-    ></v-text-field>
+    <div id="navbarTextField">
+      <v-text-field
+        label="Pesquisar no Reddit"
+        outlined
+        dense
+        class="mt-6"
+      ></v-text-field>
+    </div>
 
     <v-icon class="p-2">mdi-arrow-top-right-thin-circle-outline</v-icon>
     <v-icon class="p-2">mdi-chart-box-outline</v-icon>
@@ -52,12 +53,7 @@
         >2</small
       >
       <div class="dropdown">
-        <v-icon
-          class="p-2 btn dropdown-toggle"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expande
-          d="false"
+        <v-icon class="p-2 btn dropdown-toggle" data-toggle="dropdown"
           >mdi-bell</v-icon
         >
         <div
@@ -95,7 +91,30 @@
                 animi. Vitae, quaerat.</span
               >
             </div>
-            <v-icon class="align-items-start">mdi-dots-horizontal</v-icon>
+
+            <div>
+              <v-icon class="align-items-start ocultNotificationDropdown"
+                >mdi-dots-horizontal</v-icon
+              >
+              <div class="position-relative">
+                <ul class="dropdown-menu pl-0 position-absolute">
+                  <li>
+                    <small>
+                      <a href="#" class="dropdown-item"
+                        >Ocultar esta notificação</a
+                      >
+                    </small>
+                  </li>
+                  <li>
+                    <small>
+                      <a href="#" class="dropdown-item text-wrap"
+                        >Desativar notificações de novidades desta comunidade</a
+                      >
+                    </small>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
           <div class="d-flex justify-content-between dropdown-item">
             <img
@@ -151,9 +170,6 @@
         class="btn dropdown-toggle d-flex align-items-center"
         id="button-profile-pic"
         data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expande
-        d="false"
       >
         <div class="position-relative">
           <small
@@ -263,15 +279,19 @@
       </div>
     </div>
 
-    <button class="btn d-none" id="buttonCollapse">
-      <v-icon class="float-right" to="/toolbarCollapsed"
-        >mdi-view-headline</v-icon
-      >
-    </button>
+    <router-link to="/toolbarCollapsed">
+      <button class="d-none" id="buttonCollapse" @click="showCollapsedBar">
+        <v-icon class="float-right text-white" to="/toolbarCollapsed"
+          >mdi-view-headline</v-icon
+        >
+      </button>
+    </router-link>
   </v-app-bar>
 </template>
 
 <script>
+import $ from 'jquery';
+
 export default {
   data() {
     return {
@@ -281,6 +301,16 @@ export default {
   },
   methods: {
     stopTheEvent: (event) => event.stopPropagation(),
+    showCollapsedBar() {
+      const collapsedBar = document.getElementById('collapsed');
+      collapsedBar.classList.toggle('d-none');
+    },
+  },
+  mounted() {
+    $('.ocultNotificationDropdown').on('click', function Drop(e) {
+      $($(this).next('div')[0].firstChild).toggle();
+      e.stopPropagation();
+    });
   },
 };
 </script>
@@ -301,10 +331,6 @@ v-app-bar {
 }
 i {
   cursor: pointer;
-}
-#dropdownBell {
-  min-width: 28vw;
-  max-width: 28vw;
 }
 #notificationNumber {
   transform: scale(0.9);
@@ -327,7 +353,29 @@ i {
   width: 1.5rem;
   height: 1.5rem;
 }
-@media only screen and (max-width: 1017px) {
+a {
+  color: #212529 !important;
+  text-decoration: none !important;
+}
+#dropdownBell {
+  min-width: 28vw;
+  max-width: 28vw;
+}
+.dropdown-item:active {
+  color: black !important;
+  background-color: #fff !important;
+}
+#dropdownMenuButton,
+#dropdownProfile,
+#dropdownBell {
+  max-height: 80vh;
+}
+ul.dropdown-menu {
+  top: -0.5rem;
+  left: -22rem;
+}
+
+@media only screen and (max-width: 1038px) {
   #reddit-logo {
     width: 2.5rem;
     margin-right: 5rem;
@@ -337,14 +385,25 @@ i {
     padding-right: 5vw;
   }
 }
-@media only screen and (max-width: 842px) {
-  #reddit-logo {
-    width: 8rem;
-    margin-right: 5rem;
-    content: url('../assets/reddit-logo.png');
+
+@media only screen and (max-width: 1464px) {
+  ul.dropdown-menu {
+    top: -0.2rem;
+    left: -14rem;
+    width: 15rem;
   }
+}
+@media only screen and (max-width: 1000px) {
+  ul.dropdown-menu {
+    top: -0.2rem;
+    left: -11rem;
+    width: 12rem;
+  }
+}
+
+@media only screen and (max-width: 842px) {
   .dropdown,
-  .v-text-field.v-text-field--enclosed,
+  #navbarTextField,
   .v-icon.v-icon.p-2,
   #notificationNumber {
     display: none;
@@ -355,14 +414,18 @@ i {
   #buttonCollapse {
     display: inherit !important;
   }
+  .v-toolbar--dense .v-toolbar__content {
+    background-color: #1e1e1e !important;
+  }
+  #reddit-logo {
+    content: url('../assets/dark-mode-reddit-logo.png');
+    width: 8rem;
+    margin-top: 0.5rem;
+  }
 }
-a {
-  color: #212529 !important;
-  text-decoration: none !important;
-}
-#dropdownMenuButton,
-#dropdownProfile,
-#dropdownBell {
-  max-height: 80vh;
+@media only screen and (min-width: 842px) {
+  #collapsed {
+    display: none;
+  }
 }
 </style>
