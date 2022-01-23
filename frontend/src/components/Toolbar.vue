@@ -1,5 +1,10 @@
 <template>
-  <v-app-bar dense :elevation="20">
+  <v-app-bar
+    dense
+    outlined
+    class="shadow-none position-absolute"
+    id="mainNavbar"
+  >
     <v-toolbar-title>
       <a href="#">
         <img
@@ -10,7 +15,7 @@
       </a>
     </v-toolbar-title>
 
-    <div class="dropdown">
+    <div class="dropdown" id="dropdownMenu">
       <div class="btn dropdown-toggle" type="button" data-toggle="dropdown">
         <v-icon>home</v-icon>
         <span id="menuButtonLabel">Início</span>
@@ -32,12 +37,12 @@
       </div>
     </div>
 
-    <div id="navbarTextField">
+    <div id="navbarTextField" class="flex-grow-1">
       <v-text-field
         label="Pesquisar no Reddit"
         outlined
         dense
-        class="mt-6"
+        hide-details
       ></v-text-field>
     </div>
 
@@ -52,8 +57,8 @@
         id="notificationNumber"
         >2</small
       >
-      <div class="dropdown">
-        <v-icon class="p-2 btn dropdown-toggle" data-toggle="dropdown"
+      <div class="dropdown" id="dropdownNotifications">
+        <v-icon class="btn dropdown-toggle" data-toggle="dropdown"
           >mdi-bell</v-icon
         >
         <div
@@ -92,12 +97,12 @@
               >
             </div>
 
-            <div>
+            <div class="position-relative">
               <v-icon class="align-items-start ocultNotificationDropdown"
                 >mdi-dots-horizontal</v-icon
               >
-              <div class="position-relative">
-                <ul class="dropdown-menu pl-0 position-absolute">
+              <div class="position-absolute">
+                <ul class="dropdown-menu pl-0">
                   <li>
                     <small>
                       <a href="#" class="dropdown-item"
@@ -165,7 +170,7 @@
 
     <v-icon class="p-2">mdi-plus</v-icon>
 
-    <div class="dropdown">
+    <div class="dropdown" id="dropdownProfileMain">
       <button
         class="btn dropdown-toggle d-flex align-items-center"
         id="button-profile-pic"
@@ -279,13 +284,11 @@
       </div>
     </div>
 
-    <router-link to="/toolbarCollapsed">
-      <button class="d-none" id="buttonCollapse" @click="showCollapsedBar">
-        <v-icon class="float-right text-white" to="/toolbarCollapsed"
-          >mdi-view-headline</v-icon
-        >
-      </button>
-    </router-link>
+    <button class="d-none" id="buttonCollapse" @click="showCollapsedBar">
+      <v-icon class="float-right text-white" to="/toolbarCollapsed"
+        >mdi-view-headline</v-icon
+      >
+    </button>
   </v-app-bar>
 </template>
 
@@ -316,8 +319,10 @@ export default {
 </script>
 
 <style>
-div.v-toolbar__content {
+#mainNavbar {
   background-color: white !important;
+  border-bottom: solid 1px;
+  border-color: #dae0e6;
 }
 v-app-bar {
   position: fixed;
@@ -358,8 +363,8 @@ a {
   text-decoration: none !important;
 }
 #dropdownBell {
-  min-width: 28vw;
-  max-width: 28vw;
+  min-width: 32vw;
+  max-width: 32vw;
 }
 .dropdown-item:active {
   color: black !important;
@@ -370,11 +375,6 @@ a {
 #dropdownBell {
   max-height: 80vh;
 }
-ul.dropdown-menu {
-  top: -0.5rem;
-  left: -22rem;
-}
-
 @media only screen and (max-width: 1038px) {
   #reddit-logo {
     width: 2.5rem;
@@ -402,7 +402,9 @@ ul.dropdown-menu {
 }
 
 @media only screen and (max-width: 842px) {
-  .dropdown,
+  #dropdownMenu,
+  #dropdownProfileMain,
+  #dropdownNotifications,
   #navbarTextField,
   .v-icon.v-icon.p-2,
   #notificationNumber {
@@ -414,13 +416,13 @@ ul.dropdown-menu {
   #buttonCollapse {
     display: inherit !important;
   }
-  .v-toolbar--dense .v-toolbar__content {
+  #mainNavbar {
     background-color: #1e1e1e !important;
   }
   #reddit-logo {
     content: url('../assets/dark-mode-reddit-logo.png');
     width: 8rem;
-    margin-top: 0.5rem;
+    margin-top: 0.2rem;
   }
 }
 @media only screen and (min-width: 842px) {
