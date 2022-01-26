@@ -1,13 +1,12 @@
 <template>
-  <div id="home">
+  <div class="defaultBackground">
     <div class="container mt-16">
       <v-row class="d-flex justify-content-around">
-        <v-col sm="12" md="12" lg="2" id="card1">
+        <v-col sm="12" md="12" lg="2" class="cards">
           <v-card class="pa-4 d-flex align-items-center">
             <img
               src="../../assets/default_user.png"
-              class="rounded mr-2"
-              id="profile-pic"
+              class="rounded mr-2 profile-pic"
             />
             <v-text-field
               label="Criar post"
@@ -22,93 +21,36 @@
               <v-icon class="px-2">mdi-link-variant</v-icon>
             </a>
           </v-card>
-
-          <v-row class="d-flex justify-content-around mt-3">
-            <v-col sm="12" md="12" lg="2" id="card1">
-              <v-card class="pa-4 d-flex align-items-center">
-                <v-toolbar-items class="hidden-md-and-down">
-                  <!-- average likes -->
-                  <a href="">
-                    <v-btn class="mx-2" depressed x-small>
-                      <v-icon class="px-2">mdi-rocket</v-icon>
-                      Os melhores
-                    </v-btn>
-                  </a>
-                  <!-- mais likes nas ultimas 24h -->
-                  <a href="">
-                    <v-btn class="mx-2" depressed x-small>
-                      <v-icon class="px-2">mdi-fire</v-icon>
-                      Em destaque
-                    </v-btn>
-                  </a>
-                  <a href="">
-                    <v-btn class="mx-2" depressed x-small>
-                      <v-icon class="px-2">mdi-alert-decagram</v-icon>
-                      Novo
-                    </v-btn>
-                  </a>
-                  <!-- Na semana -->
-                  <a href="">
-                    <v-btn class="mx-2" depressed x-small>
-                      <v-icon class="px-2">mdi-chart-box-outline</v-icon>
-                      Mais votados
-                    </v-btn>
-                  </a>
-                </v-toolbar-items>
-                <div class="hidden-lg-and-up">
-                  <div class="dropdown">
-                    <div
-                      class="btn dropdown-toggle"
-                      type="button"
-                      data-toggle="dropdown"
-                    >
-                      <v-icon>mdi-rocket</v-icon>
-                      <span id="menuOrdenations">Os melhores</span>
-                    </div>
-                    <div
-                      class="dropdown-menu pre-scrollable"
-                      aria-labelledby="dropdownMenuButton"
-                      id="dropdownOrdenations"
-                    >
-                      <a href="" class="dropdown-item">
-                        <v-icon class="px-2">mdi-rocket</v-icon>
-                        Os melhores
-                      </a>
-                      <a href="" class="dropdown-item">
-                        <v-icon class="px-2">mdi-fire</v-icon>
-                        Em destaque
-                      </a>
-                      <a href="" class="dropdown-item">
-                        <v-icon class="px-2">mdi-alert-decagram</v-icon>
-                        Novo
-                      </a>
-                      <a href="" class="dropdown-item">
-                        <v-icon class="px-2">mdi-chart-box-outline</v-icon>
-                        Mais votados
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </v-card>
-            </v-col>
-          </v-row>
+          <Ordenations />
           <v-row>
             <v-col>
               <v-card class="mb-2">
                 <div class="d-flex justify-content-start">
                   <div
-                    class="d-flex flex-column p-2 align-items-center"
-                    id="likeDislikeColumn"
+                    class="
+                      d-flex
+                      flex-column
+                      p-2
+                      align-items-center
+                      graySideColumn
+                    "
                   >
-                    <v-icon class="pr-2" id="likeButton"
+                    <v-icon class="pr-2 likeButton"
                       >mdi-arrow-up-bold-outline</v-icon
                     >
                     <small class="mr-2">1000</small>
-                    <v-icon class="pr-2" id="dislikeButton"
+                    <v-icon class="pr-2 dislikeButton"
                       >mdi-arrow-down-bold-outline</v-icon
                     >
+                    <div class="d-flex align-items-end flex-grow-1">
+                      <v-icon small class="pr-2">mdi-gift-outline</v-icon>
+                      <small class="mr-2">500</small>
+                    </div>
                   </div>
-                  <div class="d-flex justify-content-between p-2 flex-grow-1">
+                  <a
+                    href=""
+                    class="d-flex justify-content-between p-2 flex-grow-1"
+                  >
                     <div class="d-flex flex-column flex-grow-1">
                       <div class="align-items-start ml-2 position-relative">
                         <img
@@ -116,37 +58,48 @@
                           id="notificationImage"
                           class="img-fluid rounded"
                         />
-                        <small class="font-weight-bold ml-2">
-                          r/worldnews</small
+                        <a
+                          href=""
+                          class="small font-weight-bold ml-2 linkHover"
+                        >
+                          r/worldnews</a
                         >
                         <small class="text-muted"> ·</small>
-                        <span class="text-muted small" id="postSender">
-                          Enviado por u/Gorfo</span
+                        <span class="text-muted small postSender">
+                          Enviado por
+                          <a href="" class="linkHover">u/Gorfo</a></span
                         >
                         <span class="text-muted small"> há 9 horas</span>
-                        <v-icon class="float-right managePostDropdown"
-                          >mdi-dots-horizontal</v-icon
-                        >
-                        <div class="position-absolute" id="managePostPosition">
-                          <ul class="dropdown-menu pl-0" id="managePostScreen">
-                            <li>
-                              <small class="dropdown-item">
-                                <v-icon class="mr-4"
-                                  >mdi-eye-off-outline</v-icon
-                                >
-                                <a href="#">Ocultar</a>
-                              </small>
-                            </li>
-                            <li>
-                              <small class="dropdown-item">
-                                <v-icon class="mr-4"
-                                  >mdi-flag-variant-outline</v-icon
-                                >
-                                <a href="#">Denunciar</a>
-                              </small>
-                            </li>
-                          </ul>
-                        </div>
+
+                        <button data-toggle="dropdown" class="float-right">
+                          <v-icon class="float-right"
+                            >mdi-dots-horizontal</v-icon
+                          >
+                        </button>
+                        <ul class="dropdown-menu pl-0 managePostScreen">
+                          <li class="guardarSmall">
+                            <a href="" class="small dropdown-item">
+                              <v-icon class="mr-4"
+                                >mdi-folder-open-outline</v-icon
+                              >
+                              <a href="#">Guardar</a>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="" class="small dropdown-item">
+                              <v-icon class="mr-4">mdi-eye-off-outline</v-icon>
+                              <a href="#">Ocultar</a>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="" class="small dropdown-item">
+                              <v-icon class="mr-4"
+                                >mdi-flag-variant-outline</v-icon
+                              >
+                              <a href="#">Denunciar</a>
+                            </a>
+                          </li>
+                        </ul>
                       </div>
                       <h6 class="ml-2 mt-2 font-weight-bold">Título do post</h6>
                       <span
@@ -158,26 +111,40 @@
                         quaerat.</span
                       >
                       <div class="d-flex justify-content-between ml-2">
-                        <div>
+                        <a href="" class="defaultHover p-1">
                           <v-icon>mdi-chat-outline</v-icon>
                           <small class="text-muted"> 16 comentários</small>
-                        </div>
-                        <div>
+                        </a>
+                        <a
+                          href="#"
+                          class="defaultHover p-1"
+                          name="premiar"
+                          @click="premiar"
+                        >
                           <v-icon>mdi-gift-outline</v-icon>
                           <small class="text-muted"> Premiar</small>
-                        </div>
-                        <div>
+                        </a>
+                        <a
+                          href="#"
+                          class="defaultHover p-1 d-none"
+                          name="despremiar"
+                          @click="despremiar"
+                        >
+                          <v-icon>mdi-gift-off-outline</v-icon>
+                          <small class="text-muted"> Despremiar</small>
+                        </a>
+                        <a href="" class="defaultHover p-1">
                           <v-icon>mdi-arrow-right-top</v-icon>
-                          <small class="text-muted"> Partilhar</small>
-                        </div>
-                        <div>
+                          <small class="text-muted"> Compartilhar</small>
+                        </a>
+                        <a href="" class="defaultHover p-1 guardarLarge">
                           <v-icon>mdi-folder-open-outline</v-icon>
                           <small class="text-muted"> Guardar</small>
-                        </div>
+                        </a>
                         <div />
                       </div>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </v-card>
             </v-col>
@@ -198,11 +165,11 @@
               </v-overlay>
             </v-img>
 
-            <v-list nav dense class="text-dark">
+            <v-list nav dense>
               <v-list-item
                 v-for="(item, i) in items"
                 :key="i"
-                class="border-bottom border-light"
+                class="borderBottom"
               >
                 <v-list-item-icon>
                   <p>{{ i + 1 }}</p>
@@ -211,7 +178,10 @@
                 </v-list-item-icon>
 
                 <v-list-item-content>
-                  <v-list-item-title v-text="item.text"></v-list-item-title>
+                  <v-list-item-title
+                    v-text="item.text"
+                    class="text-dark"
+                  ></v-list-item-title>
                 </v-list-item-content>
                 <v-btn rounded color="primary" x-small> Aderir </v-btn>
               </v-list-item>
@@ -282,7 +252,7 @@
                   <a href="" class="small">Ajuda</a>
                 </div>
                 <div>
-                  <a href="" class="small">Moedas do Reddit</a>
+                  <a href="" class="small">Moedas</a>
                 </div>
                 <div>
                   <a href="" class="small">Reddit Premium</a>
@@ -343,9 +313,12 @@
 </template>
 
 <script>
-import $ from 'jquery';
+import Ordenations from '../Ordenations';
 
 export default {
+  components: {
+    Ordenations,
+  },
   data() {
     return {
       items: [
@@ -357,62 +330,60 @@ export default {
       ],
     };
   },
-  mounted() {
-    $('.managePostDropdown').on('click', function Drop(e) {
-      $($(this).next('div')[0].firstChild).toggle();
-      e.stopPropagation();
-    });
+  methods: {
+    premiar() {
+      document.getElementsByName('premiar')[0].classList.add('d-none');
+      document.getElementsByName('despremiar')[0].classList.remove('d-none');
+    },
+    despremiar() {
+      document.getElementsByName('despremiar')[0].classList.add('d-none');
+      document.getElementsByName('premiar')[0].classList.remove('d-none');
+    },
   },
 };
 </script>
 
 <style>
-#home {
-  background-color: #dae0e6 !important;
-}
-#menuOrdenations {
-  padding-right: 2vw;
-}
-#card1 {
-  min-width: 55vw;
-}
 #card2 {
   min-width: 20rem;
 }
+
 .theme--light.v-list {
   background: white !important;
 }
-.v-list-item__title {
-  color: black;
+
+.borderBottom {
+  border-bottom: solid 1px #dae0e6;
 }
-#likeButton:hover {
-  color: #91c483;
+
+.guardarSmall {
+  display: none;
 }
-#dislikeButton:hover {
-  color: #ff6464;
-}
-#likeDislikeColumn {
-  background-color: #f8f9fa;
-}
-#managePostPosition {
-  right: -3.5rem;
-}
-#managePostScreen {
-  width: 2rem;
-}
+
 @media only screen and (max-width: 993px) {
   #card2 {
     display: none;
   }
 }
+
 @media only screen and (max-width: 599px) {
-  #postSender {
+  .postSender {
     display: none;
   }
 }
+
 @media only screen and (max-width: 1200px) {
   #card2 {
     min-width: 18.5rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .guardarLarge {
+    display: none;
+  }
+  .guardarSmall {
+    display: inline !important;
   }
 }
 </style>

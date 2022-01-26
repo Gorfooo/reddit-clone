@@ -46,10 +46,42 @@
       ></v-text-field>
     </div>
 
-    <v-icon class="p-2">mdi-arrow-top-right-thin-circle-outline</v-icon>
-    <v-icon class="p-2">mdi-chart-box-outline</v-icon>
-    <v-icon class="p-2" style="border-right: solid 1px">mdi-cctv</v-icon>
-    <v-icon class="p-2">mdi-chat-processing-outline</v-icon>
+    <v-tooltip bottom color="black">
+      <template v-slot:activator="{ on, attrs }">
+        <v-icon class="p-2" v-bind="attrs" v-on="on"
+          >mdi-arrow-top-right-thin-circle-outline</v-icon
+        >
+      </template>
+      <span>Em destaque</span>
+    </v-tooltip>
+    <v-tooltip bottom color="black">
+      <template v-slot:activator="{ on, attrs }">
+        <v-icon class="p-2" v-bind="attrs" v-on="on"
+          >mdi-alert-decagram-outline</v-icon
+        >
+      </template>
+      <span>Novos</span>
+    </v-tooltip>
+    <v-tooltip bottom color="black">
+      <template v-slot:activator="{ on, attrs }">
+        <v-icon
+          class="p-2"
+          v-bind="attrs"
+          v-on="on"
+          style="border-right: solid 1px"
+          >mdi-cctv</v-icon
+        >
+      </template>
+      <span>Live</span>
+    </v-tooltip>
+    <v-tooltip bottom color="black">
+      <template v-slot:activator="{ on, attrs }">
+        <v-icon class="p-2" v-bind="attrs" v-on="on"
+          >mdi-chat-processing-outline</v-icon
+        >
+      </template>
+      <span>Chat</span>
+    </v-tooltip>
 
     <div class="position-relative">
       <small
@@ -58,9 +90,19 @@
         >2</small
       >
       <div class="dropdown" id="dropdownNotifications">
-        <v-icon class="btn dropdown-toggle" data-toggle="dropdown"
-          >mdi-bell</v-icon
-        >
+        <v-tooltip bottom color="black">
+          <template v-slot:activator="{ on, attrs }">
+            <v-icon
+              v-bind="attrs"
+              v-on="on"
+              class="btn dropdown-toggle"
+              data-toggle="dropdown"
+              >mdi-bell</v-icon
+            >
+          </template>
+          <span>Notificações</span>
+        </v-tooltip>
+
         <div
           class="dropdown-menu dropdown-menu-right overflow-auto"
           id="dropdownBell"
@@ -71,14 +113,14 @@
               <span>Notificações</span>
             </div>
             <div>
-              <small class="text-muted border-right border-dark pr-2"
-                >Mensagens</small
+              <a href="" class="small text-muted border-right border-dark pr-2"
+                >Mensagens</a
               >
               <v-icon class="p-2">mdi-home-variant-outline</v-icon>
               <v-icon class="p-2">mdi-cog-outline</v-icon>
             </div>
           </div>
-          <div class="d-flex justify-content-between dropdown-item">
+          <a href="" class="d-flex justify-content-between dropdown-item">
             <img
               src="../assets/default_user.png"
               id="notificationImage"
@@ -120,8 +162,8 @@
                 </ul>
               </div>
             </div>
-          </div>
-          <div class="d-flex justify-content-between dropdown-item">
+          </a>
+          <a href="" class="d-flex justify-content-between dropdown-item">
             <img
               src="../assets/default_user.png"
               id="notificationImage"
@@ -140,8 +182,8 @@
               >
             </div>
             <v-icon class="align-items-start">mdi-dots-horizontal</v-icon>
-          </div>
-          <div class="d-flex justify-content-between dropdown-item">
+          </a>
+          <a href="" class="d-flex justify-content-between dropdown-item">
             <img
               src="../assets/default_user.png"
               id="notificationImage"
@@ -160,19 +202,24 @@
               >
             </div>
             <v-icon class="align-items-start">mdi-dots-horizontal</v-icon>
-          </div>
-          <div class="d-flex justify-content-center dropdown-item">
-            <a href="#" class="text-decoration-none text-primary">VER TUDO</a>
-          </div>
+          </a>
+          <a href="" class="d-flex justify-content-center dropdown-item">
+            <button class="text-decoration-none text-primary">VER TUDO</button>
+          </a>
         </div>
       </div>
     </div>
 
-    <v-icon class="p-2">mdi-plus</v-icon>
+    <v-tooltip bottom color="black">
+      <template v-slot:activator="{ on, attrs }">
+        <v-icon class="p-2" v-bind="attrs" v-on="on">mdi-plus</v-icon>
+      </template>
+      <span>Postar</span>
+    </v-tooltip>
 
     <div class="dropdown" id="dropdownProfileMain">
-      <button
-        class="btn dropdown-toggle d-flex align-items-center"
+      <a
+        class="dropdown-toggle d-flex align-items-center"
         id="button-profile-pic"
         data-toggle="dropdown"
       >
@@ -185,18 +232,17 @@
           >
           <img
             src="../assets/default_user.png"
-            class="rounded mr-2"
-            id="profile-pic"
+            class="profile-pic rounded mr-2"
           />
         </div>
         <div
           class="d-flex flex-column align-items-center"
           id="profile-pic-label"
         >
-          <small>teste</small>
-          <small class="text-muted">🔆teste</small>
+          <small>Gorfo</small>
+          <small class="text-muted">🔆 0 karma</small>
         </div>
-      </button>
+      </a>
       <div
         class="dropdown-menu pre-scrollable"
         aria-labelledby="dropdownMenuButton"
@@ -310,6 +356,7 @@ export default {
     },
   },
   mounted() {
+    // quando sai do foco dar toggle dnv
     $('.ocultNotificationDropdown').on('click', function Drop(e) {
       $($(this).next('div')[0].firstChild).toggle();
       e.stopPropagation();
@@ -350,7 +397,7 @@ i {
 #profile-pic-label {
   padding-right: 7rem;
 }
-#profile-pic {
+.profile-pic {
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -374,6 +421,9 @@ a {
 #dropdownProfile,
 #dropdownBell {
   max-height: 80vh;
+}
+.v-tooltip__content {
+  text-align: center;
 }
 @media only screen and (max-width: 1038px) {
   #reddit-logo {

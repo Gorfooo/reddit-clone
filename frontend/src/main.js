@@ -8,12 +8,14 @@ import vuetify from './plugins/vuetify';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
+import store from './store/store';
 
 Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false;
 
 new Vue({
+  store,
   vuetify,
   router,
   render: (h) => h(App),
