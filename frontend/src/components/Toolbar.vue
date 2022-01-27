@@ -47,38 +47,24 @@
     </div>
 
     <v-tooltip bottom color="black">
-      <template v-slot:activator="{ on, attrs }">
-        <v-icon class="p-2" v-bind="attrs" v-on="on"
+      <template v-slot:activator="{ on }">
+        <v-icon class="p-2" v-on="on"
           >mdi-arrow-top-right-thin-circle-outline</v-icon
         >
       </template>
       <span>Em destaque</span>
     </v-tooltip>
     <v-tooltip bottom color="black">
-      <template v-slot:activator="{ on, attrs }">
-        <v-icon class="p-2" v-bind="attrs" v-on="on"
+      <template v-slot:activator="{ on }">
+        <v-icon class="p-2" style="border-right: solid 1px" v-on="on"
           >mdi-alert-decagram-outline</v-icon
         >
       </template>
       <span>Novos</span>
     </v-tooltip>
     <v-tooltip bottom color="black">
-      <template v-slot:activator="{ on, attrs }">
-        <v-icon
-          class="p-2"
-          v-bind="attrs"
-          v-on="on"
-          style="border-right: solid 1px"
-          >mdi-cctv</v-icon
-        >
-      </template>
-      <span>Live</span>
-    </v-tooltip>
-    <v-tooltip bottom color="black">
-      <template v-slot:activator="{ on, attrs }">
-        <v-icon class="p-2" v-bind="attrs" v-on="on"
-          >mdi-chat-processing-outline</v-icon
-        >
+      <template v-slot:activator="{ on }">
+        <v-icon class="p-2" v-on="on">mdi-chat-processing-outline</v-icon>
       </template>
       <span>Chat</span>
     </v-tooltip>
@@ -91,12 +77,8 @@
       >
       <div class="dropdown" id="dropdownNotifications">
         <v-tooltip bottom color="black">
-          <template v-slot:activator="{ on, attrs }">
-            <v-icon
-              v-bind="attrs"
-              v-on="on"
-              class="btn dropdown-toggle"
-              data-toggle="dropdown"
+          <template v-slot:activator="{ on }">
+            <v-icon v-on="on" class="btn dropdown-toggle" data-toggle="dropdown"
               >mdi-bell</v-icon
             >
           </template>
@@ -211,8 +193,8 @@
     </div>
 
     <v-tooltip bottom color="black">
-      <template v-slot:activator="{ on, attrs }">
-        <v-icon class="p-2" v-bind="attrs" v-on="on">mdi-plus</v-icon>
+      <template v-slot:activator="{ on }">
+        <v-icon class="p-2" v-on="on">mdi-plus</v-icon>
       </template>
       <span>Postar</span>
     </v-tooltip>
@@ -264,53 +246,46 @@
           <span>Perfil</span>
         </a>
         <a href="" class="justify-content-start dropdown-item">
-          <v-icon class="pr-2">mdi-plus</v-icon>
-          <span>Criar Avatar</span>
-        </a>
-        <a href="" class="justify-content-start dropdown-item">
           <v-icon class="pr-2">mdi-cog-outline</v-icon>
           <span>Definições do Utilizador</span>
         </a>
-        <small class="text-muted dropdown-item">OPÇÕES DE VISUALIZAÇÃO</small>
-        <div class="d-flex justify-content-between dropdown-item">
-          <v-icon class="pr-2">mdi-weather-night</v-icon>
-          <span>Modo noturno</span>
-          <v-switch
-            flat
-            hide-details
-            @click="stopTheEvent"
-            v-model="nightMode"
-          ></v-switch>
-        </div>
-        <small class="text-muted dropdown-item">MAIS COISAS</small>
+        <small class="text-muted dropdown-item">MAIS OPÇÕES</small>
         <a href="" class="justify-content-start dropdown-item">
           <v-icon class="pr-2">mdi-account-group</v-icon>
           <span>Cria uma comunidade</span>
         </a>
-        <a href="" class="d-flex justify-content-start dropdown-item">
-          <v-icon class="pr-2">mdi-hand-coin-outline</v-icon>
-          <div class="d-flex flex-column align-items-center">
-            <span>Moedas</span>
-            <small class="text-muted">0 moedas</small>
-          </div>
-        </a>
-        <a href="" class="justify-content-start dropdown-item">
+        <a
+          href="https://www.reddit.com/premium"
+          class="justify-content-start dropdown-item"
+        >
           <v-icon class="pr-2">mdi-shield-crown</v-icon>
           <span>Premium</span>
         </a>
-        <a href="" class="justify-content-start dropdown-item">
+        <a
+          href="https://www.reddit.com/powerups"
+          class="justify-content-start dropdown-item"
+        >
           <v-icon class="pr-2">mdi-flash-outline</v-icon>
           <span>Evoluções</span>
         </a>
-        <a href="" class="justify-content-start dropdown-item">
+        <a
+          href="https://www.reddit.com/talk"
+          class="justify-content-start dropdown-item"
+        >
           <v-icon class="pr-2">mdi-adjust</v-icon>
           <span>Talk</span>
         </a>
-        <a href="" class="justify-content-start dropdown-item">
+        <a
+          href="https://www.reddit.com/predictions"
+          class="justify-content-start dropdown-item"
+        >
           <v-icon class="pr-2">mdi-telescope</v-icon>
           <span>Previsões</span>
         </a>
-        <a href="" class="justify-content-start dropdown-item">
+        <a
+          href="https://www.reddithelp.com/hc/en-us/"
+          class="justify-content-start dropdown-item"
+        >
           <v-icon class="pr-2">mdi-help-circle-outline</v-icon>
           <span>Centro de Ajuda</span>
         </a>
@@ -344,7 +319,6 @@ import $ from 'jquery';
 export default {
   data() {
     return {
-      nightMode: false,
       online: true,
     };
   },

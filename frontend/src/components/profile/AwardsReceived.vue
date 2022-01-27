@@ -1,7 +1,7 @@
 <template>
   <div class="defaultBackground">
     <Header />
-    <div class="container">
+    <div class="container-fluid mt-6">
       <v-row class="d-flex justify-content-around">
         <v-col sm="12" md="12" lg="2" class="cards">
           <v-row>
@@ -86,20 +86,6 @@
                             >mdi-dots-horizontal</v-icon
                           >
                         </button>
-                        <v-dialog v-model="$store.state.dialog" width="6000px">
-                          <template v-slot:activator="{ on, attrs }">
-                            <v-btn
-                              @click="e"
-                              color="primary"
-                              dark
-                              v-bind="attrs"
-                              v-on="on"
-                              v-model="$store.state.dialog"
-                              style="margin-top: 50px; margin-left: 50px"
-                              >other button
-                            </v-btn>
-                          </template>
-                        </v-dialog>
                         <ul class="dropdown-menu pl-0 managePostScreen">
                           <li>
                             <a
@@ -158,28 +144,16 @@
 <script>
 import Header from './Header';
 import Sidebar from './Sidebar';
+import Mixins from '../../mixins';
 
 export default {
+  mixins: [Mixins],
   components: {
     Header,
     Sidebar,
   },
   data() {
     return {};
-  },
-  methods: {
-    premiar() {
-      document.getElementsByName('premiar')[0].classList.add('d-none');
-      document.getElementsByName('despremiar')[0].classList.remove('d-none');
-    },
-    despremiar() {
-      document.getElementsByName('despremiar')[0].classList.add('d-none');
-      document.getElementsByName('premiar')[0].classList.remove('d-none');
-    },
-    dontSubmit(e) {
-      e.preventDefault();
-      e.stopPropagation();
-    },
   },
 };
 </script>

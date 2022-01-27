@@ -96,104 +96,18 @@
       </ul>
     </v-card>
 
-    <v-card class="mx-auto mt-7">
-      <v-row class="px-2">
-        <v-col cols="5">
-          <div>
-            <a href="" class="small">Ajuda</a>
-          </div>
-          <div>
-            <a href="" class="small">Moedas</a>
-          </div>
-          <div>
-            <a href="" class="small">Reddit Premium</a>
-          </div>
-          <div>
-            <a href="" class="small">Reddit Gifts</a>
-          </div>
-        </v-col>
-        <v-col cols="7">
-          <div>
-            <a href="" class="small">Sobre</a>
-          </div>
-          <div>
-            <a href="" class="small">Carreiras</a>
-          </div>
-          <div>
-            <a href="" class="small">Imprensa</a>
-          </div>
-          <div>
-            <a href="" class="small">Publicitar</a>
-          </div>
-          <div>
-            <a href="" class="small">Blog</a>
-          </div>
-          <div>
-            <a href="" class="small">Termos</a>
-          </div>
-          <div>
-            <a href="" class="small">Política de Conteúdo</a>
-          </div>
-          <div>
-            <a href="" class="small">Política de Privacidade</a>
-          </div>
-          <div>
-            <a href="" class="small">Política de Moderação</a>
-          </div>
-        </v-col>
-      </v-row>
-      <v-row>
-        <!-- <v-btn @click="$store.dispatch('showTerms')">SHOW TERMS</v-btn>
-        <modal></modal> -->
-        <v-row justify="center">
-          <v-dialog v-model="$store.state.dialog" width="600px">
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn color="primary" dark v-bind="attrs" v-on="on">
-                Open Dialog
-              </v-btn>
-            </template>
-            <v-card>
-              <v-card-title>
-                <span class="text-h5">Use Google's location service?</span>
-              </v-card-title>
-              <v-card-text>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Numquam delectus nobis ipsa aperiam laudantium maxime tempora
-                sed doloribus suscipit quod. Dolores incidunt quos quam soluta!
-                Eaque quo esse eum eligendi.
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn
-                  color="green darken-1"
-                  text
-                  @click="$store.state.dialog = false"
-                >
-                  Disagree
-                </v-btn>
-                <v-btn
-                  color="green darken-1"
-                  text
-                  @click="$store.state.dialog = false"
-                >
-                  Agree
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-        </v-row>
-        <small class="ml-6 mt-4 mb-1"
-          >Reddit Inc © 2022. Todos os direitos reservados</small
-        >
-      </v-row>
-    </v-card>
+    <TermsCard />
   </v-col>
 </template>
 
 <script>
 import $ from 'jquery';
+import TermsCard from '../TermsCard';
 
 export default {
+  components: {
+    TermsCard,
+  },
   data() {
     return {};
   },

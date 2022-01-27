@@ -15,7 +15,8 @@
     <!-- <DislikedPosts /> -->
     <!-- <NothingHere /> -->
     <!-- <AwardsGiven /> -->
-    <AwardsReceived />
+    <!-- <AwardsReceived /> -->
+    <OpenedPost />
     <Toolbar />
     <ToolbarCollapsed />
     <!-- <router-view /> -->
@@ -24,7 +25,6 @@
 
 <script>
 // import $ from 'jquery';
-import Vue from 'vue';
 import Toolbar from './components/Toolbar';
 import ToolbarCollapsed from './components/ToolbarCollapsed';
 // import Home from './components/home/Home';
@@ -37,17 +37,8 @@ import ToolbarCollapsed from './components/ToolbarCollapsed';
 // import DislikedPosts from './components/profile/DislikedPosts';
 // import NothingHere from './components/profile/NothingHere';
 // import AwardsGiven from './components/profile/AwardsGiven';
-import AwardsReceived from './components/profile/AwardsReceived';
-
-Vue.component('modal', {
-  template: `
-  <v-dialog v-model="$store.termsModal">
-    <v-card>
-      My Content
-    </v-card>
-  </v-dialog>
-  `,
-});
+// import AwardsReceived from './components/profile/AwardsReceived';
+import OpenedPost from './components/OpenedPost';
 
 export default {
   name: 'App',
@@ -64,7 +55,8 @@ export default {
     // DislikedPosts,
     // NothingHere,
     // AwardsGiven,
-    AwardsReceived,
+    // AwardsReceived,
+    OpenedPost,
   },
   // mounted() {
   //   $('.likeButton').on('click', () => {

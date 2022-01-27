@@ -1,7 +1,7 @@
 <template>
   <div class="defaultBackground">
     <Header />
-    <div class="container">
+    <div class="container-fluid mt-6">
       <v-row class="d-flex justify-content-around">
         <v-col sm="12" md="12" lg="2" class="cards">
           <Ordenations />

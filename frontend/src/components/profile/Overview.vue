@@ -1,7 +1,7 @@
 <template>
   <div class="defaultBackground">
     <Header />
-    <div class="container">
+    <div class="container-fluid">
       <v-row class="d-flex justify-content-around">
         <v-col sm="12" md="12" lg="2" class="cards">
           <Ordenations />
@@ -310,8 +310,10 @@
 import Header from './Header';
 import Ordenations from '../Ordenations';
 import Sidebar from './Sidebar';
+import Mixins from '../../mixins';
 
 export default {
+  mixins: [Mixins],
   components: {
     Header,
     Ordenations,
@@ -319,16 +321,6 @@ export default {
   },
   data() {
     return {};
-  },
-  methods: {
-    premiar() {
-      document.getElementsByName('premiar')[0].classList.add('d-none');
-      document.getElementsByName('despremiar')[0].classList.remove('d-none');
-    },
-    despremiar() {
-      document.getElementsByName('despremiar')[0].classList.add('d-none');
-      document.getElementsByName('premiar')[0].classList.remove('d-none');
-    },
   },
 };
 </script>
@@ -345,24 +337,5 @@ export default {
 
 .commentBackground {
   background-color: #f2f8fd;
-}
-
-.guardarSmall {
-  display: none;
-}
-
-@media only screen and (max-width: 599px) {
-  .postSender {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .guardarLarge {
-    display: none;
-  }
-  .guardarSmall {
-    display: inline !important;
-  }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="defaultBackground">
     <Header />
-    <div class="container">
+    <div class="container-fluid mt-6">
       <v-row class="d-flex justify-content-around">
         <v-col sm="12" md="12" lg="2" class="cards">
           <v-row>
@@ -87,28 +87,6 @@
                           >
                         </button>
                         <ul class="dropdown-menu pl-0 managePostScreen">
-                          <li>
-                            <a
-                              href="#"
-                              name="premiar"
-                              @click="premiar"
-                              class="small dropdown-item"
-                            >
-                              <v-icon class="mr-4">mdi-gift-outline</v-icon>
-                              <a href="#">Premiar</a>
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              name="despremiar"
-                              @click="despremiar"
-                              class="small dropdown-item d-none"
-                            >
-                              <v-icon class="mr-4">mdi-gift-off-outline</v-icon>
-                              <a href="#">Despremiar</a>
-                            </a>
-                          </li>
                           <li class="guardarSmall">
                             <a href="" class="small dropdown-item">
                               <v-icon class="mr-4"
@@ -152,16 +130,6 @@ export default {
   },
   data() {
     return {};
-  },
-  methods: {
-    premiar() {
-      document.getElementsByName('premiar')[0].classList.add('d-none');
-      document.getElementsByName('despremiar')[0].classList.remove('d-none');
-    },
-    despremiar() {
-      document.getElementsByName('despremiar')[0].classList.add('d-none');
-      document.getElementsByName('premiar')[0].classList.remove('d-none');
-    },
   },
 };
 </script>

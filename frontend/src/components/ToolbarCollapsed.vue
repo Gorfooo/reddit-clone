@@ -11,28 +11,7 @@
       class="mx-5 mt-2"
     ></v-text-field>
     <v-list dark>
-      <v-list-item>
-        <v-list-item-icon>
-          <v-icon>mdi-email-outline</v-icon>
-        </v-list-item-icon>
-
-        <v-list-item-title>Caixa de entrada</v-list-item-title>
-      </v-list-item>
-
-      <v-list-item>
-        <v-list-item-icon>
-          <v-icon>mdi-hand-coin-outline</v-icon>
-        </v-list-item-icon>
-
-        <v-list-item-title
-          ><div class="d-flex flex-column">
-            <span>Moedas</span>
-            <small class="text-muted">0 moedas</small>
-          </div></v-list-item-title
-        >
-      </v-list-item>
-
-      <v-list-item>
+      <v-list-item href="https://www.reddit.com/premium">
         <v-list-item-icon>
           <v-icon>mdi-shield-crown</v-icon>
         </v-list-item-icon>
@@ -40,7 +19,7 @@
         <v-list-item-title>Premium</v-list-item-title>
       </v-list-item>
 
-      <v-list-item>
+      <v-list-item href="https://www.reddit.com/powerups">
         <v-list-item-icon>
           <v-icon>mdi-flash-outline</v-icon>
         </v-list-item-icon>
@@ -86,12 +65,6 @@
           </v-list-item-icon>
         </v-list-item>
         <v-list-item link class="ml-14">
-          <v-list-item-title>Modo noturno</v-list-item-title>
-          <v-list-item-icon class="m-0">
-            <v-checkbox v-model="nightMode" hide-details></v-checkbox>
-          </v-list-item-icon>
-        </v-list-item>
-        <v-list-item link class="ml-14">
           <v-list-item-title>Idioma</v-list-item-title>
           <v-list-item-icon class="m-0">
             <v-select
@@ -103,9 +76,6 @@
               single-line
             ></v-select>
           </v-list-item-icon>
-        </v-list-item>
-        <v-list-item link class="ml-14">
-          <v-list-item-title>Requisitar versão para desktop</v-list-item-title>
         </v-list-item>
         <v-list-item link class="ml-14">
           <v-list-item-title>Definições da conta</v-list-item-title>
@@ -128,7 +98,7 @@
         <v-list-item-title>r/all</v-list-item-title>
       </v-list-item>
 
-      <v-list-item>
+      <v-list-item href="https://www.reddithelp.com/hc/en-us/">
         <v-list-item-icon>
           <v-icon>mdi-help-circle-outline</v-icon>
         </v-list-item-icon>
@@ -141,28 +111,27 @@
           <v-list-item-title>Mais</v-list-item-title>
         </template>
 
-        <v-list-item link class="ml-14">
-          <v-list-item-title>Reddit IOS</v-list-item-title>
-        </v-list-item>
-        <v-list-item link class="ml-14">
-          <v-list-item-title>Reddit Android</v-list-item-title>
-        </v-list-item>
-        <v-list-item link class="ml-14">
-          <v-list-item-title>Reddit Gifts</v-list-item-title>
-        </v-list-item>
-        <v-list-item link class="ml-14">
+        <v-list-item href="https://www.redditinc.com/" link class="ml-14">
           <v-list-item-title>Acerca do Reddit</v-list-item-title>
         </v-list-item>
-        <v-list-item link class="ml-14">
-          <v-list-item-title>Publicitar</v-list-item-title>
+        <v-list-item
+          href="https://www.redditinc.com/advertising"
+          link
+          class="ml-14"
+        >
+          <v-list-item-title>Anunciar</v-list-item-title>
         </v-list-item>
-        <v-list-item link class="ml-14">
+        <v-list-item href="https://www.redditinc.com/blog" link class="ml-14">
           <v-list-item-title>Blog</v-list-item-title>
         </v-list-item>
-        <v-list-item link class="ml-14">
+        <v-list-item
+          href="https://www.redditinc.com/careers/"
+          link
+          class="ml-14"
+        >
           <v-list-item-title>Carreiras</v-list-item-title>
         </v-list-item>
-        <v-list-item link class="ml-14">
+        <v-list-item href="https://www.redditinc.com/press/" link class="ml-14">
           <v-list-item-title>Imprensa</v-list-item-title>
         </v-list-item>
       </v-list-group>
@@ -173,16 +142,44 @@
         </template>
 
         <v-list-item link class="ml-14">
-          <v-list-item-title>Termos de Uso</v-list-item-title>
+          <v-dialog v-model="$store.state.termsOfUse">
+            <template v-slot:activator="{ on }">
+              <v-list-item-title
+                v-on="on"
+                @click="$store.state.termsOfUse = true"
+                >Termos de Uso</v-list-item-title
+              >
+            </template>
+          </v-dialog>
+          <TermsOfUse />
         </v-list-item>
         <v-list-item link class="ml-14">
-          <v-list-item-title>Política de Privacidade</v-list-item-title>
+          <v-dialog v-model="$store.state.politics">
+            <template v-slot:activator="{ on }">
+              <v-list-item-title v-on="on" @click="$store.state.politics = true"
+                >Política de Privacidade</v-list-item-title
+              >
+            </template>
+          </v-dialog>
         </v-list-item>
         <v-list-item link class="ml-14">
-          <v-list-item-title>Política de Conteúdo</v-list-item-title>
+          <v-dialog v-model="$store.state.politics">
+            <template v-slot:activator="{ on }">
+              <v-list-item-title v-on="on" @click="$store.state.politics = true"
+                >Política de Conteúdo</v-list-item-title
+              >
+            </template>
+          </v-dialog>
         </v-list-item>
         <v-list-item link class="ml-14">
-          <v-list-item-title>Diretrizes de Moderação</v-list-item-title>
+          <v-dialog v-model="$store.state.politics">
+            <template v-slot:activator="{ on }">
+              <v-list-item-title v-on="on" @click="$store.state.politics = true"
+                >Política de Moderação</v-list-item-title
+              >
+            </template>
+          </v-dialog>
+          <Politics />
         </v-list-item>
       </v-list-group>
 
@@ -196,12 +193,18 @@
 </template>
 
 <script>
+import TermsOfUse from './modals/TermsOfUse';
+import Politics from './modals/Politics';
+
 export default {
+  components: {
+    TermsOfUse,
+    Politics,
+  },
   data() {
     return {
       admins: ['r/2007scape', 'r/cars'],
       online: true,
-      nightMode: false,
       currentLanguage: 'Português (PT)',
       languages: [
         'English (US)',

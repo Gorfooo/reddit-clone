@@ -1,11 +1,11 @@
 <template>
-  <v-dialog v-model="$store.state.termsOfUse" width="600px">
+  <v-dialog v-model="$store.state.politics" width="600px">
     <template v-slot:activator="{ on }">
       <v-btn class="d-none" v-on="on" />
     </template>
     <v-card>
       <v-card-title>
-        <span class="text-h5">Termos de uso</span>
+        <span class="text-h5">Políticas de uso</span>
       </v-card-title>
       <v-card-text>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam
@@ -15,10 +15,10 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="red" text @click="$store.state.termsOfUse = false">
+        <v-btn color="red" text @click="$store.state.politics = false">
           Rejeitar
         </v-btn>
-        <v-btn color="green" text @click="$store.state.termsOfUse = false">
+        <v-btn color="green" text @click="$store.state.politics = false">
           Aceitar
         </v-btn>
       </v-card-actions>

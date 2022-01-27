@@ -1,6 +1,6 @@
 <template>
   <div class="defaultBackground">
-    <div class="container mt-16">
+    <div class="container-fluid mt-16">
       <v-row class="d-flex justify-content-around">
         <v-col sm="12" md="12" lg="2" class="cards">
           <v-card class="pa-4 d-flex align-items-center">
@@ -192,17 +192,15 @@
             </div>
 
             <a href="">
-              <v-chip class="ma-2" small style="cursor: pointer">
-                Mais votados
-              </v-chip>
+              <v-chip class="ma-2" small style="cursor: pointer"> Pets </v-chip>
             </a>
             <a href="">
               <v-chip class="ma-2" small style="cursor: pointer">
-                Perto de ti
+                Highlight
               </v-chip>
             </a>
             <a href="">
-              <v-chip class="ma-2" small style="cursor: pointer"> Aww </v-chip>
+              <v-chip class="ma-2" small style="cursor: pointer"> NSFW </v-chip>
             </a>
             <a href="">
               <v-chip class="ma-2" small style="cursor: pointer">
@@ -222,7 +220,9 @@
               </div>
             </div>
             <div class="text-center mt-2 pb-2">
-              <v-btn rounded color="error"> Experimentar Agora </v-btn>
+              <a href="https://www.reddit.com/premium">
+                <v-btn rounded color="error"> Experimentar Agora </v-btn>
+              </a>
             </div>
           </v-card>
 
@@ -245,67 +245,7 @@
             </div>
           </v-card>
 
-          <v-card class="mx-auto mt-7">
-            <v-row class="px-2">
-              <v-col cols="5">
-                <div>
-                  <a href="" class="small">Ajuda</a>
-                </div>
-                <div>
-                  <a href="" class="small">Moedas</a>
-                </div>
-                <div>
-                  <a href="" class="small">Reddit Premium</a>
-                </div>
-                <div>
-                  <a href="" class="small">Reddit Gifts</a>
-                </div>
-                <div>
-                  <a href="" class="small">Comunidades</a>
-                </div>
-                <div>
-                  <a href="" class="small">Rereddit</a>
-                </div>
-                <div>
-                  <a href="" class="small">Tópicos</a>
-                </div>
-              </v-col>
-              <v-col cols="7">
-                <div>
-                  <a href="" class="small">Sobre</a>
-                </div>
-                <div>
-                  <a href="" class="small">Carreiras</a>
-                </div>
-                <div>
-                  <a href="" class="small">Imprensa</a>
-                </div>
-                <div>
-                  <a href="" class="small">Publicitar</a>
-                </div>
-                <div>
-                  <a href="" class="small">Blog</a>
-                </div>
-                <div>
-                  <a href="" class="small">Termos</a>
-                </div>
-                <div>
-                  <a href="" class="small">Política de Conteúdo</a>
-                </div>
-                <div>
-                  <a href="" class="small">Política de Privacidade</a>
-                </div>
-                <div>
-                  <a href="" class="small">Política de Moderação</a>
-                </div>
-              </v-col>
-            </v-row>
-            <v-row>
-              <small class="ml-6 mt-4 mb-1"
-                >Reddit Inc © 2022. Todos os direitos reservados</small
-              >
-            </v-row>
-          </v-card>
+          <TermsCard />
         </v-col>
       </v-row>
     </div>
@@ -314,10 +254,14 @@
 
 <script>
 import Ordenations from '../Ordenations';
+import Mixins from '../../mixins';
+import TermsCard from '../TermsCard';
 
 export default {
+  mixins: [Mixins],
   components: {
     Ordenations,
+    TermsCard,
   },
   data() {
     return {
@@ -329,16 +273,6 @@ export default {
         { text: 'Offline', icon: 'mdi-check-circle' },
       ],
     };
-  },
-  methods: {
-    premiar() {
-      document.getElementsByName('premiar')[0].classList.add('d-none');
-      document.getElementsByName('despremiar')[0].classList.remove('d-none');
-    },
-    despremiar() {
-      document.getElementsByName('despremiar')[0].classList.add('d-none');
-      document.getElementsByName('premiar')[0].classList.remove('d-none');
-    },
   },
 };
 </script>
