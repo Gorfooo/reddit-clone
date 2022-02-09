@@ -11,6 +11,22 @@
       class="mx-5 mt-2"
     ></v-text-field>
     <v-list dark>
+      <v-list-item href="/#/profile/overview">
+        <v-list-item-icon>
+          <v-icon>mdi-account-circle-outline</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-title>Perfil</v-list-item-title>
+      </v-list-item>
+
+      <v-list-item href="/#/createpost">
+        <v-list-item-icon>
+          <v-icon>mdi-plus</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-title>Postar</v-list-item-title>
+      </v-list-item>
+
       <v-list-item href="https://www.reddit.com/premium">
         <v-list-item-icon>
           <v-icon>mdi-shield-crown</v-icon>
@@ -37,7 +53,20 @@
         </v-list-item>
       </v-list-group>
 
-      <v-list-item>
+      <v-dialog v-model="$store.state.createCommunity">
+        <template v-slot:activator="{ on }">
+          <v-list-item v-on="on" @click="$store.state.createCommunity = true">
+            <v-list-item-icon>
+              <v-icon>mdi-account-group</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-title>Criar comunidade</v-list-item-title>
+          </v-list-item>
+        </template>
+      </v-dialog>
+      <CreateCommunity />
+
+      <v-list-item @click="$store.state.showChat = !$store.state.showChat">
         <v-list-item-icon>
           <v-icon>mdi-chat-processing-outline</v-icon>
         </v-list-item-icon>
@@ -193,13 +222,15 @@
 </template>
 
 <script>
-import TermsOfUse from './modals/TermsOfUse';
-import Politics from './modals/Politics';
+import TermsOfUse from '../modals/TermsOfUse';
+import Politics from '../modals/Politics';
+import CreateCommunity from '../modals/CreateCommunity';
 
 export default {
   components: {
     TermsOfUse,
     Politics,
+    CreateCommunity,
   },
   data() {
     return {
@@ -221,7 +252,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #collapsed {
   color: white;
   top: 0;
@@ -233,5 +264,8 @@ export default {
 }
 .v-list-item__title {
   color: white;
+}
+.v-icon__svg {
+  color: white !important;
 }
 </style>

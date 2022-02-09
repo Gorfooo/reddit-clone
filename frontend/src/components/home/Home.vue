@@ -3,24 +3,7 @@
     <div class="container-fluid mt-16">
       <v-row class="d-flex justify-content-around">
         <v-col sm="12" md="12" lg="2" class="cards">
-          <v-card class="pa-4 d-flex align-items-center">
-            <img
-              src="../../assets/default_user.png"
-              class="rounded mr-2 profile-pic"
-            />
-            <v-text-field
-              label="Criar post"
-              outlined
-              dense
-              hide-details
-            ></v-text-field>
-            <a href="">
-              <v-icon class="px-2">mdi-file-image-outline</v-icon>
-            </a>
-            <a href="">
-              <v-icon class="px-2">mdi-link-variant</v-icon>
-            </a>
-          </v-card>
+          <PostCard />
           <Ordenations />
           <v-row>
             <v-col>
@@ -52,7 +35,7 @@
                     class="d-flex justify-content-between p-2 flex-grow-1"
                   >
                     <div class="d-flex flex-column flex-grow-1">
-                      <div class="align-items-start ml-2 position-relative">
+                      <div class="align-items-start position-relative">
                         <img
                           src="../../assets/default_user.png"
                           id="notificationImage"
@@ -78,52 +61,68 @@
                         </button>
                         <ul class="dropdown-menu pl-0 managePostScreen">
                           <li class="guardarSmall">
-                            <a href="" class="small dropdown-item">
+                            <a href="#" class="small dropdown-item">
                               <v-icon class="mr-4"
                                 >mdi-folder-open-outline</v-icon
                               >
-                              <a href="#">Guardar</a>
+                              <span>Guardar</span>
                             </a>
                           </li>
                           <li>
-                            <a href="" class="small dropdown-item">
+                            <a href="#" class="small dropdown-item">
                               <v-icon class="mr-4">mdi-eye-off-outline</v-icon>
-                              <a href="#">Ocultar</a>
+                              <span>Ocultar</span>
                             </a>
                           </li>
                           <li>
-                            <a href="" class="small dropdown-item">
-                              <v-icon class="mr-4"
-                                >mdi-flag-variant-outline</v-icon
-                              >
-                              <a href="#">Denunciar</a>
-                            </a>
+                            <v-dialog v-model="$store.state.report">
+                              <template v-slot:activator="{ on }">
+                                <a
+                                  href="#"
+                                  v-on="on"
+                                  @click="$store.state.report = true"
+                                  class="small dropdown-item"
+                                >
+                                  <v-icon class="mr-4"
+                                    >mdi-flag-variant-outline</v-icon
+                                  >
+                                  <span>Denunciar</span>
+                                </a>
+                              </template>
+                            </v-dialog>
+                            <Report />
                           </li>
                         </ul>
                       </div>
-                      <h6 class="ml-2 mt-2 font-weight-bold">Título do post</h6>
-                      <span
-                        class="mt-1 ml-2 align-items-center d-none d-sm-flex"
+                      <h6 class="mt-2 font-weight-bold">Título do post</h6>
+                      <span class="mt-1 align-items-center d-none d-sm-flex"
                         >Lorem ipsum dolor sit amet consectetur adipisicing
                         elit. Ullam quo, id aliquid et, repellat accusamus nemo
                         consectetur minus repellendus reiciendis non autem
                         ratione rem tenetur odio, amet animi. Vitae,
                         quaerat.</span
                       >
-                      <div class="d-flex justify-content-between ml-2">
+                      <div class="d-flex justify-content-between">
                         <a href="" class="defaultHover p-1">
                           <v-icon>mdi-chat-outline</v-icon>
                           <small class="text-muted"> 16 comentários</small>
                         </a>
-                        <a
-                          href="#"
-                          class="defaultHover p-1"
-                          name="premiar"
-                          @click="premiar"
-                        >
-                          <v-icon>mdi-gift-outline</v-icon>
-                          <small class="text-muted"> Premiar</small>
-                        </a>
+                        <v-dialog v-model="$store.state.award">
+                          <template v-slot:activator="{ on }">
+                            <a
+                              v-on="on"
+                              @click="$store.state.award = true"
+                              href="#"
+                              class="defaultHover p-1"
+                              name="premiar"
+                            >
+                              <v-icon>mdi-gift-outline</v-icon>
+                              <small class="text-muted"> Premiar</small>
+                            </a>
+                          </template>
+                        </v-dialog>
+                        <Award />
+
                         <a
                           href="#"
                           class="defaultHover p-1 d-none"
@@ -161,7 +160,7 @@
                 absolute
                 class="d-flex justify-content-start align-items-end"
               >
-                <div class="pa-3">Comunidades mais populares</div>
+                <div class="pa-3">Comunidades em destaque</div>
               </v-overlay>
             </v-img>
 
@@ -171,10 +170,9 @@
                 :key="i"
                 class="borderBottom"
               >
-                <v-list-item-icon>
+                <v-list-item-icon class="mr-2">
                   <p>{{ i + 1 }}</p>
-                  <v-icon class="px-1">mdi-chevron-up</v-icon>
-                  <v-icon v-text="item.icon"></v-icon>
+                  <img src="../../assets/avatar.png" class="profile-pic ml-2" />
                 </v-list-item-icon>
 
                 <v-list-item-content>
@@ -188,25 +186,33 @@
             </v-list>
 
             <div class="text-center">
-              <v-btn rounded color="primary" class="w-75"> Ver tudo </v-btn>
+              <router-link to="/mostpopularcommunities">
+                <v-btn rounded color="primary" class="w-75 mb-2">
+                  Ver tudo
+                </v-btn>
+              </router-link>
             </div>
-
-            <a href="">
-              <v-chip class="ma-2" small style="cursor: pointer"> Pets </v-chip>
-            </a>
-            <a href="">
-              <v-chip class="ma-2" small style="cursor: pointer">
-                Highlight
-              </v-chip>
-            </a>
-            <a href="">
-              <v-chip class="ma-2" small style="cursor: pointer"> NSFW </v-chip>
-            </a>
-            <a href="">
-              <v-chip class="ma-2" small style="cursor: pointer">
-                Notícias
-              </v-chip>
-            </a>
+            <div class="ml-2">
+              <v-chip small link outlined color="red" class="mr-2 mb-2"
+                >NSFW</v-chip
+              >
+              <v-chip small link outlined color="green" class="mr-2 mb-2"
+                >Games</v-chip
+              >
+              <v-chip small link outlined color="orange" class="mr-2 mb-2"
+                >Humor</v-chip
+              >
+              <v-chip small link outlined class="mr-2 mb-2">Diversos</v-chip>
+              <v-chip small link outlined color="yellow" class="mr-2 mb-2"
+                >Esportes</v-chip
+              >
+              <v-chip small link outlined color="purple" class="mr-2 mb-2"
+                >Notícias</v-chip
+              >
+              <v-chip small link outlined color="blue" class="mr-2 mb-2"
+                >Natureza</v-chip
+              >
+            </div>
           </v-card>
 
           <v-card class="mt-4">
@@ -236,12 +242,26 @@
               </p>
             </div>
             <div class="text-center">
-              <v-btn rounded color="primary" class="w-75"> Criar Post </v-btn>
+              <router-link to="/createpost">
+                <v-btn rounded color="primary" class="w-75"> Criar Post </v-btn>
+              </router-link>
             </div>
             <div class="text-center">
-              <v-btn rounded color="primary" outlined class="w-75 mt-2 mb-2">
-                Criar Comunidade
-              </v-btn>
+              <v-dialog v-model="$store.state.createCommunity">
+                <template v-slot:activator="{ on }">
+                  <v-btn
+                    v-on="on"
+                    @click="$store.state.createCommunity = true"
+                    rounded
+                    color="primary"
+                    outlined
+                    class="w-75 mt-2 mb-2"
+                  >
+                    Criar Comunidade
+                  </v-btn>
+                </template>
+              </v-dialog>
+              <CreateCommunity />
             </div>
           </v-card>
 
@@ -256,21 +276,29 @@
 import Ordenations from '../Ordenations';
 import Mixins from '../../mixins';
 import TermsCard from '../TermsCard';
+import Award from '../modals/Award';
+import Report from '../modals/Report';
+import CreateCommunity from '../modals/CreateCommunity';
+import PostCard from '../PostCard';
 
 export default {
   mixins: [Mixins],
   components: {
     Ordenations,
     TermsCard,
+    Award,
+    Report,
+    CreateCommunity,
+    PostCard,
   },
   data() {
     return {
       items: [
-        { text: 'My Files', icon: 'mdi-folder' },
-        { text: 'Shared with me', icon: 'mdi-account-multiple' },
-        { text: 'Starred', icon: 'mdi-star' },
-        { text: 'Recent', icon: 'mdi-history' },
-        { text: 'Offline', icon: 'mdi-check-circle' },
+        { text: 'comunidade 1' },
+        { text: 'comunidade 2' },
+        { text: 'comunidade 3' },
+        { text: 'comunidade 4' },
+        { text: 'comunidade 5' },
       ],
     };
   },

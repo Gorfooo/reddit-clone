@@ -1,62 +1,46 @@
 <template>
-  <!-- sistema chat -->
-  <!-- sistema notificação quando curtir, comentar, página que sigo postar, mensagem -->
-  <!-- sistema achievments -->
-  <!-- 1 prêmio por dia que logar -->
-  <!-- awards received -> ver lista de pessoas que deram award -->
+  <!-- 1 karma por dia que logar -->
+  <!--
+      captcha e logar com google
+      ao clicar na toolbar collapsed ou pressionar enter na busca, fechar ela
+      encapsular cards?
+      openedPost em todos
+  -->
+  <!-- mixin pra upload de imagens sidebar profile e configuration? -->
   <v-app>
-    <!-- <Home /> -->
-    <!-- <ProfileOverview /> -->
-    <!-- <Posts /> -->
-    <!-- <Comments /> -->
-    <!-- <Stored /> -->
-    <!-- <Hidden /> -->
-    <!-- <LikedPosts /> -->
-    <!-- <DislikedPosts /> -->
+    <router-view />
     <!-- <NothingHere /> -->
-    <!-- <AwardsGiven /> -->
-    <!-- <AwardsReceived /> -->
-    <OpenedPost />
+    <!-- <OpenedPost /> -->
+    <!-- <Share /> -->
+    <!-- <SubReddit /> -->
     <Toolbar />
     <ToolbarCollapsed />
-    <!-- <router-view /> -->
+    <div v-if="$store.state.showChat == true">
+      <Chat />
+    </div>
   </v-app>
 </template>
 
 <script>
 // import $ from 'jquery';
-import Toolbar from './components/Toolbar';
-import ToolbarCollapsed from './components/ToolbarCollapsed';
-// import Home from './components/home/Home';
-// import ProfileOverview from './components/profile/Overview';
-// import Posts from './components/profile/Posts';
-// import Comments from './components/profile/Comments';
-// import Stored from './components/profile/Stored';
-// import Hidden from './components/profile/Hidden';
-// import LikedPosts from './components/profile/LikedPosts';
-// import DislikedPosts from './components/profile/DislikedPosts';
+import Toolbar from './components/Toolbar/Toolbar';
+import ToolbarCollapsed from './components/Toolbar/ToolbarCollapsed';
+import Chat from './components/Chat';
 // import NothingHere from './components/profile/NothingHere';
-// import AwardsGiven from './components/profile/AwardsGiven';
-// import AwardsReceived from './components/profile/AwardsReceived';
-import OpenedPost from './components/OpenedPost';
+// import OpenedPost from './components/OpenedPost';
+// import Share from './components/modals/Share';
+// import SubReddit from './components/Subreddit/SubReddit';
 
 export default {
   name: 'App',
   components: {
     Toolbar,
     ToolbarCollapsed,
-    // Home,
-    // ProfileOverview,
-    // Posts,
-    // Comments,
-    // Stored,
-    // Hidden,
-    // LikedPosts,
-    // DislikedPosts,
+    Chat,
     // NothingHere,
-    // AwardsGiven,
-    // AwardsReceived,
-    OpenedPost,
+    // OpenedPost,
+    // Share,
+    // SubReddit,
   },
   // mounted() {
   //   $('.likeButton').on('click', () => {
@@ -71,6 +55,10 @@ export default {
 </script>
 
 <style>
+body {
+  background-color: #dae0e6 !important;
+}
+
 .defaultBackground {
   background-color: #dae0e6 !important;
 }
@@ -107,6 +95,24 @@ export default {
 
 .guardarSmall {
   display: none;
+}
+
+.profile-pic {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.mediumPicture {
+  width: 3rem;
+  height: 3rem;
+}
+
+.theme--light.v-list {
+  background: white !important;
+}
+
+.v-list-item__title {
+  color: black;
 }
 
 @media only screen and (max-width: 500px) {

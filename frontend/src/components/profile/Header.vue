@@ -18,26 +18,66 @@
         </a>
       </div>
     </div>
-    <v-app-bar dense class="shadow-none" id="profileNav">
+    <v-app-bar
+      dense
+      class="shadow-none d-flex justify-content-center"
+      id="profileNav"
+    >
       <div class="overflow-auto text-nowrap" id="profileNavbar">
         <ul class="overflow-nav__list">
           <li>
-            <a href="#" class="overflow-nav__item mx-2">Visão Geral</a>
-          </li>
-          <li><a href="#" class="overflow-nav__item mx-2">Posts</a></li>
-          <li><a href="#" class="overflow-nav__item mx-2">Comentários</a></li>
-          <li><a href="#" class="overflow-nav__item mx-2">Guardado</a></li>
-          <li><a href="#" class="overflow-nav__item mx-2">Ocultado</a></li>
-          <li>
-            <a href="#" class="overflow-nav__item mx-2">Posts curtidos</a>
+            <router-link to="/profile/overview" class="overflow-nav__item mx-2"
+              >Visão Geral</router-link
+            >
           </li>
           <li>
-            <a href="#" class="overflow-nav__item mx-2">Posts não curtidos</a>
+            <router-link to="/profile/posts" class="overflow-nav__item mx-2"
+              >Posts</router-link
+            >
           </li>
           <li>
-            <a href="#" class="overflow-nav__item mx-2">Prêmios recebidos</a>
+            <router-link to="/profile/comments" class="overflow-nav__item mx-2"
+              >Comentários</router-link
+            >
           </li>
-          <li><a href="#" class="overflow-nav__item mx-2">Prêmios dados</a></li>
+          <li>
+            <router-link to="/profile/stored" class="overflow-nav__item mx-2"
+              >Guardado</router-link
+            >
+          </li>
+          <li>
+            <router-link to="/profile/hidden" class="overflow-nav__item mx-2"
+              >Ocultado</router-link
+            >
+          </li>
+          <li>
+            <router-link
+              to="/profile/likedposts"
+              class="overflow-nav__item mx-2"
+              >Posts curtidos</router-link
+            >
+          </li>
+          <li>
+            <router-link
+              to="/profile/dislikedposts"
+              class="overflow-nav__item mx-2"
+              >Posts não curtidos</router-link
+            >
+          </li>
+          <li>
+            <router-link
+              to="/profile/awardsreceived"
+              class="overflow-nav__item mx-2"
+              >Prêmios recebidos</router-link
+            >
+          </li>
+          <li>
+            <router-link
+              to="/profile/awardsgiven"
+              class="overflow-nav__item mx-2"
+              >Prêmios dados</router-link
+            >
+          </li>
         </ul>
       </div>
     </v-app-bar>
@@ -48,15 +88,17 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 #profileNavbar::-webkit-scrollbar {
   height: 7px;
 }
+
 .overflow-nav__list {
   display: inline-flex;
   margin: 0;
   list-style: none;
 }
+
 .overflow-nav__item {
   display: block;
   padding: 16px 10px;
@@ -64,9 +106,11 @@ export default {};
   text-transform: uppercase;
   transition: all 0.2s ease;
 }
+
 .overflow-nav__item:hover {
   box-shadow: inset 0 -3px 0 #189af7;
 }
+
 @media only screen and (min-width: 598px) {
   #profileNav {
     margin-top: 3rem !important;

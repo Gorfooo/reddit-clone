@@ -5,7 +5,8 @@
     </template>
     <v-card>
       <v-card-title>
-        <span class="text-h5">Termos de uso</span>
+        <span class="text-h5 flex-grow-1">Termos de uso</span>
+        <v-icon @click="$store.state.termsOfUse = false">mdi-close</v-icon>
       </v-card-title>
       <v-card-text>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam
@@ -13,15 +14,6 @@
         suscipit quod. Dolores incidunt quos quam soluta! Eaque quo esse eum
         eligendi.
       </v-card-text>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn color="red" text @click="$store.state.termsOfUse = false">
-          Rejeitar
-        </v-btn>
-        <v-btn color="green" text @click="$store.state.termsOfUse = false">
-          Aceitar
-        </v-btn>
-      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>

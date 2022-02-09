@@ -2,6 +2,7 @@ import '@babel/polyfill';
 import 'mutationobserver-shim';
 import Vue from 'vue';
 import { BootstrapVue } from 'bootstrap-vue';
+import VueQuillEditor from 'vue-quill-editor';
 import router from './router';
 import App from './App';
 import vuetify from './plugins/vuetify';
@@ -9,7 +10,9 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import store from './store/store';
+import 'quill/dist/quill.snow.css';
 
+Vue.use(VueQuillEditor);
 Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false;

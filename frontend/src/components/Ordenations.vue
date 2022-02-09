@@ -3,7 +3,7 @@
     <v-col sm="12" md="12" lg="2" id="card1">
       <v-card class="pa-4 d-flex align-items-center">
         <v-toolbar-items class="hidden-md-and-down">
-          <!-- mais likes nas ultimas 24h -->
+          <!-- os melhores de cada comunidade e depois os novos -->
           <a href="">
             <v-btn class="mx-2" depressed x-small>
               <v-icon class="px-2">mdi-fire</v-icon>

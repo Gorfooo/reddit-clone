@@ -2,7 +2,7 @@
   <v-col sm="3" md="3" lg="2" id="profileSidebar" class="hidden-sm-and-down">
     <v-card class="mx-auto">
       <div class="position-relative">
-        <img src="../../assets/blue-background.jpg" class="w-100 bgImage" />
+        <img src="../../assets/blue-background.jpg" class="bgImage" />
         <label
           class="
             v-icon
@@ -52,7 +52,36 @@
           >
         </v-col>
         <v-col cols="6">
-          <v-icon class="p-2 text-primary float-right">mdi-cog-outline</v-icon>
+          <router-link to="/profile/configuration/profile">
+            <v-icon class="p-2 text-primary float-right"
+              >mdi-cog-outline</v-icon
+            >
+          </router-link>
+          <v-tooltip bottom color="black">
+            <template v-slot:activator="{ on }">
+              <v-icon v-on="on" class="py-2 px-1 text-danger float-right"
+                >mdi-cancel</v-icon
+              >
+            </template>
+            <span>Bloquear usuário</span>
+          </v-tooltip>
+          <!-- <v-tooltip bottom color="black">
+            <template v-slot:activator="{ on }">
+              <v-icon v-on="on" class="py-2 px-1 text-success float-right"
+                >mdi-account-check-outline</v-icon
+              >
+            </template>
+            <span>Desbloquear usuário</span>
+          </v-tooltip> -->
+        </v-col>
+        <v-col cols="12" class="px-6">
+          <div>
+            <small class="font-weight-bold">Sobre:</small>
+          </div>
+          <small
+            >descrição do perfil descrição do perfil descrição do perfil
+            descrição do perfil</small
+          >
         </v-col>
         <v-col cols="4">
           <small class="ml-4 font-weight-bold">Karma</small>
@@ -63,16 +92,41 @@
           <p class="ml-4 small">🍰10 de junho de 2018</p>
         </v-col>
       </v-row>
+      <v-row>
+        <v-col>
+          <div class="text-center">
+            <v-btn rounded color="primary" class="w-75"> Seguir </v-btn>
+          </div>
+        </v-col>
+      </v-row>
       <v-row class="mt-0">
         <v-col>
           <div class="text-center">
-            <v-btn rounded color="primary" class="w-75"> Novo Post </v-btn>
+            <router-link to="/createpost">
+              <v-btn rounded color="primary" class="w-75"> Novo Post </v-btn>
+            </router-link>
           </div>
         </v-col>
       </v-row>
     </v-card>
 
     <v-card class="mx-auto mt-7 p-2">
+      <h6 class="font-weight-bold">Você modera estas comunidades</h6>
+      <ul class="list-group p-0">
+        <li class="list-group-item border-0 p-2">
+          <div class="d-flex align-items-center">
+            <img src="../../assets/avatar.png" class="profile-pic mr-2" />
+            <div class="d-flex flex-column flex-grow-1">
+              <small class="ml-1">r/runescape</small>
+              <small class="text-muted">1 membro</small>
+            </div>
+            <v-btn outlined color="primary" small rounded>Membro</v-btn>
+          </div>
+        </li>
+      </ul>
+    </v-card>
+
+    <!-- <v-card class="mx-auto mt-4 p-2">
       <h6 class="font-weight-bold">Prateleira de troféus (2)</h6>
       <ul class="list-group p-0">
         <li class="list-group-item border-0 p-2">
@@ -94,7 +148,7 @@
           One-Year Club
         </li>
       </ul>
-    </v-card>
+    </v-card> -->
 
     <TermsCard />
   </v-col>
@@ -140,11 +194,6 @@ export default {
 </script>
 
 <style>
-.bgImage {
-  height: 7rem;
-  border-radius: 3px;
-}
-
 .btnUploadBackground {
   right: 5px;
   bottom: -2px;
@@ -159,15 +208,6 @@ export default {
   border-radius: 5rem;
   right: -5px;
   bottom: -7px;
-}
-
-.profileImage {
-  max-height: 6rem;
-  min-height: 6rem;
-  max-width: 6rem;
-  min-width: 6rem;
-  border: solid 5px white;
-  border-radius: 1rem;
 }
 
 #profileImageSpot {
@@ -189,5 +229,22 @@ export default {
   #profileSidebar {
     min-width: 18.5rem;
   }
+}
+</style>
+
+<style scoped>
+.profileImage {
+  max-height: 6rem;
+  min-height: 6rem;
+  max-width: 6rem;
+  min-width: 6rem;
+  border: solid 5px white;
+  border-radius: 1rem;
+}
+
+.bgImage {
+  height: 7rem !important;
+  border-radius: 3px !important;
+  width: 100%;
 }
 </style>

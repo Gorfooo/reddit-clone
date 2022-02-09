@@ -19,8 +19,10 @@
     "mutationobserver-shim": "^0.3.7",
     "popper.js": "^1.12",
     "portal-vue": "^2.1.7",
+    "quill": "^1.3.7",
     "vue": "^2.6.14",
     "vue-axios": "*",
+    "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.5.3",
     "vuetify": "^2.4.0",
     "vuex": "^3.6.2"

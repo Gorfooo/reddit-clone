@@ -6,12 +6,8 @@
     id="mainNavbar"
   >
     <v-toolbar-title>
-      <a href="#">
-        <img
-          alt="Reddit logo"
-          src="../assets/reddit-logo.png"
-          id="reddit-logo"
-        />
+      <a href="/#/">
+        <img src="../../assets/reddit-logo.png" id="reddit-logo" class="mb-1" />
       </a>
     </v-toolbar-title>
 
@@ -25,12 +21,16 @@
         aria-labelledby="dropdownMenuButton"
         id="dropdownMenuButton"
       >
-        <input
-          type="text"
-          class="form-control dropdown-item border"
-          placeholder="Filtrar"
-        />
-        <small class="text-muted dropdown-item">AS MINHAS COMUNIDADES</small>
+        <div class="px-4">
+          <input
+            type="text"
+            class="form-control dropdown-item border"
+            placeholder="Filtrar"
+          />
+        </div>
+        <small class="text-muted dropdown-item mt-1"
+          >AS MINHAS COMUNIDADES</small
+        >
         <a class="dropdown-item" href="#">Thing</a>
         <a class="dropdown-item" href="#">Something</a>
         <a class="dropdown-item" href="#">Dudes</a>
@@ -64,7 +64,12 @@
     </v-tooltip>
     <v-tooltip bottom color="black">
       <template v-slot:activator="{ on }">
-        <v-icon class="p-2" v-on="on">mdi-chat-processing-outline</v-icon>
+        <v-icon
+          class="p-2"
+          @click="$store.state.showChat = !$store.state.showChat"
+          v-on="on"
+          >mdi-chat-processing-outline</v-icon
+        >
       </template>
       <span>Chat</span>
     </v-tooltip>
@@ -95,97 +100,111 @@
               <span>Notificações</span>
             </div>
             <div>
-              <a href="" class="small text-muted border-right border-dark pr-2"
+              <a href="#" class="small text-muted border-right border-dark pr-2"
                 >Mensagens</a
               >
               <v-icon class="p-2">mdi-home-variant-outline</v-icon>
               <v-icon class="p-2">mdi-cog-outline</v-icon>
             </div>
           </div>
-          <a href="" class="d-flex justify-content-between dropdown-item">
+          <a href="#" class="d-flex dropdown-item">
             <img
-              src="../assets/default_user.png"
+              src="../../assets/default_user.png"
               id="notificationImage"
               class="img-fluid rounded"
             />
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column flex-grow-1">
               <div class="align-items-start ml-2">
                 <span>r/worldnews</span>
                 <span class="text-muted"> · 5h</span>
               </div>
-              <span class="text-muted text-wrap mt-2 ml-2 align-items-center"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-                quo, id aliquid et, repellat accusamus nemo consectetur minus
-                repellendus reiciendis non autem ratione rem tenetur odio, amet
-                animi. Vitae, quaerat.</span
+              <span class="text-muted text-wrap mt-1 ml-2 align-items-start"
+                >lorem</span
               >
             </div>
 
-            <div class="position-relative">
-              <v-icon class="align-items-start ocultNotificationDropdown"
-                >mdi-dots-horizontal</v-icon
-              >
-              <div class="position-absolute">
-                <ul class="dropdown-menu pl-0">
-                  <li>
-                    <small>
-                      <a href="#" class="dropdown-item"
-                        >Ocultar esta notificação</a
-                      >
-                    </small>
-                  </li>
-                  <li>
-                    <small>
-                      <a href="#" class="dropdown-item text-wrap"
-                        >Desativar notificações de novidades desta comunidade</a
-                      >
-                    </small>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <v-icon class="align-items-start">mdi-eye-off-outline</v-icon>
           </a>
-          <a href="" class="d-flex justify-content-between dropdown-item">
+          <a href="#" class="d-flex dropdown-item">
             <img
-              src="../assets/default_user.png"
+              src="../../assets/default_user.png"
               id="notificationImage"
               class="img-fluid rounded"
             />
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column flex-grow-1">
               <div class="align-items-start ml-2">
                 <span>r/worldnews</span>
                 <span class="text-muted"> · 5h</span>
               </div>
-              <span class="text-muted text-wrap mt-2 ml-2 align-items-center"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-                quo, id aliquid et, repellat accusamus nemo consectetur minus
-                repellendus reiciendis non autem ratione rem tenetur odio, amet
-                animi. Vitae, quaerat.</span
-              >
+              <span class="text-muted text-wrap mt-1 ml-2 align-items-start"
+                >Comentou em
+                <a href="#" class="text-primary linkHover">Título do post</a>
+              </span>
             </div>
-            <v-icon class="align-items-start">mdi-dots-horizontal</v-icon>
+
+            <v-icon class="align-items-start">mdi-eye-off-outline</v-icon>
           </a>
-          <a href="" class="d-flex justify-content-between dropdown-item">
+          <a href="#" class="d-flex dropdown-item">
             <img
-              src="../assets/default_user.png"
+              src="../../assets/default_user.png"
               id="notificationImage"
               class="img-fluid rounded"
             />
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column flex-grow-1">
+              <div class="align-items-start ml-2">
+                <span>r/runescape</span>
+                <span class="text-muted"> · 5h</span>
+              </div>
+              <span class="text-muted text-wrap mt-1 ml-2 align-items-start"
+                >Você foi aceito/recusado na comunidade
+                <a href="#" class="text-primary linkHover">r/Runescape</a>,
+                motivo da recusa:xxx
+              </span>
+            </div>
+
+            <v-icon class="align-items-start">mdi-eye-off-outline</v-icon>
+          </a>
+          <a href="#" class="d-flex dropdown-item">
+            <img
+              src="../../assets/default_user.png"
+              id="notificationImage"
+              class="img-fluid rounded"
+            />
+            <div class="d-flex flex-column flex-grow-1">
               <div class="align-items-start ml-2">
                 <span>r/worldnews</span>
                 <span class="text-muted"> · 5h</span>
               </div>
-              <span class="text-muted text-wrap mt-2 ml-2 align-items-center"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-                quo, id aliquid et, repellat accusamus nemo consectetur minus
-                repellendus reiciendis non autem ratione rem tenetur odio, amet
-                animi. Vitae, quaerat.</span
-              >
+              <span class="text-muted text-wrap mt-1 ml-2 align-items-start">
+                <a href="#" class="text-primary linkHover">u/User</a> começou a
+                seguir você
+              </span>
             </div>
-            <v-icon class="align-items-start">mdi-dots-horizontal</v-icon>
+
+            <v-icon class="align-items-start">mdi-eye-off-outline</v-icon>
           </a>
-          <a href="" class="d-flex justify-content-center dropdown-item">
+          <a href="#" class="d-flex dropdown-item">
+            <img
+              src="../../assets/default_user.png"
+              id="notificationImage"
+              class="img-fluid rounded"
+            />
+            <div class="d-flex flex-column flex-grow-1">
+              <div class="align-items-start ml-2">
+                <span>r/worldnews</span>
+                <span class="text-muted"> · 5h</span>
+              </div>
+              <span class="text-muted text-wrap mt-1 ml-2 align-items-start"
+                >Você recebeu novas mensagens no chat!
+              </span>
+            </div>
+
+            <v-icon class="align-items-start">mdi-eye-off-outline</v-icon>
+          </a>
+          <a
+            href="/#/notifications"
+            class="d-flex justify-content-center dropdown-item"
+          >
             <button class="text-decoration-none text-primary">VER TUDO</button>
           </a>
         </div>
@@ -194,7 +213,9 @@
 
     <v-tooltip bottom color="black">
       <template v-slot:activator="{ on }">
-        <v-icon class="p-2" v-on="on">mdi-plus</v-icon>
+        <router-link to="/createpost">
+          <v-icon class="p-2" v-on="on">mdi-plus</v-icon>
+        </router-link>
       </template>
       <span>Postar</span>
     </v-tooltip>
@@ -213,7 +234,7 @@
             >&nbsp;</small
           >
           <img
-            src="../assets/default_user.png"
+            src="../../assets/default_user.png"
             class="profile-pic rounded mr-2"
           />
         </div>
@@ -241,19 +262,36 @@
           ></v-switch>
         </div>
         <small class="text-muted dropdown-item">AS MINHAS COISAS</small>
-        <a href="" class="justify-content-start dropdown-item">
+        <router-link
+          to="/profile/overview"
+          class="justify-content-start dropdown-item"
+        >
           <v-icon class="pr-2">mdi-account-circle-outline</v-icon>
           <span>Perfil</span>
-        </a>
-        <a href="" class="justify-content-start dropdown-item">
+        </router-link>
+        <a
+          href="/#/profile/configuration/profile"
+          class="justify-content-start dropdown-item"
+        >
           <v-icon class="pr-2">mdi-cog-outline</v-icon>
-          <span>Definições do Utilizador</span>
+          <span>Configurações</span>
         </a>
         <small class="text-muted dropdown-item">MAIS OPÇÕES</small>
-        <a href="" class="justify-content-start dropdown-item">
-          <v-icon class="pr-2">mdi-account-group</v-icon>
-          <span>Cria uma comunidade</span>
-        </a>
+        <v-dialog v-model="$store.state.createCommunity">
+          <template v-slot:activator="{ on }">
+            <a
+              href="#"
+              v-on="on"
+              @click="$store.state.createCommunity = true"
+              class="justify-content-start dropdown-item"
+            >
+              <v-icon class="pr-2">mdi-account-group</v-icon>
+              <span>Criar comunidade</span>
+            </a>
+          </template>
+        </v-dialog>
+        <CreateCommunity />
+
         <a
           href="https://www.reddit.com/premium"
           class="justify-content-start dropdown-item"
@@ -305,8 +343,37 @@
       </div>
     </div>
 
+    <v-dialog v-model="$store.state.login">
+      <template v-slot:activator="{ on }">
+        <v-btn
+          v-on="on"
+          @click="$store.state.login = true"
+          rounded
+          small
+          color="primary"
+          >Entrar</v-btn
+        >
+      </template>
+    </v-dialog>
+    <Login />
+
+    <v-dialog v-model="$store.state.register">
+      <template v-slot:activator="{ on }">
+        <v-btn
+          v-on="on"
+          @click="$store.state.register = true"
+          rounded
+          small
+          color="primary"
+          class="ml-2"
+          >Cadastrar-se</v-btn
+        >
+      </template>
+    </v-dialog>
+    <Register />
+
     <button class="d-none" id="buttonCollapse" @click="showCollapsedBar">
-      <v-icon class="float-right text-white" to="/toolbarCollapsed"
+      <v-icon class="text-white" to="/toolbarCollapsed"
         >mdi-view-headline</v-icon
       >
     </button>
@@ -314,9 +381,16 @@
 </template>
 
 <script>
-import $ from 'jquery';
+import CreateCommunity from '../modals/CreateCommunity';
+import Register from '../auth/Register';
+import Login from '../auth/Login';
 
 export default {
+  components: {
+    CreateCommunity,
+    Register,
+    Login,
+  },
   data() {
     return {
       online: true,
@@ -328,13 +402,6 @@ export default {
       const collapsedBar = document.getElementById('collapsed');
       collapsedBar.classList.toggle('d-none');
     },
-  },
-  mounted() {
-    // quando sai do foco dar toggle dnv
-    $('.ocultNotificationDropdown').on('click', function Drop(e) {
-      $($(this).next('div')[0].firstChild).toggle();
-      e.stopPropagation();
-    });
   },
 };
 </script>
@@ -351,6 +418,7 @@ v-app-bar {
 }
 #reddit-logo {
   width: 9rem;
+  height: 2.85rem;
 }
 #menuButtonLabel {
   padding-right: 10vw;
@@ -370,10 +438,6 @@ i {
 }
 #profile-pic-label {
   padding-right: 7rem;
-}
-.profile-pic {
-  width: 1.5rem;
-  height: 1.5rem;
 }
 #notificationImage {
   width: 1.5rem;
@@ -403,7 +467,7 @@ a {
   #reddit-logo {
     width: 2.5rem;
     margin-right: 5rem;
-    content: url('../assets/reddit-logo-mini.png');
+    content: url('../../assets/reddit-logo-mini.png');
   }
   #menuButtonLabel {
     padding-right: 5vw;
@@ -434,8 +498,8 @@ a {
   #notificationNumber {
     display: none;
   }
-  .v-toolbar--dense .v-toolbar__content {
-    justify-content: space-between;
+  .v-toolbar__title {
+    flex-grow: 1;
   }
   #buttonCollapse {
     display: inherit !important;
@@ -444,7 +508,7 @@ a {
     background-color: #1e1e1e !important;
   }
   #reddit-logo {
-    content: url('../assets/dark-mode-reddit-logo.png');
+    content: url('../../assets/dark-mode-reddit-logo.png');
     width: 8rem;
     margin-top: 0.2rem;
   }
