@@ -1,5 +1,5 @@
 <?php
-namespace Posts\Model;
+namespace Reddit\Posts\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,7 +23,7 @@ class PostAcoes
     protected $id_post;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Usuario\model\Usuario", inversedBy="id_post_acoes")
+    * @ORM\ManyToOne(targetEntity="Reddit\Usuario\model\Usuario", inversedBy="id_post_acoes")
     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id_usuario", nullable=false)
     */
     private $id_usuario;

@@ -1,5 +1,5 @@
 <?php
-namespace Usuario\Model;
+namespace Reddit\Usuario\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -80,22 +80,37 @@ class Usuario
     private $nascimento;
 
     /**
-    * @ORM\OneToMany(targetEntity="Posts\model\PostComentarioResposta", mappedBy="id_usuario")
+    * @ORM\OneToMany(targetEntity="Reddit\Posts\model\PostComentarioResposta", mappedBy="id_usuario")
     */
     private $id_resposta;
 
     /**
-    * @ORM\OneToMany(targetEntity="Posts\model\PostComentario", mappedBy="id_usuario")
+    * @ORM\OneToMany(targetEntity="Reddit\Posts\model\PostComentario", mappedBy="id_usuario")
     */
     private $id_comentario;
 
     /**
-    * @ORM\OneToMany(targetEntity="Posts\model\Post", mappedBy="id_usuario")
+    * @ORM\OneToMany(targetEntity="Reddit\Posts\model\Post", mappedBy="id_usuario")
     */
     private $id_post;
 
     /**
-    * @ORM\OneToMany(targetEntity="Posts\model\PostAcoes", mappedBy="id_usuario")
+    * @ORM\OneToMany(targetEntity="Reddit\Posts\model\PostAcoes", mappedBy="id_usuario")
     */
     private $id_post_acoes;
+
+    /**
+    * @ORM\OneToMany(targetEntity="Reddit\Aplicacao\Model\Denuncia", mappedBy="id_usuario")
+    */
+    private $id_denuncia;
+
+    /**
+    * @ORM\OneToMany(targetEntity="Reddit\Subreddit\Model\SolicitacaoModerador", mappedBy="id_usuario")
+    */
+    private $id_solicitacao_moderador;
+
+    /**
+    * @ORM\OneToMany(targetEntity="Reddit\Subreddit\Model\SubredditUsuario", mappedBy="id_usuario")
+    */
+    private $id_subreddit_usuario;
 }

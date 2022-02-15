@@ -1,5 +1,5 @@
 <?php
-namespace Posts\Model;
+namespace Reddit\Posts\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,7 +23,7 @@ class PostComentarioResposta
     private $id_comentario;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Usuario\model\Usuario", inversedBy="id_resposta")
+    * @ORM\ManyToOne(targetEntity="Reddit\Usuario\model\Usuario", inversedBy="id_resposta")
     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id_usuario", nullable=false)
     */
     private $id_usuario;

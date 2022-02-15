@@ -1,23 +1,23 @@
 <?php
-namespace Aplicacao\Model;
+namespace Reddit\Posts\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
 * @ORM\Entity
-* @ORM\Table(name="Motivo_Denuncia")
+* @ORM\Table(name="Tags")
 */
-class MotivoDenuncia
+class Tags
 {
     /**
     * @ORM\Id @ORM\Column(type="integer")
     * @ORM\GeneratedValue
     * @var integer
     */
-    protected $id_motivo;
+    protected $id_tag;
 
     /**
-    * @ORM\Column(type="string", length=40)
+    * @ORM\Column(type="string", length=30)
     *
     * @var string
     */

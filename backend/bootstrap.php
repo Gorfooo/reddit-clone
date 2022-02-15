@@ -2,7 +2,7 @@
 //AutoLoader do Composer
 $loader = require __DIR__.'/vendor/autoload.php';
 //vamos adicionar nossas classes ao AutoLoader
-$loader->add('Entities', __DIR__.'/module');
+$loader->add('Entities', __DIR__.'/module/Entities');
 
 
 use Doctrine\ORM\Tools\Setup;
@@ -15,7 +15,7 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 $isDevMode = false;
 
 //caminho das entidades
-$paths = array(__DIR__ . '/module');
+$paths = array(__DIR__ . '/module/Entities');
 // configurações do banco de dados
 $dbParams = array(
 'driver' => 'pdo_mysql',

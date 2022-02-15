@@ -1,5 +1,5 @@
 <?php
-namespace Subreddit\Model;
+namespace Reddit\Subreddit\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -15,6 +15,12 @@ class SubredditRegras
     * @var integer
     */
     protected $id_regra;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Reddit\Subreddit\model\Subreddit", inversedBy="id_regra")
+    * @ORM\JoinColumn(name="id_subreddit", referencedColumnName="id_subreddit", nullable=false)
+    */
+    protected $id_subreddit;
 
     /**
     * @ORM\Column(type="string", length=150)

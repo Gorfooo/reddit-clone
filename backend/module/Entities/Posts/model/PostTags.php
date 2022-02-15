@@ -1,25 +1,25 @@
 <?php
-namespace Usuario\Model;
+namespace Reddit\Posts\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
 * @ORM\Entity
-* @ORM\Table(name="Bloqueado")
+* @ORM\Table(name="Post_Tags")
 */
-class Bloqueado
+class PostTags
 {
     /**
     * @ORM\Id @ORM\Column(type="integer")
     * @ORM\GeneratedValue
     * @var integer
     */
-    protected $id_bloqueador;
+    protected $id_tag;
 
     /**
     * @ORM\Column(type="string", length=150)
     *
     * @var string
     */
-    private $id_bloqueado;
+    private $id_post;
 }

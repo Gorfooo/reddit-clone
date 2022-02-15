@@ -1,5 +1,5 @@
 <?php
-namespace Usuario\Model;
+namespace Reddit\Usuario\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 

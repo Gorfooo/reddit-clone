@@ -1,5 +1,5 @@
 <?php
-namespace Subreddit\Model;
+namespace Reddit\Subreddit\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -14,12 +14,17 @@ class SolicitacaoModerador
     * @ORM\GeneratedValue
     * @var integer
     */
+    protected $id_solicitacao_moderador;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Reddit\Subreddit\model\Subreddit", inversedBy="id_solicitacao_moderador")
+    * @ORM\JoinColumn(name="id_subreddit", referencedColumnName="id_subreddit", nullable=false)
+    */
     protected $id_subreddit;
 
     /**
-    * @ORM\Column(type="string", length=150)
-    *
-    * @var string
+    * @ORM\ManyToOne(targetEntity="Reddit\Usuario\model\Usuario", inversedBy="id_solicitacao_moderador")
+    * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id_usuario", nullable=false)
     */
     private $id_usuario;
 
