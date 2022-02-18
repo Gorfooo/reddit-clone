@@ -30,13 +30,137 @@ class PostComentario
 
     /**
     * @ORM\Column(type="text")
-    *
-    * @var string
     */
     private $comentario;
 
     /**
     * @ORM\OneToMany(targetEntity="PostComentarioResposta", mappedBy="id_comentario")
     */
-    private $id_resposta;
+    private $respostas;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->respostas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get idComentario.
+     *
+     * @return int
+     */
+    public function getIdComentario()
+    {
+        return $this->id_comentario;
+    }
+
+    /**
+     * Set comentario.
+     *
+     * @param string $comentario
+     *
+     * @return PostComentario
+     */
+    public function setComentario($comentario)
+    {
+        $this->comentario = $comentario;
+
+        return $this;
+    }
+
+    /**
+     * Get comentario.
+     *
+     * @return string
+     */
+    public function getComentario()
+    {
+        return $this->comentario;
+    }
+
+    /**
+     * Set idPost.
+     *
+     * @param \Reddit\Posts\Model\Post $idPost
+     *
+     * @return PostComentario
+     */
+    public function setIdPost(\Reddit\Posts\Model\Post $idPost)
+    {
+        $this->id_post = $idPost;
+
+        return $this;
+    }
+
+    /**
+     * Get idPost.
+     *
+     * @return \Reddit\Posts\Model\Post
+     */
+    public function getIdPost()
+    {
+        return $this->id_post;
+    }
+
+    /**
+     * Set idUsuario.
+     *
+     * @param \Reddit\Usuario\model\Usuario $idUsuario
+     *
+     * @return PostComentario
+     */
+    public function setIdUsuario(\Reddit\Usuario\model\Usuario $idUsuario)
+    {
+        $this->id_usuario = $idUsuario;
+
+        return $this;
+    }
+
+    /**
+     * Get idUsuario.
+     *
+     * @return \Reddit\Usuario\model\Usuario
+     */
+    public function getIdUsuario()
+    {
+        return $this->id_usuario;
+    }
+
+    /**
+     * Add resposta.
+     *
+     * @param \Reddit\Posts\Model\PostComentarioResposta $resposta
+     *
+     * @return PostComentario
+     */
+    public function addResposta(\Reddit\Posts\Model\PostComentarioResposta $resposta)
+    {
+        $this->respostas[] = $resposta;
+
+        return $this;
+    }
+
+    /**
+     * Remove resposta.
+     *
+     * @param \Reddit\Posts\Model\PostComentarioResposta $resposta
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeResposta(\Reddit\Posts\Model\PostComentarioResposta $resposta)
+    {
+        return $this->respostas->removeElement($resposta);
+    }
+
+    /**
+     * Get respostas.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRespostas()
+    {
+        return $this->respostas;
+    }
 }

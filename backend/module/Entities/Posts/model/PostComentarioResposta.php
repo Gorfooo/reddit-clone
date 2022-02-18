@@ -30,8 +30,88 @@ class PostComentarioResposta
 
     /**
     * @ORM\Column(type="text")
-    *
-    * @var string
     */
     private $resposta;
+
+    /**
+     * Get idResposta.
+     *
+     * @return int
+     */
+    public function getIdResposta()
+    {
+        return $this->id_resposta;
+    }
+
+    /**
+     * Set resposta.
+     *
+     * @param string $resposta
+     *
+     * @return PostComentarioResposta
+     */
+    public function setResposta($resposta)
+    {
+        $this->resposta = $resposta;
+
+        return $this;
+    }
+
+    /**
+     * Get resposta.
+     *
+     * @return string
+     */
+    public function getResposta()
+    {
+        return $this->resposta;
+    }
+
+    /**
+     * Set idComentario.
+     *
+     * @param \Reddit\Posts\Model\PostComentario $idComentario
+     *
+     * @return PostComentarioResposta
+     */
+    public function setIdComentario(\Reddit\Posts\Model\PostComentario $idComentario)
+    {
+        $this->id_comentario = $idComentario;
+
+        return $this;
+    }
+
+    /**
+     * Get idComentario.
+     *
+     * @return \Reddit\Posts\Model\PostComentario
+     */
+    public function getIdComentario()
+    {
+        return $this->id_comentario;
+    }
+
+    /**
+     * Set idUsuario.
+     *
+     * @param \Reddit\Usuario\model\Usuario $idUsuario
+     *
+     * @return PostComentarioResposta
+     */
+    public function setIdUsuario(\Reddit\Usuario\model\Usuario $idUsuario)
+    {
+        $this->id_usuario = $idUsuario;
+
+        return $this;
+    }
+
+    /**
+     * Get idUsuario.
+     *
+     * @return \Reddit\Usuario\model\Usuario
+     */
+    public function getIdUsuario()
+    {
+        return $this->id_usuario;
+    }
 }

@@ -20,7 +20,7 @@ $paths = array(__DIR__ . '/module/Entities');
 $dbParams = array(
 'driver' => 'pdo_mysql',
 'user' => 'root',
-'password' => 'root',
+'password' => '12345678',
 'dbname' => 'reddit_clone',
 );
 
