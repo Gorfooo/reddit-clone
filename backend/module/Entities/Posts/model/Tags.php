@@ -1,5 +1,5 @@
 <?php
-namespace Reddit\Posts\Model;
+namespace Entities\Posts\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,7 +24,7 @@ class Tags
     private $descricao;
 
     /**
-    * @ORM\ManyToMany(targetEntity="Reddit\Posts\Model\Post", inversedBy="id_tag")
+    * @ORM\ManyToMany(targetEntity="Entities\Posts\Model\Post", inversedBy="id_tag")
     * @ORM\JoinTable(name="Post_Tags",
         * joinColumns={@ORM\JoinColumn(name="id_tag", referencedColumnName="id_tag")},
         * inverseJoinColumns={@ORM\JoinColumn(name="id_post", referencedColumnName="id_post")}
@@ -77,11 +77,11 @@ class Tags
     /**
      * Add post.
      *
-     * @param \Reddit\Posts\Model\Post $post
+     * @param \Entities\Posts\Model\Post $post
      *
      * @return Tags
      */
-    public function addPost(\Reddit\Posts\Model\Post $post)
+    public function addPost(\Entities\Posts\Model\Post $post)
     {
         $this->posts[] = $post;
 
@@ -91,11 +91,11 @@ class Tags
     /**
      * Remove post.
      *
-     * @param \Reddit\Posts\Model\Post $post
+     * @param \Entities\Posts\Model\Post $post
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removePost(\Reddit\Posts\Model\Post $post)
+    public function removePost(\Entities\Posts\Model\Post $post)
     {
         return $this->posts->removeElement($post);
     }

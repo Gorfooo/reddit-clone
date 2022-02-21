@@ -1,5 +1,5 @@
 <?php
-namespace Reddit\Subreddit\Model;
+namespace Entities\Subreddit\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -17,13 +17,13 @@ class SubredditUsuario
     private $id_subreddit_usuario;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Reddit\Usuario\model\Usuario", inversedBy="id_subreddit_usuario")
+    * @ORM\ManyToOne(targetEntity="Entities\Usuario\model\Usuario", inversedBy="id_subreddit_usuario")
     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id_usuario", nullable=false)
     */
     private $id_usuario;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Reddit\Subreddit\model\Subreddit", inversedBy="id_subreddit_usuario")
+    * @ORM\ManyToOne(targetEntity="Entities\Subreddit\model\Subreddit", inversedBy="id_subreddit_usuario")
     * @ORM\JoinColumn(name="id_subreddit", referencedColumnName="id_subreddit", nullable=false)
     */
     private $id_subreddit;
@@ -103,11 +103,11 @@ class SubredditUsuario
     /**
      * Set idUsuario.
      *
-     * @param \Reddit\Usuario\model\Usuario $idUsuario
+     * @param \Entities\Usuario\model\Usuario $idUsuario
      *
      * @return SubredditUsuario
      */
-    public function setIdUsuario(\Reddit\Usuario\model\Usuario $idUsuario)
+    public function setIdUsuario(\Entities\Usuario\model\Usuario $idUsuario)
     {
         $this->id_usuario = $idUsuario;
 
@@ -117,7 +117,7 @@ class SubredditUsuario
     /**
      * Get idUsuario.
      *
-     * @return \Reddit\Usuario\model\Usuario
+     * @return \Entities\Usuario\model\Usuario
      */
     public function getIdUsuario()
     {
@@ -127,11 +127,11 @@ class SubredditUsuario
     /**
      * Set idSubreddit.
      *
-     * @param \Reddit\Subreddit\model\Subreddit $idSubreddit
+     * @param \Entities\Subreddit\model\Subreddit $idSubreddit
      *
      * @return SubredditUsuario
      */
-    public function setIdSubreddit(\Reddit\Subreddit\model\Subreddit $idSubreddit)
+    public function setIdSubreddit(\Entities\Subreddit\model\Subreddit $idSubreddit)
     {
         $this->id_subreddit = $idSubreddit;
 
@@ -141,7 +141,7 @@ class SubredditUsuario
     /**
      * Get idSubreddit.
      *
-     * @return \Reddit\Subreddit\model\Subreddit
+     * @return \Entities\Subreddit\model\Subreddit
      */
     public function getIdSubreddit()
     {

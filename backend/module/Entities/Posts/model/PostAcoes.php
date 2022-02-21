@@ -1,5 +1,5 @@
 <?php
-namespace Reddit\Posts\Model;
+namespace Entities\Posts\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,7 +23,7 @@ class PostAcoes
     private $id_post;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Reddit\Usuario\model\Usuario", inversedBy="id_post_acoes")
+    * @ORM\ManyToOne(targetEntity="Entities\Usuario\model\Usuario", inversedBy="id_post_acoes")
     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id_usuario", nullable=false)
     */
     private $id_usuario;
@@ -225,11 +225,11 @@ class PostAcoes
     /**
      * Set idPost.
      *
-     * @param \Reddit\Posts\Model\Post $idPost
+     * @param \Entities\Posts\Model\Post $idPost
      *
      * @return PostAcoes
      */
-    public function setIdPost(\Reddit\Posts\Model\Post $idPost)
+    public function setIdPost(\Entities\Posts\Model\Post $idPost)
     {
         $this->id_post = $idPost;
 
@@ -239,7 +239,7 @@ class PostAcoes
     /**
      * Get idPost.
      *
-     * @return \Reddit\Posts\Model\Post
+     * @return \Entities\Posts\Model\Post
      */
     public function getIdPost()
     {
@@ -249,11 +249,11 @@ class PostAcoes
     /**
      * Set idUsuario.
      *
-     * @param \Reddit\Usuario\model\Usuario $idUsuario
+     * @param \Entities\Usuario\model\Usuario $idUsuario
      *
      * @return PostAcoes
      */
-    public function setIdUsuario(\Reddit\Usuario\model\Usuario $idUsuario)
+    public function setIdUsuario(\Entities\Usuario\model\Usuario $idUsuario)
     {
         $this->id_usuario = $idUsuario;
 
@@ -263,7 +263,7 @@ class PostAcoes
     /**
      * Get idUsuario.
      *
-     * @return \Reddit\Usuario\model\Usuario
+     * @return \Entities\Usuario\model\Usuario
      */
     public function getIdUsuario()
     {

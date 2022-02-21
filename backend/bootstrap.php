@@ -20,7 +20,7 @@ $paths = array(__DIR__ . '/module/Entities');
 $dbParams = array(
 'driver' => 'pdo_mysql',
 'user' => 'root',
-'password' => '12345678',
+'password' => 'root',
 'dbname' => 'reddit_clone',
 );
 
@@ -35,3 +35,8 @@ AnnotationRegistry::registerFile(
     );
     //cria o entityManager
     $entityManager = EntityManager::create($dbParams, $config);
+
+/*
+Caso necessário, alterar também a classe que chama o Entity manager:
+module > Application > src > SetEntityManager.php
+*/

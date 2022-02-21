@@ -1,5 +1,5 @@
 <?php
-namespace Reddit\Usuario\Model;
+namespace Entities\Usuario\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -17,14 +17,14 @@ class Chat
     private $id_mensagem;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Reddit\Usuario\model\Usuario", inversedBy="id_mensagem")
+    * @ORM\ManyToOne(targetEntity="Entities\Usuario\model\Usuario", inversedBy="id_mensagem")
     * @ORM\JoinColumn(name="id_leitor", referencedColumnName="id_usuario", nullable=false)
     */
     private $id_leitor;
 
 
     /**
-    * @ORM\ManyToOne(targetEntity="Reddit\Usuario\model\Usuario", inversedBy="id_mensagem")
+    * @ORM\ManyToOne(targetEntity="Entities\Usuario\model\Usuario", inversedBy="id_mensagem")
     * @ORM\JoinColumn(name="id_escritor", referencedColumnName="id_usuario", nullable=false)
     */
     private $id_escritor;
@@ -131,11 +131,11 @@ class Chat
     /**
      * Set idLeitor.
      *
-     * @param \Reddit\Usuario\model\Usuario $idLeitor
+     * @param \Entities\Usuario\model\Usuario $idLeitor
      *
      * @return Chat
      */
-    public function setIdLeitor(\Reddit\Usuario\model\Usuario $idLeitor)
+    public function setIdLeitor(\Entities\Usuario\model\Usuario $idLeitor)
     {
         $this->id_leitor = $idLeitor;
 
@@ -145,7 +145,7 @@ class Chat
     /**
      * Get idLeitor.
      *
-     * @return \Reddit\Usuario\model\Usuario
+     * @return \Entities\Usuario\model\Usuario
      */
     public function getIdLeitor()
     {
@@ -155,11 +155,11 @@ class Chat
     /**
      * Set idEscritor.
      *
-     * @param \Reddit\Usuario\model\Usuario $idEscritor
+     * @param \Entities\Usuario\model\Usuario $idEscritor
      *
      * @return Chat
      */
-    public function setIdEscritor(\Reddit\Usuario\model\Usuario $idEscritor)
+    public function setIdEscritor(\Entities\Usuario\model\Usuario $idEscritor)
     {
         $this->id_escritor = $idEscritor;
 
@@ -169,7 +169,7 @@ class Chat
     /**
      * Get idEscritor.
      *
-     * @return \Reddit\Usuario\model\Usuario
+     * @return \Entities\Usuario\model\Usuario
      */
     public function getIdEscritor()
     {

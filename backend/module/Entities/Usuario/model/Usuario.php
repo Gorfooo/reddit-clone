@@ -1,5 +1,5 @@
 <?php
-namespace Reddit\Usuario\Model;
+namespace Entities\Usuario\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -78,47 +78,47 @@ class Usuario
     private $nascimento;
 
     /**
-    * @ORM\OneToMany(targetEntity="Reddit\Posts\model\PostComentarioResposta", mappedBy="id_usuario")
+    * @ORM\OneToMany(targetEntity="Entities\Posts\model\PostComentarioResposta", mappedBy="id_usuario")
     */
     private $respostas;
 
     /**
-    * @ORM\OneToMany(targetEntity="Reddit\Posts\model\PostComentario", mappedBy="id_usuario")
+    * @ORM\OneToMany(targetEntity="Entities\Posts\model\PostComentario", mappedBy="id_usuario")
     */
     private $comentarios;
 
     /**
-    * @ORM\OneToMany(targetEntity="Reddit\Posts\model\Post", mappedBy="id_usuario")
+    * @ORM\OneToMany(targetEntity="Entities\Posts\model\Post", mappedBy="id_usuario")
     */
     private $posts;
 
     /**
-    * @ORM\OneToMany(targetEntity="Reddit\Posts\model\PostAcoes", mappedBy="id_usuario")
+    * @ORM\OneToMany(targetEntity="Entities\Posts\model\PostAcoes", mappedBy="id_usuario")
     */
     private $post_acoes;
 
     /**
-    * @ORM\OneToMany(targetEntity="Reddit\Aplicacao\Model\Denuncia", mappedBy="id_usuario")
+    * @ORM\OneToMany(targetEntity="Entities\Aplicacao\Model\Denuncia", mappedBy="id_usuario")
     */
     private $denuncias;
 
     /**
-    * @ORM\OneToMany(targetEntity="Reddit\Subreddit\Model\SolicitacaoModerador", mappedBy="id_usuario")
+    * @ORM\OneToMany(targetEntity="Entities\Subreddit\Model\SolicitacaoModerador", mappedBy="id_usuario")
     */
     private $solicitacoes_moderador;
 
     /**
-    * @ORM\OneToMany(targetEntity="Reddit\Subreddit\Model\SubredditUsuario", mappedBy="id_usuario")
+    * @ORM\OneToMany(targetEntity="Entities\Subreddit\Model\SubredditUsuario", mappedBy="id_usuario")
     */
     private $subreddits;
 
     /**
-    * @ORM\OneToMany(targetEntity="Reddit\Usuario\Model\Chat", mappedBy="id_usuario")
+    * @ORM\OneToMany(targetEntity="Entities\Usuario\Model\Chat", mappedBy="id_usuario")
     */
     private $chats;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Reddit\Usuario\Model\Usuario")
+     * @ORM\ManyToMany(targetEntity="Entities\Usuario\Model\Usuario")
      * @ORM\JoinTable(name="Seguidores",
      *     joinColumns={@ORM\JoinColumn(name="id_seguidor", referencedColumnName="id_usuario")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="id_seguido", referencedColumnName="id_usuario")}
@@ -127,7 +127,7 @@ class Usuario
     private $seguidores;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Reddit\Usuario\Model\Usuario")
+     * @ORM\ManyToMany(targetEntity="Entities\Usuario\Model\Usuario")
      * @ORM\JoinTable(name="Bloqueado",
      *     joinColumns={@ORM\JoinColumn(name="id_bloqueador", referencedColumnName="id_usuario")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="id_bloqueado", referencedColumnName="id_usuario")}
@@ -381,11 +381,11 @@ class Usuario
     /**
      * Add resposta.
      *
-     * @param \Reddit\Posts\model\PostComentarioResposta $resposta
+     * @param \Entities\Posts\model\PostComentarioResposta $resposta
      *
      * @return Usuario
      */
-    public function addResposta(\Reddit\Posts\model\PostComentarioResposta $resposta)
+    public function addResposta(\Entities\Posts\model\PostComentarioResposta $resposta)
     {
         $this->respostas[] = $resposta;
 
@@ -395,11 +395,11 @@ class Usuario
     /**
      * Remove resposta.
      *
-     * @param \Reddit\Posts\model\PostComentarioResposta $resposta
+     * @param \Entities\Posts\model\PostComentarioResposta $resposta
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeResposta(\Reddit\Posts\model\PostComentarioResposta $resposta)
+    public function removeResposta(\Entities\Posts\model\PostComentarioResposta $resposta)
     {
         return $this->respostas->removeElement($resposta);
     }
@@ -417,11 +417,11 @@ class Usuario
     /**
      * Add comentario.
      *
-     * @param \Reddit\Posts\model\PostComentario $comentario
+     * @param \Entities\Posts\model\PostComentario $comentario
      *
      * @return Usuario
      */
-    public function addComentario(\Reddit\Posts\model\PostComentario $comentario)
+    public function addComentario(\Entities\Posts\model\PostComentario $comentario)
     {
         $this->comentarios[] = $comentario;
 
@@ -431,11 +431,11 @@ class Usuario
     /**
      * Remove comentario.
      *
-     * @param \Reddit\Posts\model\PostComentario $comentario
+     * @param \Entities\Posts\model\PostComentario $comentario
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeComentario(\Reddit\Posts\model\PostComentario $comentario)
+    public function removeComentario(\Entities\Posts\model\PostComentario $comentario)
     {
         return $this->comentarios->removeElement($comentario);
     }
@@ -453,11 +453,11 @@ class Usuario
     /**
      * Add post.
      *
-     * @param \Reddit\Posts\model\Post $post
+     * @param \Entities\Posts\model\Post $post
      *
      * @return Usuario
      */
-    public function addPost(\Reddit\Posts\model\Post $post)
+    public function addPost(\Entities\Posts\model\Post $post)
     {
         $this->posts[] = $post;
 
@@ -467,11 +467,11 @@ class Usuario
     /**
      * Remove post.
      *
-     * @param \Reddit\Posts\model\Post $post
+     * @param \Entities\Posts\model\Post $post
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removePost(\Reddit\Posts\model\Post $post)
+    public function removePost(\Entities\Posts\model\Post $post)
     {
         return $this->posts->removeElement($post);
     }
@@ -489,11 +489,11 @@ class Usuario
     /**
      * Add postAco.
      *
-     * @param \Reddit\Posts\model\PostAcoes $postAco
+     * @param \Entities\Posts\model\PostAcoes $postAco
      *
      * @return Usuario
      */
-    public function addPostAco(\Reddit\Posts\model\PostAcoes $postAco)
+    public function addPostAco(\Entities\Posts\model\PostAcoes $postAco)
     {
         $this->post_acoes[] = $postAco;
 
@@ -503,11 +503,11 @@ class Usuario
     /**
      * Remove postAco.
      *
-     * @param \Reddit\Posts\model\PostAcoes $postAco
+     * @param \Entities\Posts\model\PostAcoes $postAco
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removePostAco(\Reddit\Posts\model\PostAcoes $postAco)
+    public function removePostAco(\Entities\Posts\model\PostAcoes $postAco)
     {
         return $this->post_acoes->removeElement($postAco);
     }
@@ -525,11 +525,11 @@ class Usuario
     /**
      * Add denuncia.
      *
-     * @param \Reddit\Aplicacao\Model\Denuncia $denuncia
+     * @param \Entities\Aplicacao\Model\Denuncia $denuncia
      *
      * @return Usuario
      */
-    public function addDenuncia(\Reddit\Aplicacao\Model\Denuncia $denuncia)
+    public function addDenuncia(\Entities\Aplicacao\Model\Denuncia $denuncia)
     {
         $this->denuncias[] = $denuncia;
 
@@ -539,11 +539,11 @@ class Usuario
     /**
      * Remove denuncia.
      *
-     * @param \Reddit\Aplicacao\Model\Denuncia $denuncia
+     * @param \Entities\Aplicacao\Model\Denuncia $denuncia
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeDenuncia(\Reddit\Aplicacao\Model\Denuncia $denuncia)
+    public function removeDenuncia(\Entities\Aplicacao\Model\Denuncia $denuncia)
     {
         return $this->denuncias->removeElement($denuncia);
     }
@@ -561,11 +561,11 @@ class Usuario
     /**
      * Add solicitacoesModerador.
      *
-     * @param \Reddit\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador
+     * @param \Entities\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador
      *
      * @return Usuario
      */
-    public function addSolicitacoesModerador(\Reddit\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador)
+    public function addSolicitacoesModerador(\Entities\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador)
     {
         $this->solicitacoes_moderador[] = $solicitacoesModerador;
 
@@ -575,11 +575,11 @@ class Usuario
     /**
      * Remove solicitacoesModerador.
      *
-     * @param \Reddit\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador
+     * @param \Entities\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeSolicitacoesModerador(\Reddit\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador)
+    public function removeSolicitacoesModerador(\Entities\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador)
     {
         return $this->solicitacoes_moderador->removeElement($solicitacoesModerador);
     }
@@ -597,11 +597,11 @@ class Usuario
     /**
      * Add subreddit.
      *
-     * @param \Reddit\Subreddit\Model\SubredditUsuario $subreddit
+     * @param \Entities\Subreddit\Model\SubredditUsuario $subreddit
      *
      * @return Usuario
      */
-    public function addSubreddit(\Reddit\Subreddit\Model\SubredditUsuario $subreddit)
+    public function addSubreddit(\Entities\Subreddit\Model\SubredditUsuario $subreddit)
     {
         $this->subreddits[] = $subreddit;
 
@@ -611,11 +611,11 @@ class Usuario
     /**
      * Remove subreddit.
      *
-     * @param \Reddit\Subreddit\Model\SubredditUsuario $subreddit
+     * @param \Entities\Subreddit\Model\SubredditUsuario $subreddit
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeSubreddit(\Reddit\Subreddit\Model\SubredditUsuario $subreddit)
+    public function removeSubreddit(\Entities\Subreddit\Model\SubredditUsuario $subreddit)
     {
         return $this->subreddits->removeElement($subreddit);
     }
@@ -633,11 +633,11 @@ class Usuario
     /**
      * Add chat.
      *
-     * @param \Reddit\Usuario\Model\Chat $chat
+     * @param \Entities\Usuario\Model\Chat $chat
      *
      * @return Usuario
      */
-    public function addChat(\Reddit\Usuario\Model\Chat $chat)
+    public function addChat(\Entities\Usuario\Model\Chat $chat)
     {
         $this->chats[] = $chat;
 
@@ -647,11 +647,11 @@ class Usuario
     /**
      * Remove chat.
      *
-     * @param \Reddit\Usuario\Model\Chat $chat
+     * @param \Entities\Usuario\Model\Chat $chat
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeChat(\Reddit\Usuario\Model\Chat $chat)
+    public function removeChat(\Entities\Usuario\Model\Chat $chat)
     {
         return $this->chats->removeElement($chat);
     }
@@ -669,11 +669,11 @@ class Usuario
     /**
      * Add seguidore.
      *
-     * @param \Reddit\Usuario\Model\Usuario $seguidore
+     * @param \Entities\Usuario\Model\Usuario $seguidore
      *
      * @return Usuario
      */
-    public function addSeguidore(\Reddit\Usuario\Model\Usuario $seguidore)
+    public function addSeguidore(\Entities\Usuario\Model\Usuario $seguidore)
     {
         $this->seguidores[] = $seguidore;
 
@@ -683,11 +683,11 @@ class Usuario
     /**
      * Remove seguidore.
      *
-     * @param \Reddit\Usuario\Model\Usuario $seguidore
+     * @param \Entities\Usuario\Model\Usuario $seguidore
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeSeguidore(\Reddit\Usuario\Model\Usuario $seguidore)
+    public function removeSeguidore(\Entities\Usuario\Model\Usuario $seguidore)
     {
         return $this->seguidores->removeElement($seguidore);
     }
@@ -705,11 +705,11 @@ class Usuario
     /**
      * Add bloqueio.
      *
-     * @param \Reddit\Usuario\Model\Usuario $bloqueio
+     * @param \Entities\Usuario\Model\Usuario $bloqueio
      *
      * @return Usuario
      */
-    public function addBloqueio(\Reddit\Usuario\Model\Usuario $bloqueio)
+    public function addBloqueio(\Entities\Usuario\Model\Usuario $bloqueio)
     {
         $this->bloqueios[] = $bloqueio;
 
@@ -719,11 +719,11 @@ class Usuario
     /**
      * Remove bloqueio.
      *
-     * @param \Reddit\Usuario\Model\Usuario $bloqueio
+     * @param \Entities\Usuario\Model\Usuario $bloqueio
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeBloqueio(\Reddit\Usuario\Model\Usuario $bloqueio)
+    public function removeBloqueio(\Entities\Usuario\Model\Usuario $bloqueio)
     {
         return $this->bloqueios->removeElement($bloqueio);
     }

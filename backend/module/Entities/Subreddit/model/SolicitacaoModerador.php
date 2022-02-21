@@ -1,5 +1,5 @@
 <?php
-namespace Reddit\Subreddit\Model;
+namespace Entities\Subreddit\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -17,13 +17,13 @@ class SolicitacaoModerador
     private $id_solicitacao_moderador;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Reddit\Subreddit\model\Subreddit", inversedBy="id_solicitacao_moderador")
+    * @ORM\ManyToOne(targetEntity="Entities\Subreddit\model\Subreddit", inversedBy="id_solicitacao_moderador")
     * @ORM\JoinColumn(name="id_subreddit", referencedColumnName="id_subreddit", nullable=false)
     */
     private $id_subreddit;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Reddit\Usuario\model\Usuario", inversedBy="id_solicitacao_moderador")
+    * @ORM\ManyToOne(targetEntity="Entities\Usuario\model\Usuario", inversedBy="id_solicitacao_moderador")
     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id_usuario", nullable=false)
     */
     private $id_usuario;
@@ -130,11 +130,11 @@ class SolicitacaoModerador
     /**
      * Set idSubreddit.
      *
-     * @param \Reddit\Subreddit\model\Subreddit $idSubreddit
+     * @param \Entities\Subreddit\model\Subreddit $idSubreddit
      *
      * @return SolicitacaoModerador
      */
-    public function setIdSubreddit(\Reddit\Subreddit\model\Subreddit $idSubreddit)
+    public function setIdSubreddit(\Entities\Subreddit\model\Subreddit $idSubreddit)
     {
         $this->id_subreddit = $idSubreddit;
 
@@ -144,7 +144,7 @@ class SolicitacaoModerador
     /**
      * Get idSubreddit.
      *
-     * @return \Reddit\Subreddit\model\Subreddit
+     * @return \Entities\Subreddit\model\Subreddit
      */
     public function getIdSubreddit()
     {
@@ -154,11 +154,11 @@ class SolicitacaoModerador
     /**
      * Set idUsuario.
      *
-     * @param \Reddit\Usuario\model\Usuario $idUsuario
+     * @param \Entities\Usuario\model\Usuario $idUsuario
      *
      * @return SolicitacaoModerador
      */
-    public function setIdUsuario(\Reddit\Usuario\model\Usuario $idUsuario)
+    public function setIdUsuario(\Entities\Usuario\model\Usuario $idUsuario)
     {
         $this->id_usuario = $idUsuario;
 
@@ -168,7 +168,7 @@ class SolicitacaoModerador
     /**
      * Get idUsuario.
      *
-     * @return \Reddit\Usuario\model\Usuario
+     * @return \Entities\Usuario\model\Usuario
      */
     public function getIdUsuario()
     {

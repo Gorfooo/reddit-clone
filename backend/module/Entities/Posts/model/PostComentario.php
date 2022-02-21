@@ -1,5 +1,5 @@
 <?php
-namespace Reddit\Posts\Model;
+namespace Entities\Posts\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,7 +23,7 @@ class PostComentario
     private $id_post;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Reddit\Usuario\model\Usuario", inversedBy="id_comentario")
+    * @ORM\ManyToOne(targetEntity="Entities\Usuario\model\Usuario", inversedBy="id_comentario")
     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id_usuario", nullable=false)
     */
     private $id_usuario;
@@ -83,11 +83,11 @@ class PostComentario
     /**
      * Set idPost.
      *
-     * @param \Reddit\Posts\Model\Post $idPost
+     * @param \Entities\Posts\Model\Post $idPost
      *
      * @return PostComentario
      */
-    public function setIdPost(\Reddit\Posts\Model\Post $idPost)
+    public function setIdPost(\Entities\Posts\Model\Post $idPost)
     {
         $this->id_post = $idPost;
 
@@ -97,7 +97,7 @@ class PostComentario
     /**
      * Get idPost.
      *
-     * @return \Reddit\Posts\Model\Post
+     * @return \Entities\Posts\Model\Post
      */
     public function getIdPost()
     {
@@ -107,11 +107,11 @@ class PostComentario
     /**
      * Set idUsuario.
      *
-     * @param \Reddit\Usuario\model\Usuario $idUsuario
+     * @param \Entities\Usuario\model\Usuario $idUsuario
      *
      * @return PostComentario
      */
-    public function setIdUsuario(\Reddit\Usuario\model\Usuario $idUsuario)
+    public function setIdUsuario(\Entities\Usuario\model\Usuario $idUsuario)
     {
         $this->id_usuario = $idUsuario;
 
@@ -121,7 +121,7 @@ class PostComentario
     /**
      * Get idUsuario.
      *
-     * @return \Reddit\Usuario\model\Usuario
+     * @return \Entities\Usuario\model\Usuario
      */
     public function getIdUsuario()
     {
@@ -131,11 +131,11 @@ class PostComentario
     /**
      * Add resposta.
      *
-     * @param \Reddit\Posts\Model\PostComentarioResposta $resposta
+     * @param \Entities\Posts\Model\PostComentarioResposta $resposta
      *
      * @return PostComentario
      */
-    public function addResposta(\Reddit\Posts\Model\PostComentarioResposta $resposta)
+    public function addResposta(\Entities\Posts\Model\PostComentarioResposta $resposta)
     {
         $this->respostas[] = $resposta;
 
@@ -145,11 +145,11 @@ class PostComentario
     /**
      * Remove resposta.
      *
-     * @param \Reddit\Posts\Model\PostComentarioResposta $resposta
+     * @param \Entities\Posts\Model\PostComentarioResposta $resposta
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeResposta(\Reddit\Posts\Model\PostComentarioResposta $resposta)
+    public function removeResposta(\Entities\Posts\Model\PostComentarioResposta $resposta)
     {
         return $this->respostas->removeElement($resposta);
     }

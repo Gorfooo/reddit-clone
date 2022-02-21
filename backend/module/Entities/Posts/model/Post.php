@@ -1,5 +1,5 @@
 <?php
-namespace Reddit\Posts\Model;
+namespace Entities\Posts\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -17,7 +17,7 @@ class Post
     private $id_post;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Reddit\Usuario\model\Usuario", inversedBy="id_post")
+    * @ORM\ManyToOne(targetEntity="Entities\Usuario\model\Usuario", inversedBy="id_post")
     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id_usuario", nullable=false)
     */
     private $id_usuario;
@@ -37,22 +37,22 @@ class Post
     private $titulo;
 
     /**
-    * @ORM\OneToMany(targetEntity="PostComentario", mappedBy="id_post")
+    * @ORM\OneToMany(targetEntity="PostComentario", mappedBy="id_post", cascade={"remove"})
     */
     private $comentarios;
 
     /**
-    * @ORM\OneToMany(targetEntity="PostAcoes", mappedBy="id_post")
+    * @ORM\OneToMany(targetEntity="PostAcoes", mappedBy="id_post", cascade={"remove"})
     */
     private $post_acoes;
 
     /**
-    * @ORM\OneToMany(targetEntity="Reddit\Aplicacao\Model\Denuncia", mappedBy="id_post")
+    * @ORM\OneToMany(targetEntity="Entities\Aplicacao\Model\Denuncia", mappedBy="id_post")
     */
     private $denuncias;
 
-    /**
-    * @ORM\ManyToMany(targetEntity="Reddit\Posts\Model\Post", mappedBy="id_post")
+    /**testar cascade
+    * @ORM\ManyToMany(targetEntity="Entities\Posts\Model\Post", mappedBy="id_post", cascade={"remove"})
     */
     private $tags;
 
@@ -128,11 +128,11 @@ class Post
     /**
      * Set idUsuario.
      *
-     * @param \Reddit\Usuario\model\Usuario $idUsuario
+     * @param \Entities\Usuario\model\Usuario $idUsuario
      *
      * @return Post
      */
-    public function setIdUsuario(\Reddit\Usuario\model\Usuario $idUsuario)
+    public function setIdUsuario(\Entities\Usuario\model\Usuario $idUsuario)
     {
         $this->id_usuario = $idUsuario;
 
@@ -142,7 +142,7 @@ class Post
     /**
      * Get idUsuario.
      *
-     * @return \Reddit\Usuario\model\Usuario
+     * @return \Entities\Usuario\model\Usuario
      */
     public function getIdUsuario()
     {
@@ -152,11 +152,11 @@ class Post
     /**
      * Add comentario.
      *
-     * @param \Reddit\Posts\Model\PostComentario $comentario
+     * @param \Entities\Posts\Model\PostComentario $comentario
      *
      * @return Post
      */
-    public function addComentario(\Reddit\Posts\Model\PostComentario $comentario)
+    public function addComentario(\Entities\Posts\Model\PostComentario $comentario)
     {
         $this->comentarios[] = $comentario;
 
@@ -166,11 +166,11 @@ class Post
     /**
      * Remove comentario.
      *
-     * @param \Reddit\Posts\Model\PostComentario $comentario
+     * @param \Entities\Posts\Model\PostComentario $comentario
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeComentario(\Reddit\Posts\Model\PostComentario $comentario)
+    public function removeComentario(\Entities\Posts\Model\PostComentario $comentario)
     {
         return $this->comentarios->removeElement($comentario);
     }
@@ -188,11 +188,11 @@ class Post
     /**
      * Add postAco.
      *
-     * @param \Reddit\Posts\Model\PostAcoes $postAco
+     * @param \Entities\Posts\Model\PostAcoes $postAco
      *
      * @return Post
      */
-    public function addPostAco(\Reddit\Posts\Model\PostAcoes $postAco)
+    public function addPostAco(\Entities\Posts\Model\PostAcoes $postAco)
     {
         $this->post_acoes[] = $postAco;
 
@@ -202,11 +202,11 @@ class Post
     /**
      * Remove postAco.
      *
-     * @param \Reddit\Posts\Model\PostAcoes $postAco
+     * @param \Entities\Posts\Model\PostAcoes $postAco
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removePostAco(\Reddit\Posts\Model\PostAcoes $postAco)
+    public function removePostAco(\Entities\Posts\Model\PostAcoes $postAco)
     {
         return $this->post_acoes->removeElement($postAco);
     }
@@ -224,11 +224,11 @@ class Post
     /**
      * Add denuncia.
      *
-     * @param \Reddit\Aplicacao\Model\Denuncia $denuncia
+     * @param \Entities\Aplicacao\Model\Denuncia $denuncia
      *
      * @return Post
      */
-    public function addDenuncia(\Reddit\Aplicacao\Model\Denuncia $denuncia)
+    public function addDenuncia(\Entities\Aplicacao\Model\Denuncia $denuncia)
     {
         $this->denuncias[] = $denuncia;
 
@@ -238,11 +238,11 @@ class Post
     /**
      * Remove denuncia.
      *
-     * @param \Reddit\Aplicacao\Model\Denuncia $denuncia
+     * @param \Entities\Aplicacao\Model\Denuncia $denuncia
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeDenuncia(\Reddit\Aplicacao\Model\Denuncia $denuncia)
+    public function removeDenuncia(\Entities\Aplicacao\Model\Denuncia $denuncia)
     {
         return $this->denuncias->removeElement($denuncia);
     }
@@ -260,11 +260,11 @@ class Post
     /**
      * Add tag.
      *
-     * @param \Reddit\Posts\Model\Post $tag
+     * @param \Entities\Posts\Model\Post $tag
      *
      * @return Post
      */
-    public function addTag(\Reddit\Posts\Model\Post $tag)
+    public function addTag(\Entities\Posts\Model\Post $tag)
     {
         $this->tags[] = $tag;
 
@@ -274,11 +274,11 @@ class Post
     /**
      * Remove tag.
      *
-     * @param \Reddit\Posts\Model\Post $tag
+     * @param \Entities\Posts\Model\Post $tag
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeTag(\Reddit\Posts\Model\Post $tag)
+    public function removeTag(\Entities\Posts\Model\Post $tag)
     {
         return $this->tags->removeElement($tag);
     }

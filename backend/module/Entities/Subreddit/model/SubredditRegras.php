@@ -1,5 +1,5 @@
 <?php
-namespace Reddit\Subreddit\Model;
+namespace Entities\Subreddit\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -17,7 +17,7 @@ class SubredditRegras
     private $id_regra;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Reddit\Subreddit\model\Subreddit", inversedBy="id_regra")
+    * @ORM\ManyToOne(targetEntity="Entities\Subreddit\model\Subreddit", inversedBy="id_regra")
     * @ORM\JoinColumn(name="id_subreddit", referencedColumnName="id_subreddit", nullable=false)
     */
     private $id_subreddit;
@@ -66,11 +66,11 @@ class SubredditRegras
     /**
      * Set idSubreddit.
      *
-     * @param \Reddit\Subreddit\model\Subreddit $idSubreddit
+     * @param \Entities\Subreddit\model\Subreddit $idSubreddit
      *
      * @return SubredditRegras
      */
-    public function setIdSubreddit(\Reddit\Subreddit\model\Subreddit $idSubreddit)
+    public function setIdSubreddit(\Entities\Subreddit\model\Subreddit $idSubreddit)
     {
         $this->id_subreddit = $idSubreddit;
 
@@ -80,7 +80,7 @@ class SubredditRegras
     /**
      * Get idSubreddit.
      *
-     * @return \Reddit\Subreddit\model\Subreddit
+     * @return \Entities\Subreddit\model\Subreddit
      */
     public function getIdSubreddit()
     {

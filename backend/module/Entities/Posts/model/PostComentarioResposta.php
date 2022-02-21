@@ -1,5 +1,5 @@
 <?php
-namespace Reddit\Posts\Model;
+namespace Entities\Posts\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,7 +23,7 @@ class PostComentarioResposta
     private $id_comentario;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Reddit\Usuario\model\Usuario", inversedBy="id_resposta")
+    * @ORM\ManyToOne(targetEntity="Entities\Usuario\model\Usuario", inversedBy="id_resposta")
     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id_usuario", nullable=false)
     */
     private $id_usuario;
@@ -70,11 +70,11 @@ class PostComentarioResposta
     /**
      * Set idComentario.
      *
-     * @param \Reddit\Posts\Model\PostComentario $idComentario
+     * @param \Entities\Posts\Model\PostComentario $idComentario
      *
      * @return PostComentarioResposta
      */
-    public function setIdComentario(\Reddit\Posts\Model\PostComentario $idComentario)
+    public function setIdComentario(\Entities\Posts\Model\PostComentario $idComentario)
     {
         $this->id_comentario = $idComentario;
 
@@ -84,7 +84,7 @@ class PostComentarioResposta
     /**
      * Get idComentario.
      *
-     * @return \Reddit\Posts\Model\PostComentario
+     * @return \Entities\Posts\Model\PostComentario
      */
     public function getIdComentario()
     {
@@ -94,11 +94,11 @@ class PostComentarioResposta
     /**
      * Set idUsuario.
      *
-     * @param \Reddit\Usuario\model\Usuario $idUsuario
+     * @param \Entities\Usuario\model\Usuario $idUsuario
      *
      * @return PostComentarioResposta
      */
-    public function setIdUsuario(\Reddit\Usuario\model\Usuario $idUsuario)
+    public function setIdUsuario(\Entities\Usuario\model\Usuario $idUsuario)
     {
         $this->id_usuario = $idUsuario;
 
@@ -108,7 +108,7 @@ class PostComentarioResposta
     /**
      * Get idUsuario.
      *
-     * @return \Reddit\Usuario\model\Usuario
+     * @return \Entities\Usuario\model\Usuario
      */
     public function getIdUsuario()
     {

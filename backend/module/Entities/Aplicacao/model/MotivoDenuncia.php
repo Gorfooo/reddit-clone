@@ -1,5 +1,5 @@
 <?php
-namespace Reddit\Aplicacao\Model;
+namespace Entities\Aplicacao\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,7 +24,7 @@ class MotivoDenuncia
     private $descricao;
 
     /**
-    * @ORM\OneToMany(targetEntity="Reddit\Aplicacao\Model\Denuncia", mappedBy="id_motivo")
+    * @ORM\OneToMany(targetEntity="Entities\Aplicacao\Model\Denuncia", mappedBy="id_motivo")
     */
     private $denuncias;
 
@@ -73,11 +73,11 @@ class MotivoDenuncia
     /**
      * Add denuncia.
      *
-     * @param \Reddit\Aplicacao\Model\Denuncia $denuncia
+     * @param \Entities\Aplicacao\Model\Denuncia $denuncia
      *
      * @return MotivoDenuncia
      */
-    public function addDenuncia(\Reddit\Aplicacao\Model\Denuncia $denuncia)
+    public function addDenuncia(\Entities\Aplicacao\Model\Denuncia $denuncia)
     {
         $this->denuncias[] = $denuncia;
 
@@ -87,11 +87,11 @@ class MotivoDenuncia
     /**
      * Remove denuncia.
      *
-     * @param \Reddit\Aplicacao\Model\Denuncia $denuncia
+     * @param \Entities\Aplicacao\Model\Denuncia $denuncia
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeDenuncia(\Reddit\Aplicacao\Model\Denuncia $denuncia)
+    public function removeDenuncia(\Entities\Aplicacao\Model\Denuncia $denuncia)
     {
         return $this->denuncias->removeElement($denuncia);
     }

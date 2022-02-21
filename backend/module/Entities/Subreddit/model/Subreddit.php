@@ -1,5 +1,5 @@
 <?php
-namespace Reddit\Subreddit\Model;
+namespace Entities\Subreddit\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -38,22 +38,22 @@ class Subreddit
     private $nome;
 
     /**
-    * @ORM\OneToMany(targetEntity="Reddit\Aplicacao\Model\Denuncia", mappedBy="id_subreddit")
+    * @ORM\OneToMany(targetEntity="Entities\Aplicacao\Model\Denuncia", mappedBy="id_subreddit")
     */
     private $denuncias;
 
     /**
-    * @ORM\OneToMany(targetEntity="Reddit\Subreddit\Model\SolicitacaoModerador", mappedBy="id_subreddit")
+    * @ORM\OneToMany(targetEntity="Entities\Subreddit\Model\SolicitacaoModerador", mappedBy="id_subreddit")
     */
     private $solicitacoes_moderador;
 
     /**
-    * @ORM\OneToMany(targetEntity="Reddit\Subreddit\Model\SubredditRegras", mappedBy="id_subreddit")
+    * @ORM\OneToMany(targetEntity="Entities\Subreddit\Model\SubredditRegras", mappedBy="id_subreddit")
     */
     private $regras;
 
     /**
-    * @ORM\OneToMany(targetEntity="Reddit\Subreddit\Model\SubredditUsuario", mappedBy="id_subreddit")
+    * @ORM\OneToMany(targetEntity="Entities\Subreddit\Model\SubredditUsuario", mappedBy="id_subreddit")
     */
     private $usuarios;
 
@@ -153,11 +153,11 @@ class Subreddit
     /**
      * Add denuncia.
      *
-     * @param \Reddit\Aplicacao\Model\Denuncia $denuncia
+     * @param \Entities\Aplicacao\Model\Denuncia $denuncia
      *
      * @return Subreddit
      */
-    public function addDenuncia(\Reddit\Aplicacao\Model\Denuncia $denuncia)
+    public function addDenuncia(\Entities\Aplicacao\Model\Denuncia $denuncia)
     {
         $this->denuncias[] = $denuncia;
 
@@ -167,11 +167,11 @@ class Subreddit
     /**
      * Remove denuncia.
      *
-     * @param \Reddit\Aplicacao\Model\Denuncia $denuncia
+     * @param \Entities\Aplicacao\Model\Denuncia $denuncia
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeDenuncia(\Reddit\Aplicacao\Model\Denuncia $denuncia)
+    public function removeDenuncia(\Entities\Aplicacao\Model\Denuncia $denuncia)
     {
         return $this->denuncias->removeElement($denuncia);
     }
@@ -189,11 +189,11 @@ class Subreddit
     /**
      * Add solicitacoesModerador.
      *
-     * @param \Reddit\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador
+     * @param \Entities\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador
      *
      * @return Subreddit
      */
-    public function addSolicitacoesModerador(\Reddit\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador)
+    public function addSolicitacoesModerador(\Entities\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador)
     {
         $this->solicitacoes_moderador[] = $solicitacoesModerador;
 
@@ -203,11 +203,11 @@ class Subreddit
     /**
      * Remove solicitacoesModerador.
      *
-     * @param \Reddit\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador
+     * @param \Entities\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeSolicitacoesModerador(\Reddit\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador)
+    public function removeSolicitacoesModerador(\Entities\Subreddit\Model\SolicitacaoModerador $solicitacoesModerador)
     {
         return $this->solicitacoes_moderador->removeElement($solicitacoesModerador);
     }
@@ -225,11 +225,11 @@ class Subreddit
     /**
      * Add regra.
      *
-     * @param \Reddit\Subreddit\Model\SubredditRegras $regra
+     * @param \Entities\Subreddit\Model\SubredditRegras $regra
      *
      * @return Subreddit
      */
-    public function addRegra(\Reddit\Subreddit\Model\SubredditRegras $regra)
+    public function addRegra(\Entities\Subreddit\Model\SubredditRegras $regra)
     {
         $this->regras[] = $regra;
 
@@ -239,11 +239,11 @@ class Subreddit
     /**
      * Remove regra.
      *
-     * @param \Reddit\Subreddit\Model\SubredditRegras $regra
+     * @param \Entities\Subreddit\Model\SubredditRegras $regra
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeRegra(\Reddit\Subreddit\Model\SubredditRegras $regra)
+    public function removeRegra(\Entities\Subreddit\Model\SubredditRegras $regra)
     {
         return $this->regras->removeElement($regra);
     }
@@ -261,11 +261,11 @@ class Subreddit
     /**
      * Add usuario.
      *
-     * @param \Reddit\Subreddit\Model\SubredditUsuario $usuario
+     * @param \Entities\Subreddit\Model\SubredditUsuario $usuario
      *
      * @return Subreddit
      */
-    public function addUsuario(\Reddit\Subreddit\Model\SubredditUsuario $usuario)
+    public function addUsuario(\Entities\Subreddit\Model\SubredditUsuario $usuario)
     {
         $this->usuarios[] = $usuario;
 
@@ -275,11 +275,11 @@ class Subreddit
     /**
      * Remove usuario.
      *
-     * @param \Reddit\Subreddit\Model\SubredditUsuario $usuario
+     * @param \Entities\Subreddit\Model\SubredditUsuario $usuario
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeUsuario(\Reddit\Subreddit\Model\SubredditUsuario $usuario)
+    public function removeUsuario(\Entities\Subreddit\Model\SubredditUsuario $usuario)
     {
         return $this->usuarios->removeElement($usuario);
     }

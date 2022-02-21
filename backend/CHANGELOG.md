@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.1.3 - 2019-11-27
+## 1.3.0 - TBD
 
 ### Added
 
@@ -22,84 +22,88 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- [#452](https://github.com/zendframework/ZendSkeletonApplication/pull/452) provides a truly cross-platform approach to removing the `composer.lock` entry from the `.gitignore` file. The skeleton now provides a script for doing so that it invokes as part of its post-create-project-cmd event; the script removes itself on completion.
+- Nothing.
 
-## 3.1.2 - 2019-11-21
+## 1.2.0 - 2021-06-07
+
+
+-----
+
+### Release Notes for [1.2.0](https://github.com/laminas/laminas-mvc-skeleton/milestone/6)
+
+Feature release (minor)
+
+### 1.2.0
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **7**
+- Total contributors: **5**
+
+#### Enhancement
+
+ - [41: Remove left over header license doc](https://github.com/laminas/laminas-mvc-skeleton/pull/41) thanks to @samsonasik
+ - [40: Use laminas-mvc-middleware](https://github.com/laminas/laminas-mvc-skeleton/pull/40) thanks to @Xerkus
+ - [39: &#91;Extra&#93; Using latest components under extra in composer.json](https://github.com/laminas/laminas-mvc-skeleton/pull/39) thanks to @samsonasik
+ - [37: Remove file headers](https://github.com/laminas/laminas-mvc-skeleton/pull/37) thanks to @ghostwriter
+ - [36: Psalm integration](https://github.com/laminas/laminas-mvc-skeleton/pull/36) thanks to @nusphere
+ - [35: Fix CodeStyle Issues and correct composer scripts](https://github.com/laminas/laminas-mvc-skeleton/pull/35) thanks to @nusphere
+ - [31: Provide support for PHP 8.0](https://github.com/laminas/laminas-mvc-skeleton/pull/31) thanks to @ittmann
+
+## 1.1.0 - 2020-11-09
+
+
+-----
+
+### Release Notes for [1.1.0](https://github.com/laminas/laminas-mvc-skeleton/milestone/3)
+
+Feature release (minor)
+
+### 1.1.0
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
+
+ - [29: fix: change version constraint of laminas-skeleton-installer](https://github.com/laminas/laminas-mvc-skeleton/pull/29) thanks to @rieschl
+
+## 1.0.0 - 2020-09-14
+
+This is the initial 1.0.0 release under the Laminas organization.
 
 ### Added
 
-- Nothing.
+- Adds descriptions for shipped Composer commands.
 
 ### Changed
 
-- Nothing.
+- Bumps the minimum supported PHP version to 7.3.
 
-### Deprecated
-
-- Nothing.
+- Improves the shipped Dockerfile and default extensions available.
 
 ### Removed
 
-- Nothing.
+- Removes the `public/index.html` page, which could lead to display of the default Apache2 landing page.
 
 ### Fixed
 
-- [#451](https://github.com/zendframework/ZendSkeletonApplication/pull/451) provides compatibility on Windows for the script re-instating the composer.lock in the created project.
+- Ensures initial page presentation looks as expected, including logo display, no duplication, proper 404 display, etc.
 
-## 3.1.1 - 2019-11-15
+- Ensures Zend Framework is no longer referenced in all commands, documentation, and default pages.
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.0.0](https://github.com/laminas/laminas-mvc-skeleton/milestone/1)
 
-- Nothing.
 
-### Deprecated
 
-- Nothing.
+### 1.0.0
 
-### Removed
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-- Nothing.
+#### Documentation
 
-### Fixed
+ - [25: Adds CHANGELOG entries for 1.0.0 release](https://github.com/laminas/laminas-mvc-skeleton/pull/25) thanks to @weierophinney
 
-- [#449](https://github.com/zendframework/ZendSkeletonApplication/pull/449) fixes a syntax error in the post-create-project-cmd hook.
-
-## 3.1.0 - 2019-11-15
-
-### Added
-
-- Nothing.
-
-### Changed
-
-- [#431](https://github.com/zendframework/ZendSkeletonApplication/pull/431) updates the skeleton to use Bootstrap 4.
-
-- [#428](https://github.com/zendframework/ZendSkeletonApplication/pull/428) changes the default `module_listener_options` in the `config/application.config.php` file to remove the `module_paths` and set `use_zend_loader` to false.
-
-- [#448](https://github.com/zendframework/ZendSkeletonApplication/pull/448) removes the `composer.lock` to ensure users creating a new project receive the latest versions of all dependencies as supported by their current PHP version.  Additionally, it adds an entry to the `post-create-project-cmd` Composer hook to remove the `composer.lock` entry from the `.gitignore` file, to promote checking in a `composer.lock` in user projects.
-
-- [#448](https://github.com/zendframework/ZendSkeletonApplication/pull/448) bumps the version constraints of all optional packages to the latest versions supported by all PHP versions the skeleton supports.
-
-- [#448](https://github.com/zendframework/ZendSkeletonApplication/pull/448) bumps the minimum supported version of zf-development-mode to 3.2
-
-- [#448](https://github.com/zendframework/ZendSkeletonApplication/pull/448) bumps the minimum supported version of zend-mvc to 3.1.1.
-
-- [#448](https://github.com/zendframework/ZendSkeletonApplication/pull/448) bumps the allowed versions of zend-component-installer to the 1.0 and 2.0 series.
-
-- [#448](https://github.com/zendframework/ZendSkeletonApplication/pull/448) bumps the minimum supported version of zend-skeleton-installer to 0.1.7.
-
-### Deprecated
-
-- Nothing.
-
-### Removed
-
-- Nothing.
-
-### Fixed
-
-- [#430](https://github.com/zendframework/ZendSkeletonApplication/pull/430) updates the `serve` command to work cross-platform, and across all supported PHP versions.
