@@ -1,3 +1,21 @@
+#DOCS
+
+##Doctrine
+Show doctrine database commands
+```bash
+.\vendor\bin\doctrine
+```
+
+Execute fixtures (data factory)
+```bash
+php fixtures.php
+```
+
+Run server
+```bash
+php -S localhost:8000 -t public
+```
+
 # laminas-mvc-skeleton
 
 ## Introduction
