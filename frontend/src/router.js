@@ -1,25 +1,25 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-// const Home = () => import('./components/home/Home');
-const ProfileOverview = () => import('./components/profile/Overview');
-const Posts = () => import('./components/profile/Posts');
-const Comments = () => import('./components/profile/Comments');
-const Stored = () => import('./components/profile/Stored');
-const Hidden = () => import('./components/profile/Hidden');
-const LikedPosts = () => import('./components/profile/LikedPosts');
-const DislikedPosts = () => import('./components/profile/DislikedPosts');
-const AwardsReceived = () => import('./components/profile/AwardsReceived');
-const AwardsGiven = () => import('./components/profile/AwardsGiven');
-const CreatePost = () => import('./components/CreatePost');
-const MostPopularCommunities = () => import('./components/MostPopularCommunities');
-const Configuration = () => import('./components/profile/config/Configuration');
-const BloquedUsers = () => import('./components/profile/config/BloquedUsers');
-const SubredditConfiguration = () => import('./components/Subreddit/config/Configuration');
-const ModRequests = () => import('./components/Subreddit/config/ModRequests');
-const CommunityRules = () => import('./components/Subreddit/config/Rules');
-const SubredditModerators = () => import('./components/Subreddit/config/ApprovedModerators');
-const AllNotifications = () => import('./components/AllNotifications');
+// const Home = () => import('./Application/home/Home');
+const ProfileOverview = () => import('./Application/profile/Overview');
+const Posts = () => import('./Application/profile/Posts');
+const Comments = () => import('./Application/profile/Comments');
+const Stored = () => import('./Application/profile/Stored');
+const Hidden = () => import('./Application/profile/Hidden');
+const LikedPosts = () => import('./Application/profile/LikedPosts');
+const DislikedPosts = () => import('./Application/profile/DislikedPosts');
+const AwardsReceived = () => import('./Application/profile/AwardsReceived');
+const AwardsGiven = () => import('./Application/profile/AwardsGiven');
+const CreatePost = () => import('./Application/CreatePost');
+const MostPopularCommunities = () => import('./Application/MostPopularCommunities');
+const Configuration = () => import('./Application/profile/config/Configuration');
+const BloquedUsers = () => import('./Application/profile/config/BloquedUsers');
+const SubredditConfiguration = () => import('./Application/Subreddit/config/Configuration');
+const ModRequests = () => import('./Application/Subreddit/config/ModRequests');
+const CommunityRules = () => import('./Application/Subreddit/config/Rules');
+const SubredditModerators = () => import('./Application/Subreddit/config/ApprovedModerators');
+const AllNotifications = () => import('./Application/AllNotifications');
 
 Vue.use(Router);
 

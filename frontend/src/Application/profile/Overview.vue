@@ -111,12 +111,6 @@
                           </li>
                           <li>
                             <a href="#" class="small dropdown-item">
-                              <v-icon class="mr-4">mdi-pencil</v-icon>
-                              <span>Editar</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" class="small dropdown-item">
                               <v-icon class="mr-4">mdi-delete</v-icon>
                               <span>Apagar Post</span>
                             </a>

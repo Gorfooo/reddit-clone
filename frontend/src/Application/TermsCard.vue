@@ -29,7 +29,7 @@
           <a href="https://www.redditinc.com/blog" class="small">Blog</a>
         </div>
         <div>
-          <v-dialog v-model="$store.state.termsOfUse">
+          <v-dialog v-model="termsOfUse">
             <template v-slot:activator="{ on }">
               <a class="small" v-on="on" @click="$store.state.termsOfUse = true"
                 >Termos</a
@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import TermsOfUse from './modals/TermsOfUse';
 import Politics from './modals/Politics';
 
@@ -84,6 +85,9 @@ export default {
   components: {
     TermsOfUse,
     Politics,
+  },
+  computed: {
+    ...mapState('modalStore', ['termsOfUse']),
   },
 };
 </script>

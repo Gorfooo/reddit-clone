@@ -11,7 +11,7 @@ import vuetify from './plugins/vuetify';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
-import store from './store/store';
+import store from './store';
 import 'quill/dist/quill.snow.css';
 
 Vue.use(VueQuillEditor);

@@ -23,13 +23,13 @@
 
 <script>
 // import $ from 'jquery';
-import Toolbar from './components/Toolbar/Toolbar';
-import ToolbarCollapsed from './components/Toolbar/ToolbarCollapsed';
-import Chat from './components/Chat';
-// import NothingHere from './components/profile/NothingHere';
-// import OpenedPost from './components/OpenedPost';
-// import Share from './components/modals/Share';
-import SubReddit from './components/Subreddit/SubReddit';
+import Toolbar from './Application/Toolbar/Toolbar';
+import ToolbarCollapsed from './Application/Toolbar/ToolbarCollapsed';
+import Chat from './Application/Chat';
+// import NothingHere from './Application/profile/NothingHere';
+// import OpenedPost from './Application/OpenedPost';
+// import Share from './Application/modals/Share';
+import SubReddit from './Application/Subreddit/SubReddit';
 
 export default {
   name: 'App',
