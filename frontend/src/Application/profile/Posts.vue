@@ -82,13 +82,12 @@
                         </button>
                         <ul class="dropdown-menu pl-0 managePostScreen">
                           <li>
-                            <v-dialog v-model="$store.state.award">
+                            <v-dialog v-model="$store.state.modalStore.award">
                               <template v-slot:activator="{ on }">
                                 <a
                                   href="#"
                                   name="premiar"
                                   v-on="on"
-                                  @click="$store.state.award = true"
                                   class="small dropdown-item"
                                 >
                                   <v-icon class="mr-4">mdi-gift-outline</v-icon>
@@ -124,12 +123,11 @@
                             </a>
                           </li>
                           <li>
-                            <v-dialog v-model="$store.state.report">
+                            <v-dialog v-model="$store.state.modalStore.report">
                               <template v-slot:activator="{ on }">
                                 <a
                                   href="#"
                                   v-on="on"
-                                  @click="$store.state.report = true"
                                   class="small dropdown-item"
                                 >
                                   <v-icon class="mr-4"
@@ -172,9 +170,6 @@ export default {
     Sidebar,
     Award,
     Report,
-  },
-  data() {
-    return {};
   },
 };
 </script>

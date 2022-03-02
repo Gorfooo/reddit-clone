@@ -1,11 +1,16 @@
 <template>
-  <v-dialog v-model="$store.state.report" width="600px">
+  <v-dialog
+    v-model="$store.state.modalStore.report"
+    width="600px"
+    :retain-focus="false"
+  >
     <template v-slot:activator="{ on }">
       <v-btn class="d-none" v-on="on" />
     </template>
     <v-card>
       <v-card-title>
-        <span class="text-h5">Enviar Denúncia</span>
+        <span class="text-h5 flex-grow-1">Enviar Denúncia</span>
+        <v-icon @click="toggleReport()">mdi-close</v-icon>
       </v-card-title>
       <v-card-text>
         Obrigado por cuidar de si mesmo(a) e de seus colegas redditors,
@@ -46,15 +51,20 @@
       <v-card-text>
         <v-alert dense outlined class="text-muted"
           >Não tem certeza se algo viola as regras? Releia a
-          <a href="#" class="text-decoration-underline text-primary"
-            >Política de Conteúdo do Reddit</a
-          >
+          <v-dialog v-model="$store.state.modalStore.politics">
+            <template v-slot:activator="{ on }">
+              <a v-on="on" class="text-decoration-underline text-primary"
+                >Política de Conteúdo do Reddit</a
+              >
+            </template>
+          </v-dialog>
+          <Politics />
           e as regras da comunidade
         </v-alert>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-dialog v-model="reported" width="500px">
+        <v-dialog v-model="reported" width="500px" :retain-focus="false">
           <template v-slot:activator="{ on }">
             <v-btn v-on="on" color="orange" outlined> Enviar denúncia </v-btn>
           </template>
@@ -76,7 +86,7 @@
               <v-spacer></v-spacer>
               <v-btn
                 @click="
-                  $store.state.report = false;
+                  toggleReport();
                   reported = false;
                 "
                 color="primary"
@@ -93,11 +103,21 @@
 </template>
 
 <script>
+import Politics from './Politics';
+
 export default {
+  components: {
+    Politics,
+  },
   data() {
     return {
       reported: false,
     };
+  },
+  methods: {
+    toggleReport() {
+      this.$store.commit('modalStore/toggleReport');
+    },
   },
 };
 </script>

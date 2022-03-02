@@ -75,12 +75,11 @@
                             </a>
                           </li>
                           <li>
-                            <v-dialog v-model="$store.state.report">
+                            <v-dialog v-model="$store.state.modalStore.report">
                               <template v-slot:activator="{ on }">
                                 <a
                                   href="#"
                                   v-on="on"
-                                  @click="$store.state.report = true"
                                   class="small dropdown-item"
                                 >
                                   <v-icon class="mr-4"
@@ -107,11 +106,10 @@
                           <v-icon>mdi-chat-outline</v-icon>
                           <small class="text-muted"> 16 comentários</small>
                         </a>
-                        <v-dialog v-model="$store.state.award">
+                        <v-dialog v-model="$store.state.modalStore.award">
                           <template v-slot:activator="{ on }">
                             <a
                               v-on="on"
-                              @click="$store.state.award = true"
                               href="#"
                               class="defaultHover p-1"
                               name="premiar"
@@ -247,11 +245,10 @@
               </router-link>
             </div>
             <div class="text-center">
-              <v-dialog v-model="$store.state.createCommunity">
+              <v-dialog v-model="$store.state.modalStore.createCommunity">
                 <template v-slot:activator="{ on }">
                   <v-btn
                     v-on="on"
-                    @click="$store.state.createCommunity = true"
                     rounded
                     color="primary"
                     outlined

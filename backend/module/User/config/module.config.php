@@ -12,9 +12,9 @@ return [
     'router' => [
         'routes' => [
             'createUser' => [
-                'type'    => Literal::class,
+                'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/user/create',
+                    'route'    => '/user/create[/:action]',
                     'defaults' => [
                         'controller' => Controller\UserController::class,
                         'action'     => 'create',

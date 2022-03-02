@@ -29,39 +29,31 @@
           <a href="https://www.redditinc.com/blog" class="small">Blog</a>
         </div>
         <div>
-          <v-dialog v-model="termsOfUse">
+          <v-dialog v-model="$store.state.modalStore.termsOfUse">
             <template v-slot:activator="{ on }">
-              <a class="small" v-on="on" @click="$store.state.termsOfUse = true"
-                >Termos</a
-              >
+              <a class="small" v-on="on">Termos</a>
             </template>
           </v-dialog>
           <TermsOfUse />
         </div>
         <div>
-          <v-dialog v-model="$store.state.politics">
+          <v-dialog v-model="$store.state.modalStore.politics">
             <template v-slot:activator="{ on }">
-              <a v-on="on" @click="$store.state.politics = true" class="small"
-                >Política de Conteúdo</a
-              >
+              <a v-on="on" class="small">Política de Conteúdo</a>
             </template>
           </v-dialog>
         </div>
         <div>
-          <v-dialog v-model="$store.state.politics">
+          <v-dialog v-model="$store.state.modalStore.politics">
             <template v-slot:activator="{ on }">
-              <a v-on="on" @click="$store.state.politics = true" class="small"
-                >Política de Privacidade</a
-              >
+              <a v-on="on" class="small">Política de Privacidade</a>
             </template>
           </v-dialog>
         </div>
         <div>
-          <v-dialog v-model="$store.state.politics">
+          <v-dialog v-model="$store.state.modalStore.politics">
             <template v-slot:activator="{ on }">
-              <a v-on="on" @click="$store.state.politics = true" class="small"
-                >Política de Moderação</a
-              >
+              <a v-on="on" class="small">Política de Moderação</a>
             </template>
           </v-dialog>
           <Politics />
@@ -77,7 +69,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import TermsOfUse from './modals/TermsOfUse';
 import Politics from './modals/Politics';
 
@@ -85,9 +76,6 @@ export default {
   components: {
     TermsOfUse,
     Politics,
-  },
-  computed: {
-    ...mapState('modalStore', ['termsOfUse']),
   },
 };
 </script>

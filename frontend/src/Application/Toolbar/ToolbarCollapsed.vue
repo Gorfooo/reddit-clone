@@ -53,9 +53,9 @@
         </v-list-item>
       </v-list-group>
 
-      <v-dialog v-model="$store.state.createCommunity">
+      <v-dialog v-model="$store.state.modalStore.createCommunity">
         <template v-slot:activator="{ on }">
-          <v-list-item v-on="on" @click="$store.state.createCommunity = true">
+          <v-list-item v-on="on">
             <v-list-item-icon>
               <v-icon>mdi-account-group</v-icon>
             </v-list-item-icon>
@@ -66,7 +66,7 @@
       </v-dialog>
       <CreateCommunity />
 
-      <v-list-item @click="$store.state.showChat = !$store.state.showChat">
+      <v-list-item @click="toggleChat()">
         <v-list-item-icon>
           <v-icon>mdi-chat-processing-outline</v-icon>
         </v-list-item-icon>
@@ -171,39 +171,35 @@
         </template>
 
         <v-list-item link class="ml-14">
-          <v-dialog v-model="$store.state.termsOfUse">
+          <v-dialog v-model="$store.state.modalStore.termsOfUse">
             <template v-slot:activator="{ on }">
-              <v-list-item-title
-                v-on="on"
-                @click="$store.state.termsOfUse = true"
-                >Termos de Uso</v-list-item-title
-              >
+              <v-list-item-title v-on="on">Termos de Uso</v-list-item-title>
             </template>
           </v-dialog>
           <TermsOfUse />
         </v-list-item>
         <v-list-item link class="ml-14">
-          <v-dialog v-model="$store.state.politics">
+          <v-dialog v-model="$store.state.modalStore.politics">
             <template v-slot:activator="{ on }">
-              <v-list-item-title v-on="on" @click="$store.state.politics = true"
+              <v-list-item-title v-on="on"
                 >Política de Privacidade</v-list-item-title
               >
             </template>
           </v-dialog>
         </v-list-item>
         <v-list-item link class="ml-14">
-          <v-dialog v-model="$store.state.politics">
+          <v-dialog v-model="$store.state.modalStore.politics">
             <template v-slot:activator="{ on }">
-              <v-list-item-title v-on="on" @click="$store.state.politics = true"
+              <v-list-item-title v-on="on"
                 >Política de Conteúdo</v-list-item-title
               >
             </template>
           </v-dialog>
         </v-list-item>
         <v-list-item link class="ml-14">
-          <v-dialog v-model="$store.state.politics">
+          <v-dialog v-model="$store.state.modalStore.politics">
             <template v-slot:activator="{ on }">
-              <v-list-item-title v-on="on" @click="$store.state.politics = true"
+              <v-list-item-title v-on="on"
                 >Política de Moderação</v-list-item-title
               >
             </template>

@@ -1,5 +1,9 @@
 <template>
-  <v-dialog v-model="$store.state.createCommunity" width="600px">
+  <v-dialog
+    v-model="$store.state.modalStore.createCommunity"
+    width="600px"
+    :retain-focus="false"
+  >
     <template v-slot:activator="{ on }">
       <v-btn class="d-none" v-on="on" />
     </template>
@@ -42,18 +46,14 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
-          @click="$store.state.createCommunity = false"
+          @click="toggleCreateCommunity()"
           color="primary"
           outlined
           rounded
         >
           Cancelar
         </v-btn>
-        <v-btn
-          @click="$store.state.createCommunity = false"
-          color="primary"
-          rounded
-        >
+        <v-btn @click="toggleCreateCommunity()" color="primary" rounded>
           Criar comunidade
         </v-btn>
       </v-card-actions>
@@ -72,6 +72,11 @@ export default {
       ],
       communityType: 1,
     };
+  },
+  methods: {
+    toggleCreateCommunity() {
+      this.$store.commit('modalStore/toggleCreateCommunity');
+    },
   },
 };
 </script>

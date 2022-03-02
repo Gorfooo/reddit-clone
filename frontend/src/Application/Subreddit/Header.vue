@@ -23,14 +23,9 @@
             </button>
             <ul class="dropdown-menu pl-0 managePostScreen">
               <li>
-                <v-dialog v-model="$store.state.report">
+                <v-dialog v-model="$store.state.modalStore.report">
                   <template v-slot:activator="{ on }">
-                    <a
-                      href="#"
-                      v-on="on"
-                      @click="$store.state.report = true"
-                      class="small dropdown-item"
-                    >
+                    <a href="#" v-on="on" class="small dropdown-item">
                       <v-icon class="mr-4">mdi-flag-variant-outline</v-icon>
                       <span>Denunciar</span>
                     </a>
@@ -67,14 +62,9 @@
           </button>
           <ul class="dropdown-menu pl-0 managePostScreen">
             <li>
-              <v-dialog v-model="$store.state.report">
+              <v-dialog v-model="$store.state.modalStore.report">
                 <template v-slot:activator="{ on }">
-                  <a
-                    v-on="on"
-                    @click="$store.state.report = true"
-                    href="#"
-                    class="small dropdown-item"
-                  >
+                  <a v-on="on" href="#" class="small dropdown-item">
                     <v-icon class="mr-4">mdi-flag-variant-outline</v-icon>
                     <span>Denunciar</span>
                   </a>

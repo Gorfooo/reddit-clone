@@ -75,14 +75,13 @@
                       <v-icon>mdi-chat-outline</v-icon>
                       <small class="text-muted"> 16 comentários</small>
                     </a>
-                    <v-dialog v-model="$store.state.award">
+                    <v-dialog v-model="$store.state.modalStore.award">
                       <template v-slot:activator="{ on }">
                         <a
                           href="#"
                           class="defaultHover p-1"
                           name="premiar"
                           v-on="on"
-                          @click="$store.state.award = true"
                         >
                           <v-icon>mdi-gift-outline</v-icon>
                           <small class="text-muted"> Premiar</small>
@@ -131,14 +130,9 @@
                         </a>
                       </li>
                       <li>
-                        <v-dialog v-model="$store.state.report">
+                        <v-dialog v-model="$store.state.modalStore.report">
                           <template v-slot:activator="{ on }">
-                            <a
-                              href="#"
-                              v-on="on"
-                              @click="$store.state.report = true"
-                              class="small dropdown-item"
-                            >
+                            <a href="#" v-on="on" class="small dropdown-item">
                               <v-icon class="mr-4"
                                 >mdi-flag-variant-outline</v-icon
                               >
@@ -249,14 +243,9 @@
                           </a>
                         </li>
                         <li>
-                          <v-dialog v-model="$store.state.report">
+                          <v-dialog v-model="$store.state.modalStore.report">
                             <template v-slot:activator="{ on }">
-                              <a
-                                href="#"
-                                v-on="on"
-                                @click="$store.state.report = true"
-                                class="small dropdown-item"
-                              >
+                              <a href="#" v-on="on" class="small dropdown-item">
                                 <v-icon class="mr-4"
                                   >mdi-flag-variant-outline</v-icon
                                 >
@@ -306,14 +295,9 @@
                           </a>
                         </li>
                         <li>
-                          <v-dialog v-model="$store.state.report">
+                          <v-dialog v-model="$store.state.modalStore.report">
                             <template v-slot:activator="{ on }">
-                              <a
-                                href="#"
-                                v-on="on"
-                                @click="$store.state.report = true"
-                                class="small dropdown-item"
-                              >
+                              <a href="#" v-on="on" class="small dropdown-item">
                                 <v-icon class="mr-4"
                                   >mdi-flag-variant-outline</v-icon
                                 >
@@ -360,12 +344,13 @@
                                 </a>
                               </li>
                               <li>
-                                <v-dialog v-model="$store.state.report">
+                                <v-dialog
+                                  v-model="$store.state.modalStore.report"
+                                >
                                   <template v-slot:activator="{ on }">
                                     <a
                                       href="#"
                                       v-on="on"
-                                      @click="$store.state.report = true"
                                       class="small dropdown-item"
                                     >
                                       <v-icon class="mr-4"

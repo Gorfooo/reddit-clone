@@ -6,6 +6,7 @@ export default {
   createCommunity: false,
   register: false,
   login: false,
-  showChat: false,
+  Chat: false,
   alreadyShared: false,
+  allModerators: false,
 };

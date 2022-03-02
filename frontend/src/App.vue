@@ -12,10 +12,10 @@
     <!-- <NothingHere /> -->
     <!-- <OpenedPost /> -->
     <!-- <Share /> -->
-    <SubReddit />
+    <!-- <SubReddit /> -->
     <Toolbar />
     <ToolbarCollapsed />
-    <div v-if="$store.state.showChat == true">
+    <div v-if="$store.state.modalStore.Chat == true">
       <Chat />
     </div>
   </v-app>
@@ -29,7 +29,7 @@ import Chat from './Application/Chat';
 // import NothingHere from './Application/profile/NothingHere';
 // import OpenedPost from './Application/OpenedPost';
 // import Share from './Application/modals/Share';
-import SubReddit from './Application/Subreddit/SubReddit';
+// import SubReddit from './Application/Subreddit/SubReddit';
 
 export default {
   name: 'App',
@@ -40,7 +40,7 @@ export default {
     // NothingHere,
     // OpenedPost,
     // Share,
-    SubReddit,
+    // SubReddit,
   },
   // mounted() {
   //   $('.likeButton').on('click', () => {

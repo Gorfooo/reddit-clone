@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="$store.state.login" width="500px">
+  <v-dialog v-model="$store.state.modalStore.login" width="600px">
     <template v-slot:activator="{ on }">
       <v-btn class="d-none" v-on="on" />
     </template>
@@ -32,7 +32,7 @@
             class="float-right"
             color="primary"
             rounded
-            @click="$store.state.login = false"
+            @click="toggleLogin()"
           >
             Logar
           </v-btn>
@@ -44,8 +44,10 @@
 
 <script>
 export default {
-  data() {
-    return {};
+  methods: {
+    toggleLogin() {
+      this.$store.commit('modalStore/toggleLogin');
+    },
   },
 };
 </script>

@@ -26,7 +26,7 @@
           <!-- wrap -->
           <img src="../assets/default_user.png" class="profile-pic mr-2" />
           <h6 class="flex-grow-1">Gorfo</h6>
-          <v-icon @click="$store.state.showChat = false">mdi-close</v-icon>
+          <v-icon @click="toggleChat()">mdi-close</v-icon>
         </div>
         <hr />
         <div class="d-flex flex-column overflow-auto text-wrap">
@@ -117,6 +117,11 @@ export default {
         'user 5',
       ],
     };
+  },
+  methods: {
+    toggleChat() {
+      this.$store.commit('modalStore/toggleChat');
+    },
   },
 };
 </script>

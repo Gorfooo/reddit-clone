@@ -64,10 +64,7 @@
     </v-tooltip>
     <v-tooltip bottom color="black">
       <template v-slot:activator="{ on }">
-        <v-icon
-          class="p-2"
-          @click="$store.state.showChat = !$store.state.showChat"
-          v-on="on"
+        <v-icon class="p-2" @click="toggleChat()" v-on="on"
           >mdi-chat-processing-outline</v-icon
         >
       </template>
@@ -277,14 +274,9 @@
           <span>Configurações</span>
         </a>
         <small class="text-muted dropdown-item">MAIS OPÇÕES</small>
-        <v-dialog v-model="$store.state.createCommunity">
+        <v-dialog v-model="$store.state.modalStore.createCommunity">
           <template v-slot:activator="{ on }">
-            <a
-              href="#"
-              v-on="on"
-              @click="$store.state.createCommunity = true"
-              class="justify-content-start dropdown-item"
-            >
+            <a href="#" v-on="on" class="justify-content-start dropdown-item">
               <v-icon class="pr-2">mdi-account-group</v-icon>
               <span>Criar comunidade</span>
             </a>
@@ -343,29 +335,16 @@
       </div>
     </div>
 
-    <v-dialog v-model="$store.state.login">
+    <v-dialog v-model="$store.state.modalStore.login">
       <template v-slot:activator="{ on }">
-        <v-btn
-          v-on="on"
-          @click="$store.state.login = true"
-          rounded
-          small
-          color="primary"
-          >Entrar</v-btn
-        >
+        <v-btn v-on="on" rounded small color="primary">Entrar</v-btn>
       </template>
     </v-dialog>
     <Login />
 
-    <v-dialog v-model="$store.state.register">
+    <v-dialog v-model="$store.state.modalStore.register">
       <template v-slot:activator="{ on }">
-        <v-btn
-          v-on="on"
-          @click="$store.state.register = true"
-          rounded
-          small
-          color="primary"
-          class="ml-2"
+        <v-btn v-on="on" rounded small color="primary" class="ml-2"
           >Cadastrar-se</v-btn
         >
       </template>
@@ -401,6 +380,9 @@ export default {
     showCollapsedBar() {
       const collapsedBar = document.getElementById('collapsed');
       collapsedBar.classList.toggle('d-none');
+    },
+    toggleChat() {
+      this.$store.commit('modalStore/toggleChat');
     },
   },
 };

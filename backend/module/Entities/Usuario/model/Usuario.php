@@ -31,7 +31,7 @@ class Usuario
     private $banner;
 
     /**
-    * @ORM\Column(type="string", length=60)
+    * @ORM\Column(type="string", length=100)
     *
     * @var string
     */

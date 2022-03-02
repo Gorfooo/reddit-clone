@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-// const Home = () => import('./Application/home/Home');
+const Home = () => import('./Application/home/Home');
 const ProfileOverview = () => import('./Application/profile/Overview');
 const Posts = () => import('./Application/profile/Posts');
 const Comments = () => import('./Application/profile/Comments');
@@ -25,7 +25,7 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
-    // { path: '/', name: 'home', component: Home },
+    { path: '/', name: 'home', component: Home },
     { path: '/profile/overview', name: 'overview', component: ProfileOverview },
     { path: '/profile/posts', name: 'posts', component: Posts },
     { path: '/profile/comments', name: 'comments', component: Comments },

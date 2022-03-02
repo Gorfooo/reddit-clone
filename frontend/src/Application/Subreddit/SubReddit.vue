@@ -71,13 +71,12 @@
                       </button>
                       <ul class="dropdown-menu pl-0 managePostScreen">
                         <li>
-                          <v-dialog v-model="$store.state.award">
+                          <v-dialog v-model="$store.state.modalStore.award">
                             <template v-slot:activator="{ on }">
                               <a
                                 href="#"
                                 name="premiar"
                                 v-on="on"
-                                @click="$store.state.award = true"
                                 class="small dropdown-item"
                               >
                                 <v-icon class="mr-4">mdi-gift-outline</v-icon>
@@ -113,14 +112,9 @@
                           </a>
                         </li>
                         <li>
-                          <v-dialog v-model="$store.state.report">
+                          <v-dialog v-model="$store.state.modalStore.report">
                             <template v-slot:activator="{ on }">
-                              <a
-                                href="#"
-                                v-on="on"
-                                @click="$store.state.report = true"
-                                class="small dropdown-item"
-                              >
+                              <a href="#" v-on="on" class="small dropdown-item">
                                 <v-icon class="mr-4"
                                   >mdi-flag-variant-outline</v-icon
                                 >
@@ -270,9 +264,14 @@
                   <a href="#" class="small px-4 mb-2">{{ moderator }}</a>
                 </div>
                 <div class="d-flex flex-column align-items-end">
-                  <v-btn class="mt-4" text small
-                    >VER TODOS OS MODERADORES</v-btn
-                  >
+                  <v-dialog v-model="$store.state.modalStore.allModerators">
+                    <template v-slot:activator="{ on }">
+                      <v-btn class="mt-4" text small v-on="on"
+                        >VER TODOS OS MODERADORES</v-btn
+                      >
+                    </template>
+                  </v-dialog>
+                  <AllModerators />
                   <v-dialog v-model="sendModerationRequest" width="600px">
                     <template v-slot:activator="{ on }">
                       <v-btn v-on="on" class="mt-3 mb-5" text small
@@ -334,6 +333,7 @@ import Award from '../modals/Award';
 import Report from '../modals/Report';
 import Mixins from '../../mixins';
 import Header from './Header';
+import AllModerators from '../modals/AllModerators';
 
 export default {
   mixins: [Mixins],
@@ -344,6 +344,7 @@ export default {
     Award,
     Report,
     Header,
+    AllModerators,
   },
   data() {
     return {

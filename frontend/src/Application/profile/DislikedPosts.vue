@@ -93,12 +93,11 @@
                             </a>
                           </li>
                           <li>
-                            <v-dialog v-model="$store.state.report">
+                            <v-dialog v-model="$store.state.modalStore.report">
                               <template v-slot:activator="{ on }">
                                 <a
                                   href="#"
                                   v-on="on"
-                                  @click="$store.state.report = true"
                                   class="small dropdown-item"
                                 >
                                   <v-icon class="mr-4"
@@ -135,9 +134,6 @@ export default {
     Header,
     Sidebar,
     Report,
-  },
-  data() {
-    return {};
   },
 };
 </script>
