@@ -6,6 +6,8 @@ import VueQuillEditor from 'vue-quill-editor';
 import axios from 'axios';
 import vueAxios from 'vue-axios';
 import VueTheMask from 'vue-the-mask';
+import Vuelidate from 'vuelidate';
+import moment from 'moment';
 import router from './router';
 import App from './App';
 import vuetify from './plugins/vuetify';
@@ -16,12 +18,13 @@ import store from './store';
 import 'quill/dist/quill.snow.css';
 
 Vue.use(VueTheMask);
+Vue.use(moment);
+Vue.use(Vuelidate);
 Vue.use(VueQuillEditor);
 Vue.use(BootstrapVue);
 Vue.use(vueAxios, axios);
 
 Vue.axios.defaults.baseURL = 'http://localhost:8000';
-// Vue.axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 Vue.config.productionTip = false;
 

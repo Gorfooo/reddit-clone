@@ -1,5 +1,6 @@
 export default {
-  setNewUserData(state, payload) {
-    this.state.auth.newUser = payload;
-  },
+  // setNewUserData(state, payload) {
+  //   // _
+  //   this.state.auth.newUser = payload;
+  // },
 };

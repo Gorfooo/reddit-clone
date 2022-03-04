@@ -1,3 +1,10 @@
 export default {
-  newUser: {},
+  newUser: {
+    name: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+    birthDate: '',
+  },
+  loginUser: {},
 };
