@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="register" width="800px">
+  <v-dialog v-model="$store.state.modalStore.register" width="800px">
     <template v-slot:activator="{ on }">
       <v-btn class="d-none" v-on="on" />
     </template>
@@ -21,14 +21,14 @@
             Ao cadastrar, você estará criando uma conta no Reddit e concordando
             com nossos
           </span>
-          <v-dialog v-model="termsOfUse">
+          <v-dialog v-model="$store.state.modalStore.termsOfUse">
             <template v-slot:activator="{ on }">
               <a class="text-primary" v-on="on" href="#">Termos de Uso</a>
             </template>
           </v-dialog>
           <TermsOfUse />
           e
-          <v-dialog v-model="politics">
+          <v-dialog v-model="$store.state.modalStore.politics">
             <template v-slot:activator="{ on }">
               <a class="text-primary" v-on="on" href="#"
                 >Política de Privacidade.</a
@@ -37,26 +37,17 @@
           </v-dialog>
           <Politics />
           <div class="mb-6">
-            <div :class="{ 'form-group--error': $v.newUser.name.$error }">
-              <v-text-field
-                label="Nome"
-                class="mt-4"
-                outlined
-                dense
-                maxlength="40"
-                hide-details
-                v-bind:error="
-                  !$v.newUser.name.required || !$v.newUser.name.minLength
-                    ? true
-                    : false
-                "
-                v-model="newUser.name"
-              ></v-text-field>
-            </div>
-            <div
-              class="text-danger"
-              v-if="!$v.newUser.name.required || !$v.newUser.name.minLength"
-            >
+            <v-text-field
+              label="Nome"
+              class="mt-4"
+              outlined
+              dense
+              maxlength="40"
+              hide-details
+              :error="$v.newUser.name.$error"
+              v-model="newUser.name"
+            ></v-text-field>
+            <div class="text-danger" v-if="$v.newUser.name.$error">
               Nome deve ter ao menos
               {{ $v.newUser.name.$params.minLength.min }} caracteres
             </div>
@@ -71,21 +62,10 @@
                 maxlength="100"
                 hide-details
                 v-mask="'##-##-####'"
-                v-bind:error="
-                  !$v.newUser.birthDate.required ||
-                  !$v.newUser.birthDate.validDate
-                    ? true
-                    : false
-                "
+                :error="$v.newUser.birthDate.$error"
                 v-model="newUser.birthDate"
               ></v-text-field>
-              <div
-                class="text-danger"
-                v-if="
-                  !$v.newUser.birthDate.required ||
-                  !$v.newUser.birthDate.validDate
-                "
-              >
+              <div class="text-danger" v-if="$v.newUser.birthDate.$error">
                 Informe uma data válida
               </div>
             </div>
@@ -100,17 +80,10 @@
                   dense
                   maxlength="100"
                   hide-details
-                  v-bind:error="
-                    !$v.newUser.email.required || !$v.newUser.email.email
-                      ? true
-                      : false
-                  "
+                  :error="$v.newUser.email.$error"
                   v-model="newUser.email"
                 ></v-text-field>
-                <div
-                  class="text-danger"
-                  v-if="!$v.newUser.email.required || !$v.newUser.email.email"
-                >
+                <div class="text-danger" v-if="$v.newUser.email.$error">
                   Informe um e-mail válido
                 </div>
               </div>
@@ -122,21 +95,10 @@
                   maxlength="25"
                   hide-details
                   type="password"
-                  v-bind:error="
-                    !$v.newUser.password.required ||
-                    !$v.newUser.password.minLength
-                      ? true
-                      : false
-                  "
+                  :error="$v.newUser.password.$error"
                   v-model="newUser.password"
                 ></v-text-field>
-                <div
-                  class="text-danger"
-                  v-if="
-                    !$v.newUser.password.required ||
-                    !$v.newUser.password.minLength
-                  "
-                >
+                <div class="text-danger" v-if="$v.newUser.password.$error">
                   Senha deve ter ao menos
                   {{ $v.newUser.password.$params.minLength.min }} caracteres
                 </div>
@@ -149,16 +111,12 @@
                   maxlength="25"
                   hide-details
                   type="password"
-                  v-bind:error="
-                    !$v.newUser.passwordConfirmation.sameAsPassword
-                      ? true
-                      : false
-                  "
+                  :error="$v.newUser.passwordConfirmation.$error"
                   v-model="newUser.passwordConfirmation"
                 ></v-text-field>
                 <div
                   class="text-danger"
-                  v-if="!$v.newUser.passwordConfirmation.sameAsPassword"
+                  v-if="$v.newUser.passwordConfirmation.$error"
                 >
                   Suas senhas devem ser iguais
                 </div>
@@ -174,17 +132,16 @@
             rounded
             @click="checkForm()"
           >
-            <!-- @click="$v.newUser.$touch()" -->
             Cadastrar
           </v-btn>
-          <v-btn
+          <!-- <v-btn
             class="float-right"
             color="primary"
             rounded
             @click="showData()"
           >
             teste
-          </v-btn>
+          </v-btn> -->
         </v-card-text>
       </div>
     </v-card>
@@ -199,6 +156,7 @@ import TermsOfUse from '../modals/TermsOfUse';
 import Politics from '../modals/Politics';
 
 const validDate = (value) => moment(value, 'DD-MM-YYYY', true).isValid();
+moment.suppressDeprecationWarnings = true;
 
 export default {
   components: {
@@ -207,7 +165,6 @@ export default {
   },
   computed: {
     ...mapState('auth', ['newUser']),
-    ...mapState('modalStore', ['register', 'termsOfUse', 'politics']),
   },
   validations: {
     newUser: {
