@@ -9,11 +9,6 @@ export interface HttpResponse {
 
 export interface HttpRequest {
   body?: {
-    metadata?: {
-      clientId: number;
-      userId: number;
-      authorization?: string;
-    };
     data?: any;
   };
 }

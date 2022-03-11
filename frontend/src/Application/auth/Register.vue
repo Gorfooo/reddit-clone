@@ -61,7 +61,7 @@
                 dense
                 maxlength="100"
                 hide-details
-                v-mask="'##-##-####'"
+                v-mask="'##/##/####'"
                 :error="$v.newUser.birthDate.$error"
                 v-model="newUser.birthDate"
               ></v-text-field>
@@ -155,7 +155,7 @@ import moment from 'moment';
 import TermsOfUse from '../modals/TermsOfUse';
 import Politics from '../modals/Politics';
 
-const validDate = (value) => moment(value, 'DD-MM-YYYY', true).isValid();
+const validDate = (value) => moment(value, 'DD/MM/YYYY', true).isValid();
 moment.suppressDeprecationWarnings = true;
 
 export default {
