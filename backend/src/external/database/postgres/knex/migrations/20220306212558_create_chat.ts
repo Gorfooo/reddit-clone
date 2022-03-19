@@ -14,8 +14,8 @@ export async function up(knex: Knex): Promise<void> {
       .references('id_usuario')
       .inTable('usuario');
     table.dateTime('data_hora').notNullable();
-    table.string('mensagem').notNullable();
-    table.string('lido').nullable();
+    table.text('mensagem').notNullable();
+    table.string('lido', 1).nullable();
   });
 }
 

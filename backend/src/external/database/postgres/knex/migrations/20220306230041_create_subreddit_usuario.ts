@@ -13,8 +13,8 @@ export async function up(knex: Knex): Promise<void> {
       .notNullable()
       .references('id_subreddit')
       .inTable('subreddit');
-    table.string('moderador').nullable();
-    table.string('criador').nullable();
+    table.string('moderador', 1).nullable();
+    table.string('criador', 1).nullable();
   });
 }
 

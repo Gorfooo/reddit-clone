@@ -8,7 +8,7 @@ export async function up(knex: Knex): Promise<void> {
       .notNullable()
       .references('id_subreddit')
       .inTable('subreddit');
-    table.string('descricao').notNullable();
+    table.string('descricao', 150).notNullable();
   });
 }
 

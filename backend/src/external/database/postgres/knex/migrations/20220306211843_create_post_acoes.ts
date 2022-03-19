@@ -13,11 +13,11 @@ export async function up(knex: Knex): Promise<void> {
       .notNullable()
       .references('id_usuario')
       .inTable('usuario');
-    table.string('compartilhado').nullable();
-    table.string('ocultado').nullable();
-    table.string('guardado').nullable();
-    table.string('premiado').nullable();
-    table.string('like_dislike').nullable();
+    table.string('compartilhado', 1).nullable();
+    table.string('ocultado', 1).nullable();
+    table.string('guardado', 1).nullable();
+    table.string('premiado', 1).nullable();
+    table.string('like_dislike', 1).nullable();
     table.date('like_dislike_date').nullable();
   });
 }

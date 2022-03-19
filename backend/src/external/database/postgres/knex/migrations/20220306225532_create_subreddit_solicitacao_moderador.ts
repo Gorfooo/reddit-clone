@@ -13,9 +13,9 @@ export async function up(knex: Knex): Promise<void> {
       .notNullable()
       .references('id_usuario')
       .inTable('usuario');
-    table.string('solicitacao').notNullable();
-    table.string('aceito').nullable();
-    table.string('motivo_recusa').nullable();
+    table.text('solicitacao').notNullable();
+    table.string('aceito', 1).nullable();
+    table.text('motivo_recusa').nullable();
   });
 }
 

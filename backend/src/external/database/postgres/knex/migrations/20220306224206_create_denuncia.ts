@@ -28,7 +28,7 @@ export async function up(knex: Knex): Promise<void> {
       .nullable()
       .references('id_subreddit')
       .inTable('subreddit');
-    table.string('obs').nullable();
+    table.string('obs', 200).nullable();
   });
 }
 

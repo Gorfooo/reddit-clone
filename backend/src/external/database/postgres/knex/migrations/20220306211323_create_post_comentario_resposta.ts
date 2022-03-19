@@ -13,7 +13,7 @@ export async function up(knex: Knex): Promise<void> {
       .notNullable()
       .references('id_usuario')
       .inTable('usuario');
-    table.string('resposta').nullable();
+    table.text('resposta').nullable();
   });
 }
 
