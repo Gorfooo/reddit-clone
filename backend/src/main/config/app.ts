@@ -1,6 +1,6 @@
-import express from "express";
-import setupMiddleware from "./middleware";
-import routes from "./routes";
+import express from 'express';
+import setupMiddleware from './middleware';
+import routes from './routes';
 
 const app = express();
 setupMiddleware(app);

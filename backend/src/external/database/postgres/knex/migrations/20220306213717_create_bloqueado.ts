@@ -1,4 +1,4 @@
-import { Knex } from "knex";
+import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable('bloqueado', (table: Knex.TableBuilder) => {
@@ -6,12 +6,12 @@ export async function up(knex: Knex): Promise<void> {
       .bigInteger('id_bloqueador')
       .notNullable()
       .references('id_usuario')
-      .inTable('usuario')
+      .inTable('usuario');
     table
       .bigInteger('id_bloqueado')
       .notNullable()
       .references('id_usuario')
-      .inTable('usuario')
+      .inTable('usuario');
     table.primary(['id_bloqueador', 'id_bloqueado']);
   });
 }

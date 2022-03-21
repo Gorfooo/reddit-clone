@@ -1,8 +1,6 @@
-import { ControllerError } from './controller-error';
-
-export class ServerError extends Error implements ControllerError {
+export class ServerError extends Error {
   constructor(reason: string) {
-    super('Server error: ' + reason + '.');
-    this.name = 'ServerError';
+    super('Server Error');
+    this.name = `Server error: ${reason}.`;
   }
 }
