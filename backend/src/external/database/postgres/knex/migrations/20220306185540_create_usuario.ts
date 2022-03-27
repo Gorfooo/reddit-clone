@@ -6,7 +6,7 @@ export async function up(knex: Knex): Promise<void> {
     table.string('nome', 40).notNullable();
     table.string('banner', 200).nullable();
     table.string('email', 100).notNullable().unique();
-    table.string('foto', 200).nullable();
+    table.string('avatar', 200).nullable();
     table.string('esconder_online', 1).notNullable().defaultTo('N');
     table.string('sobre', 200).nullable();
     table.integer('karma').notNullable().defaultTo(0);

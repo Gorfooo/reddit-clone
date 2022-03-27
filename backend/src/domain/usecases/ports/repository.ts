@@ -1,3 +1,3 @@
-export interface InsertedId {
+export interface ManagedId {
   id: number;
 }

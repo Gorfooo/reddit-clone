@@ -3,17 +3,20 @@ import { Either, left, right } from '../../../../shared/Either';
 import { UserData } from './user-data';
 import { EmailAlreadyRegisteredError } from './errors/email-already-registered-error';
 
-export class User {
+export class CreateUpdateUser {
   constructor(
-    public readonly nome: string,
-    public readonly email: string,
-    public readonly senha: string,
-    public readonly nascimento: string,
+    public readonly idUsuario: number,
+    public readonly email?: string,
+    public readonly senha?: string,
+    public readonly nome?: string,
+    public readonly sobre?: string,
+    public readonly avatar?: string,
+    public readonly banner?: string,
   ) {}
 
   static async create(
     userData: UserData,
-  ): Promise<Either<EmailAlreadyRegisteredError, User>> {
+  ): Promise<Either<EmailAlreadyRegisteredError, CreateUpdateUser>> {
     const emailIsAlreadyRegistered = await this.verifyEmailAlreadyRegistered(
       userData,
     );
@@ -22,11 +25,14 @@ export class User {
       return left(emailIsAlreadyRegistered.value);
 
     const userEntity = {
-      ...new User(
-        userData.nome,
+      ...new CreateUpdateUser(
+        userData.idUsuario,
         userData.email,
         userData.senha,
-        userData.nascimento,
+        userData.nome,
+        userData.sobre,
+        userData.avatar,
+        userData.banner,
       ),
     };
 

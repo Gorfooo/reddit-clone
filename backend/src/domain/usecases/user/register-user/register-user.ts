@@ -1,6 +1,6 @@
 import { UserData } from '../../../entities/user-entities/user/user-data';
 import { left, right } from '../../../../shared/Either';
-import { User } from '../../../entities/user-entities/user/user';
+import { CreateRegisterUser } from '../../../entities/user-entities/user/create-user';
 import { RegisterUserResponse } from './register-user-response';
 import { UserRepository } from '../../ports/user-repository';
 import { IRegisterUser } from './register-user-interface';
@@ -17,7 +17,7 @@ export class RegisterUser implements IRegisterUser {
   }
 
   private async saveUser(userData: UserData): Promise<RegisterUserResponse> {
-    const userOrError = await User.create(userData);
+    const userOrError = await CreateRegisterUser.create(userData);
 
     if (userOrError.isLeft()) return left(userOrError.value);
 

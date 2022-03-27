@@ -13,10 +13,10 @@ export class RegisterUserController {
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const userData = {
-        nome: httpRequest.data.name,
+        nome: httpRequest.data.nome,
         email: httpRequest.data.email,
-        senha: httpRequest.data.password,
-        nascimento: httpRequest.data.birthDate,
+        senha: httpRequest.data.senha,
+        nascimento: httpRequest.data.nascimento,
       };
 
       const registerUserResponse: RegisterUserResponse =
