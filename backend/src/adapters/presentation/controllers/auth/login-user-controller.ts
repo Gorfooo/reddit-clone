@@ -1,3 +1,4 @@
+import { Md5 } from 'md5-typescript';
 import { HttpRequest, HttpResponse } from '../ports/http';
 import { badRequest, serverError, ok } from '../helpers/http-helper';
 import { LoginUserResponse } from '../../../../domain/usecases/user/login-user/login-user-response';
@@ -14,7 +15,7 @@ export class LoginUserController {
     try {
       const userData = {
         email: httpRequest.data.email,
-        senha: httpRequest.data.senha,
+        senha: Md5.init(httpRequest.data.senha),
       };
 
       const loginUserResponse: LoginUserResponse = await this.loginUser.execute(

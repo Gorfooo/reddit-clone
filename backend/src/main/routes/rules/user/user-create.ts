@@ -1,6 +1,6 @@
 import { body } from 'express-validator';
 
-export function validateRegisterFields() {
+export function validateRegisterUserFields() {
   return [
     body('nome').isLength({ min: 3 }).exists(),
     body('email').isEmail().exists(),

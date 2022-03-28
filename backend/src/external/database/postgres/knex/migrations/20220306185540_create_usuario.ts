@@ -10,7 +10,7 @@ export async function up(knex: Knex): Promise<void> {
     table.string('esconder_online', 1).notNullable().defaultTo('N');
     table.string('sobre', 200).nullable();
     table.integer('karma').notNullable().defaultTo(0);
-    table.string('senha', 25).notNullable();
+    table.string('senha', 32).notNullable();
     table.date('nascimento').notNullable();
   });
 }

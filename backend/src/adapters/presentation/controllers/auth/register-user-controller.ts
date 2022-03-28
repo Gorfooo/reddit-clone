@@ -1,3 +1,4 @@
+import { Md5 } from 'md5-typescript';
 import { HttpRequest, HttpResponse } from '../ports/http';
 import { badRequest, serverError, ok } from '../helpers/http-helper';
 import { RegisterUserResponse } from '../../../../domain/usecases/user/register-user/register-user-response';
@@ -15,7 +16,7 @@ export class RegisterUserController {
       const userData = {
         nome: httpRequest.data.nome,
         email: httpRequest.data.email,
-        senha: httpRequest.data.senha,
+        senha: Md5.init(httpRequest.data.senha),
         nascimento: httpRequest.data.nascimento,
       };
 

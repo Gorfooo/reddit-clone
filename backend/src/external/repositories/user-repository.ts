@@ -32,11 +32,13 @@ export class PostgresUserRepository implements UserRepository {
     return { id: userUpdatedId };
   }
 
-  async findUser(user: UserData): Promise<ManagedId> {
+  async findUser(user: UserData): Promise<ManagedId | null> {
     const [userFoundId] = await knexClient(Tables.User)
       .select('id_usuario')
       .where('email', user.email)
       .where('senha', user.senha);
+
+    if (!userFoundId) return null;
 
     return { id: userFoundId };
   }

@@ -1,6 +1,6 @@
 import { body } from 'express-validator';
 
-export function validateUpdateFields() {
+export function validateUpdateUserFields() {
   return [
     body('idUsuario').isNumeric().exists(),
     body('email').isEmail(),
