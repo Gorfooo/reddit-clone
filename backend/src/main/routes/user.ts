@@ -8,6 +8,7 @@ import { validateBlockFields } from './rules/user/block-create';
 import { validateUnblockFields } from './rules/user/unblock-create';
 import { validateSendMessageFields } from './rules/user/send-message';
 import { validateReadMessageFields } from './rules/user/read-message';
+import { validateReportFields } from './rules/user/report';
 import { adaptRoute } from '../adapters/express-route-adapter';
 import { makeRegisterUserController } from '../factories/user/register-user';
 import { makeUpdateUserController } from '../factories/user/update-user';
@@ -18,6 +19,7 @@ import { makeBlockController } from '../factories/user/block';
 import { makeUnblockController } from '../factories/user/unblock';
 import { makeSendMessageController } from '../factories/user/send-message';
 import { makeReadMessageController } from '../factories/user/read-message';
+import { makeReportController } from '../factories/user/report';
 
 const userRoutes = express();
 
@@ -74,6 +76,12 @@ userRoutes.post(
   '/user/readmessage',
   validateReadMessageFields(),
   adaptRoute(makeReadMessageController()),
+);
+
+userRoutes.post(
+  '/user/report',
+  validateReportFields(),
+  adaptRoute(makeReportController()),
 );
 
 export default userRoutes;

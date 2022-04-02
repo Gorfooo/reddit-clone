@@ -5,4 +5,5 @@ export enum Tables {
   Followers = 'seguidores',
   Block = 'bloqueado',
   Chat = 'chat',
+  Report = 'denuncia',
 }

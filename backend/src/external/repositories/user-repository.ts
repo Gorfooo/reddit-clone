@@ -6,6 +6,7 @@ import { knexClient } from '../database/postgres/knex/client';
 import { FollowerData } from '../../domain/entities/user-entities/user/follower-data';
 import { BlockData } from '../../domain/entities/user-entities/user/block-data';
 import { MessageData } from '../../domain/entities/user-entities/user/message-data';
+import { ReportData } from '../../domain/entities/user-entities/user/report-data';
 
 export class PostgresUserRepository implements UserRepository {
   async add(user: UserData): Promise<ManagedId> {
@@ -77,5 +78,9 @@ export class PostgresUserRepository implements UserRepository {
       .update('lido', 'S')
       .where('idLeitor', userIds.idLeitor)
       .where('idEscritor', userIds.idEscritor);
+  }
+
+  async report(report: ReportData): Promise<void> {
+    await knexClient(Tables.Report).insert(report);
   }
 }

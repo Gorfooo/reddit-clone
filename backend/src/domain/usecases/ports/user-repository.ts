@@ -1,6 +1,7 @@
 import { BlockData } from '../../entities/user-entities/user/block-data';
 import { FollowerData } from '../../entities/user-entities/user/follower-data';
 import { MessageData } from '../../entities/user-entities/user/message-data';
+import { ReportData } from '../../entities/user-entities/user/report-data';
 import { UserData } from '../../entities/user-entities/user/user-data';
 import { ManagedId } from './repository';
 
@@ -15,4 +16,5 @@ export interface UserRepository {
   unblock: (userIds: BlockData) => Promise<void>;
   sendMessage: (messageData: MessageData) => Promise<void>;
   readMessage: (userIds: MessageData) => Promise<void>;
+  report: (reportData: ReportData) => Promise<void>;
 }

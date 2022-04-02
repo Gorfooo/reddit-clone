@@ -12,6 +12,7 @@ import { RegisterNewFollowerController } from '../../adapters/presentation/contr
 import { DeleteFollowerController } from '../../adapters/presentation/controllers/user/delete-follower-controller';
 import { SendMessageController } from '../../adapters/presentation/controllers/user/send-message-controller';
 import { ReadMessageController } from '../../adapters/presentation/controllers/user/read-message-controller';
+import { ReportController } from '../../adapters/presentation/controllers/user/report-controller';
 import { HttpRequest } from '../../adapters/presentation/controllers/ports/http';
 
 export const adaptRoute = (
@@ -27,7 +28,8 @@ export const adaptRoute = (
     | BlockController
     | UnblockController
     | SendMessageController
-    | ReadMessageController,
+    | ReadMessageController
+    | ReportController,
 ) => {
   return async (req: Request, res: Response): Promise<Response> => {
     const httpRequest: HttpRequest = {
@@ -39,7 +41,7 @@ export const adaptRoute = (
     if (!errors.isEmpty()) {
       // show message errors
       // const [objError] = errors.array({ onlyFirstError: true });
-      // return res.status(400).json({ errors: `${objError.msg}` });
+      // return res.status(400).json({ errors: `${objError.param}` });
 
       return res.status(400).json({
         errors: 'Ops, ocorreu um erro inesperado. Verifique os dados enviados!',
