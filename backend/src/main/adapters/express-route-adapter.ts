@@ -1,9 +1,17 @@
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
-import { LoginUserController } from '../../adapters/presentation/controllers/auth/login-user-controller';
-import { RegisterUserController } from '../../adapters/presentation/controllers/auth/register-user-controller';
+import { LoginUserController } from '../../adapters/presentation/controllers/user/login-user-controller';
+import { RegisterUserController } from '../../adapters/presentation/controllers/user/register-user-controller';
 import { RegisterPostController } from '../../adapters/presentation/controllers/post/register-post-controller';
-import { UpdateUserController } from '../../adapters/presentation/controllers/auth/update-user-controller';
+import { BlockController } from '../../adapters/presentation/controllers/user/block-controller';
+import { UnblockController } from '../../adapters/presentation/controllers/user/unblock-controller';
+import { UpdateUserController } from '../../adapters/presentation/controllers/user/update-user-controller';
+import { UpdatePostController } from '../../adapters/presentation/controllers/post/update-post-controller';
+import { DeletePostController } from '../../adapters/presentation/controllers/post/delete-post-controller';
+import { RegisterNewFollowerController } from '../../adapters/presentation/controllers/user/register-new-follower-controller';
+import { DeleteFollowerController } from '../../adapters/presentation/controllers/user/delete-follower-controller';
+import { SendMessageController } from '../../adapters/presentation/controllers/user/send-message-controller';
+import { ReadMessageController } from '../../adapters/presentation/controllers/user/read-message-controller';
 import { HttpRequest } from '../../adapters/presentation/controllers/ports/http';
 
 export const adaptRoute = (
@@ -11,7 +19,15 @@ export const adaptRoute = (
     | RegisterUserController
     | UpdateUserController
     | LoginUserController
-    | RegisterPostController,
+    | RegisterPostController
+    | UpdatePostController
+    | DeletePostController
+    | RegisterNewFollowerController
+    | DeleteFollowerController
+    | BlockController
+    | UnblockController
+    | SendMessageController
+    | ReadMessageController,
 ) => {
   return async (req: Request, res: Response): Promise<Response> => {
     const httpRequest: HttpRequest = {

@@ -1,27 +1,27 @@
 import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
-  await knex.schema.createTable('post_acoes', (table: Knex.TableBuilder) => {
-    table.increments('id_post_acao').primary();
+  await knex.schema.createTable('postAcoes', (table: Knex.TableBuilder) => {
+    table.increments('idPostAcao').primary();
     table
-      .bigInteger('id_post')
+      .bigInteger('idPost')
       .notNullable()
-      .references('id_post')
+      .references('idPost')
       .inTable('post');
     table
-      .bigInteger('id_usuario')
+      .bigInteger('idUsuario')
       .notNullable()
-      .references('id_usuario')
+      .references('idUsuario')
       .inTable('usuario');
     table.string('compartilhado', 1).nullable();
     table.string('ocultado', 1).nullable();
     table.string('guardado', 1).nullable();
     table.string('premiado', 1).nullable();
-    table.string('like_dislike', 1).nullable();
-    table.date('like_dislike_date').nullable();
+    table.string('likeDislike', 1).nullable();
+    table.date('likeDislikeDate').nullable();
   });
 }
 
 export async function down(knex: Knex): Promise<void> {
-  await knex.schema.dropTable('post_acoes');
+  await knex.schema.dropTable('postAcoes');
 }

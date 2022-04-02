@@ -2,11 +2,11 @@ import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable('post', (table: Knex.TableBuilder) => {
-    table.increments('id_post').primary();
+    table.increments('idPost').primary();
     table
-      .bigInteger('id_usuario')
+      .bigInteger('idUsuario')
       .notNullable()
-      .references('id_usuario')
+      .references('idUsuario')
       .inTable('usuario');
     table.string('conteudo', 150).notNullable();
     table.string('titulo', 150).notNullable();

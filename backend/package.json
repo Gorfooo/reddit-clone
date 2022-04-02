@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx ts-node-dev --respawn --transpile-only -- src/main/server.ts",
     "fresh": "npm run rollback-all && npm run migrate",
-    "migrate": "npx knex migrate:latest",
+    "migrate": "npx knex migrate:latest && npx knex seed:run",
     "rollback-all": "npx knex migrate:rollback --all",
     "lint": "npx prettier --check ./src",
     "format": "prettier --write ./src"

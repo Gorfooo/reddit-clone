@@ -1,21 +1,17 @@
 import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
-  await knex.schema.createTable('post_tags', (table: Knex.TableBuilder) => {
+  await knex.schema.createTable('postTags', (table: Knex.TableBuilder) => {
     table
-      .bigInteger('id_post')
+      .bigInteger('idPost')
       .notNullable()
-      .references('id_post')
+      .references('idPost')
       .inTable('post');
-    table
-      .bigInteger('id_tag')
-      .notNullable()
-      .references('id_tag')
-      .inTable('tags');
-    table.primary(['id_post', 'id_tag']);
+    table.bigInteger('idTag').notNullable().references('idTag').inTable('tags');
+    table.primary(['idPost', 'idTag']);
   });
 }
 
 export async function down(knex: Knex): Promise<void> {
-  await knex.schema.dropTable('post_tags');
+  await knex.schema.dropTable('postTags');
 }

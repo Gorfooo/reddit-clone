@@ -2,18 +2,18 @@ import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable('chat', (table: Knex.TableBuilder) => {
-    table.increments('id_mensagem').primary();
+    table.increments('idMensagem').primary();
     table
-      .bigInteger('id_leitor')
+      .bigInteger('idLeitor')
       .notNullable()
-      .references('id_usuario')
+      .references('idUsuario')
       .inTable('usuario');
     table
-      .bigInteger('id_escritor')
+      .bigInteger('idEscritor')
       .notNullable()
-      .references('id_usuario')
+      .references('idUsuario')
       .inTable('usuario');
-    table.dateTime('data_hora').notNullable();
+    table.dateTime('dataHora').notNullable();
     table.text('mensagem').notNullable();
     table.string('lido', 1).nullable();
   });

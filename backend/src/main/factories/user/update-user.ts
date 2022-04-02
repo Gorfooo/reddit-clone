@@ -1,4 +1,4 @@
-import { UpdateUserController } from '../../../adapters/presentation/controllers/auth/update-user-controller';
+import { UpdateUserController } from '../../../adapters/presentation/controllers/user/update-user-controller';
 import { UpdateUser } from '../../../domain/usecases/user/update-user/update-user';
 import { PostgresUserRepository } from '../../../external/repositories/user-repository';
 

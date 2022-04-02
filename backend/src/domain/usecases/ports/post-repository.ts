@@ -3,7 +3,9 @@ import { ManagedId } from './repository';
 
 export interface PostRepository {
   add: (post: PostData) => Promise<ManagedId>;
-  // update: (User: UserData, id: number) => Promise<ManagedId>;
-  // findIdenticalEmail: (email: string) => Promise<string | null>;
-  // findUser: (user: UserData) => Promise<ManagedId>;
+  insertPostTags: (idPost: number, tags: number[]) => Promise<boolean>;
+  update: (postData: PostData, idPost: number) => Promise<void>;
+  updatePostTags: (idPost: number, tags: number[]) => Promise<boolean>;
+  delete: (idPost: number) => Promise<void>;
+  deletePostTags: (tags: number) => Promise<void>;
 }

@@ -2,26 +2,26 @@ import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable(
-    'solicitacao_moderador',
+    'solicitacaoModerador',
     (table: Knex.TableBuilder) => {
-      table.increments('id_solicitacao_moderador').primary();
+      table.increments('idSolicitacaoModerador').primary();
       table
-        .bigInteger('id_subreddit')
+        .bigInteger('idSubreddit')
         .notNullable()
-        .references('id_subreddit')
+        .references('idSubreddit')
         .inTable('subreddit');
       table
-        .bigInteger('id_usuario')
+        .bigInteger('idUsuario')
         .notNullable()
-        .references('id_usuario')
+        .references('idUsuario')
         .inTable('usuario');
       table.text('solicitacao').notNullable();
       table.string('aceito', 1).nullable();
-      table.text('motivo_recusa').nullable();
+      table.text('motivoRecusa').nullable();
     },
   );
 }
 
 export async function down(knex: Knex): Promise<void> {
-  await knex.schema.dropTable('solicitacao_moderador');
+  await knex.schema.dropTable('solicitacaoModerador');
 }

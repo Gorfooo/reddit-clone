@@ -2,18 +2,18 @@ import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable(
-    'subreddit_usuario',
+    'subredditUsuario',
     (table: Knex.TableBuilder) => {
-      table.increments('id_subreddit_usuario').primary();
+      table.increments('idSubredditUsuario').primary();
       table
-        .bigInteger('id_usuario')
+        .bigInteger('idUsuario')
         .notNullable()
-        .references('id_usuario')
+        .references('idUsuario')
         .inTable('usuario');
       table
-        .bigInteger('id_subreddit')
+        .bigInteger('idSubreddit')
         .notNullable()
-        .references('id_subreddit')
+        .references('idSubreddit')
         .inTable('subreddit');
       table.string('moderador', 1).nullable();
       table.string('criador', 1).nullable();
@@ -22,5 +22,5 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-  await knex.schema.dropTable('subreddit_usuario');
+  await knex.schema.dropTable('subredditUsuario');
 }

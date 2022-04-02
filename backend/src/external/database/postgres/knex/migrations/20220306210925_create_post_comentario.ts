@@ -2,18 +2,18 @@ import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable(
-    'post_comentario',
+    'postComentario',
     (table: Knex.TableBuilder) => {
-      table.increments('id_comentario').primary();
+      table.increments('idComentario').primary();
       table
-        .bigInteger('id_post')
+        .bigInteger('idPost')
         .notNullable()
-        .references('id_post')
+        .references('idPost')
         .inTable('post');
       table
-        .bigInteger('id_usuario')
+        .bigInteger('idUsuario')
         .notNullable()
-        .references('id_usuario')
+        .references('idUsuario')
         .inTable('usuario');
       table.text('comentario').notNullable();
     },
@@ -21,5 +21,5 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-  await knex.schema.dropTable('post_comentario');
+  await knex.schema.dropTable('postComentario');
 }

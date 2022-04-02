@@ -1,4 +1,4 @@
-import { LoginUserController } from '../../../adapters/presentation/controllers/auth/login-user-controller';
+import { LoginUserController } from '../../../adapters/presentation/controllers/user/login-user-controller';
 import { LoginUser } from '../../../domain/usecases/user/login-user/login-user';
 import { PostgresUserRepository } from '../../../external/repositories/user-repository';
 

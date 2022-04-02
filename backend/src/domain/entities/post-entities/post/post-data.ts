@@ -1,6 +1,7 @@
 export interface PostData {
-  idUsuario: number;
-  titulo: string;
-  conteudo: string;
-  // tags
+  idPost?: number;
+  idUsuario?: number;
+  titulo?: string;
+  conteudo?: string;
+  tags?: number[];
 }

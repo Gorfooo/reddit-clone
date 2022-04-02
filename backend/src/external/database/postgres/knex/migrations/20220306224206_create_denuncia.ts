@@ -2,31 +2,27 @@ import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable('denuncia', (table: Knex.TableBuilder) => {
-    table.increments('id_denuncia').primary();
+    table.increments('idDenuncia').primary();
     table
-      .bigInteger('id_motivo')
+      .bigInteger('idMotivo')
       .nullable()
-      .references('id_motivo')
-      .inTable('motivo_denuncia');
+      .references('idMotivo')
+      .inTable('motivoDenuncia');
     table
-      .bigInteger('id_usuario_denunciador')
+      .bigInteger('idUsuarioDenunciador')
       .notNullable()
-      .references('id_usuario')
+      .references('idUsuario')
       .inTable('usuario');
     table
-      .bigInteger('id_usuario_denunciado')
+      .bigInteger('idUsuarioDenunciado')
       .nullable()
-      .references('id_usuario')
+      .references('idUsuario')
       .inTable('usuario');
+    table.bigInteger('idPost').nullable().references('idPost').inTable('post');
     table
-      .bigInteger('id_post')
+      .bigInteger('idSubreddit')
       .nullable()
-      .references('id_post')
-      .inTable('post');
-    table
-      .bigInteger('id_subreddit')
-      .nullable()
-      .references('id_subreddit')
+      .references('idSubreddit')
       .inTable('subreddit');
     table.string('obs', 200).nullable();
   });

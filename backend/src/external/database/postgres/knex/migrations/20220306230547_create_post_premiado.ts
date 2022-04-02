@@ -1,21 +1,21 @@
 import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
-  await knex.schema.createTable('post_premiado', (table: Knex.TableBuilder) => {
+  await knex.schema.createTable('postPremiado', (table: Knex.TableBuilder) => {
     table
-      .bigInteger('id_post')
+      .bigInteger('idPost')
       .notNullable()
-      .references('id_post')
+      .references('idPost')
       .inTable('post');
     table
-      .bigInteger('id_usuario')
+      .bigInteger('idUsuario')
       .notNullable()
-      .references('id_usuario')
+      .references('idUsuario')
       .inTable('usuario');
-    table.primary(['id_post', 'id_usuario']);
+    table.primary(['idPost', 'idUsuario']);
   });
 }
 
 export async function down(knex: Knex): Promise<void> {
-  await knex.schema.dropTable('post_premiado');
+  await knex.schema.dropTable('postPremiado');
 }

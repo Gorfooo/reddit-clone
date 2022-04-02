@@ -2,13 +2,13 @@ import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable(
-    'subreddit_regra',
+    'subredditRegra',
     (table: Knex.TableBuilder) => {
-      table.increments('id_regra').primary();
+      table.increments('idRegra').primary();
       table
-        .bigInteger('id_subreddit')
+        .bigInteger('idSubreddit')
         .notNullable()
-        .references('id_subreddit')
+        .references('idSubreddit')
         .inTable('subreddit');
       table.string('descricao', 150).notNullable();
     },
@@ -16,5 +16,5 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-  await knex.schema.dropTable('subreddit_regra');
+  await knex.schema.dropTable('subredditRegra');
 }

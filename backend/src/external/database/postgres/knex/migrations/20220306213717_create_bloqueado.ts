@@ -3,16 +3,16 @@ import { Knex } from 'knex';
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable('bloqueado', (table: Knex.TableBuilder) => {
     table
-      .bigInteger('id_bloqueador')
+      .bigInteger('idBloqueador')
       .notNullable()
-      .references('id_usuario')
+      .references('idUsuario')
       .inTable('usuario');
     table
-      .bigInteger('id_bloqueado')
+      .bigInteger('idBloqueado')
       .notNullable()
-      .references('id_usuario')
+      .references('idUsuario')
       .inTable('usuario');
-    table.primary(['id_bloqueador', 'id_bloqueado']);
+    table.primary(['idBloqueador', 'idBloqueado']);
   });
 }
 
