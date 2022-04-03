@@ -3,6 +3,7 @@ import { validationResult } from 'express-validator';
 import { LoginUserController } from '../../adapters/presentation/controllers/user/login-user-controller';
 import { RegisterUserController } from '../../adapters/presentation/controllers/user/register-user-controller';
 import { RegisterPostController } from '../../adapters/presentation/controllers/post/register-post-controller';
+import { RegisterSubredditController } from '../../adapters/presentation/controllers/subreddit/register-subreddit-controller';
 import { BlockController } from '../../adapters/presentation/controllers/user/block-controller';
 import { UnblockController } from '../../adapters/presentation/controllers/user/unblock-controller';
 import { UpdateUserController } from '../../adapters/presentation/controllers/user/update-user-controller';
@@ -29,7 +30,8 @@ export const adaptRoute = (
     | UnblockController
     | SendMessageController
     | ReadMessageController
-    | ReportController,
+    | ReportController
+    | RegisterSubredditController,
 ) => {
   return async (req: Request, res: Response): Promise<Response> => {
     const httpRequest: HttpRequest = {
