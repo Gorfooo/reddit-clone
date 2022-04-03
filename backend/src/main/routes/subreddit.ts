@@ -6,6 +6,11 @@ import { adaptRoute } from '../adapters/express-route-adapter';
 import { makeRegisterSubredditController } from '../factories/subreddit/register-subreddit';
 import { makeSubredditAddUserController } from '../factories/subreddit/subreddit-add-user';
 import { makeSubredditModeratorRequestController } from '../factories/subreddit/subreddit-moderator-request';
+import { validateManageModeratorRequestFields } from './rules/subreddit/manage-moderator-request';
+import { adaptRoute } from '../adapters/express-route-adapter';
+import { makeRegisterSubredditController } from '../factories/subreddit/register-subreddit';
+import { makeSubredditAddUserController } from '../factories/subreddit/subreddit-add-user';
+import { makeManageModeratorRequestController } from '../factories/subreddit/manage-moderator-request';
 
 const subredditRoutes = express();
 
@@ -26,6 +31,9 @@ subredditRoutes.post(
   '/subreddit/requestmoderator',
   validateSubredditModeratorRequestFields(),
   adaptRoute(makeSubredditModeratorRequestController()),
+  '/subreddit/manageModeratorRequest',
+  validateManageModeratorRequestFields(),
+  adaptRoute(makeManageModeratorRequestController()),
 );
 
 export default subredditRoutes;

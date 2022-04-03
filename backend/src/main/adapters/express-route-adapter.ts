@@ -15,6 +15,7 @@ import { SendMessageController } from '../../adapters/presentation/controllers/u
 import { ReadMessageController } from '../../adapters/presentation/controllers/user/read-message-controller';
 import { SubredditAddUserController } from '../../adapters/presentation/controllers/subreddit/subreddit-add-user-controller';
 import { SubredditModeratorRequestController } from '../../adapters/presentation/controllers/subreddit/subreddit-moderator-request-controller';
+import { ManageModeratorRequestController } from '../../adapters/presentation/controllers/subreddit/manage-moderator-request-controller';
 import { ReportController } from '../../adapters/presentation/controllers/user/report-controller';
 import { HttpRequest } from '../../adapters/presentation/controllers/ports/http';
 
@@ -35,7 +36,8 @@ export const adaptRoute = (
     | ReportController
     | RegisterSubredditController
     | SubredditAddUserController
-    | SubredditModeratorRequestController,
+    | SubredditModeratorRequestController
+    | ManageModeratorRequestController,
 ) => {
   return async (req: Request, res: Response): Promise<Response> => {
     const httpRequest: HttpRequest = {

@@ -5,6 +5,7 @@ import { Tables } from '../database/ports/tables';
 import { knexClient } from '../database/postgres/knex/client';
 import { SubredditUserData } from '../../domain/entities/subreddit-entities/subreddit/subreddit-user-data';
 import { SubredditModeratorRequestData } from '../../domain/entities/subreddit-entities/subreddit/subreddit-moderator-request-data';
+import { ManageModeratorRequestData } from '../../domain/entities/subreddit-entities/subreddit/manage-moderator-request-data';
 
 export class PostgresSubredditRepository implements SubredditRepository {
   async add(subreddit: SubredditData): Promise<ManagedId> {
@@ -23,5 +24,15 @@ export class PostgresSubredditRepository implements SubredditRepository {
     moderatorRequestData: SubredditModeratorRequestData,
   ): Promise<void> {
     await knexClient(Tables.ModeratorRequest).insert(moderatorRequestData);
+      
+  async manageModeratorRequest(
+    moderatorRequestData: ManageModeratorRequestData,
+  ): Promise<void> {
+    await knexClient(Tables.ModeratorRequest)
+      .update(moderatorRequestData)
+      .where(
+        'idSolicitacaoModerador',
+        moderatorRequestData.idSolicitacaoModerador,
+      );
   }
 }
