@@ -13,6 +13,7 @@ import { RegisterNewFollowerController } from '../../adapters/presentation/contr
 import { DeleteFollowerController } from '../../adapters/presentation/controllers/user/delete-follower-controller';
 import { SendMessageController } from '../../adapters/presentation/controllers/user/send-message-controller';
 import { ReadMessageController } from '../../adapters/presentation/controllers/user/read-message-controller';
+import { SubredditAddUserController } from '../../adapters/presentation/controllers/subreddit/subreddit-add-user-controller';
 import { ReportController } from '../../adapters/presentation/controllers/user/report-controller';
 import { HttpRequest } from '../../adapters/presentation/controllers/ports/http';
 
@@ -31,7 +32,8 @@ export const adaptRoute = (
     | SendMessageController
     | ReadMessageController
     | ReportController
-    | RegisterSubredditController,
+    | RegisterSubredditController
+    | SubredditAddUserController,
 ) => {
   return async (req: Request, res: Response): Promise<Response> => {
     const httpRequest: HttpRequest = {
