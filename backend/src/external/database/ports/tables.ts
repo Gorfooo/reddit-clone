@@ -8,4 +8,5 @@ export enum Tables {
   Report = 'denuncia',
   Subreddit = 'subreddit',
   SubredditUser = 'subredditUsuario',
+  ModeratorRequest = 'solicitacaoModerador',
 }
