@@ -16,7 +16,6 @@ export async function up(knex: Knex): Promise<void> {
         .references('idSubreddit')
         .inTable('subreddit');
       table.string('moderador', 1).nullable();
-      table.string('criador', 1).nullable();
     },
   );
 }

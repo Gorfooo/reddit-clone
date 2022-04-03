@@ -6,4 +6,6 @@ export enum Tables {
   Block = 'bloqueado',
   Chat = 'chat',
   Report = 'denuncia',
+  Subreddit = 'subreddit',
+  SubredditUser = 'subredditUsuario',
 }
