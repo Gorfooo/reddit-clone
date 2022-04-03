@@ -24,7 +24,8 @@ export class PostgresSubredditRepository implements SubredditRepository {
     moderatorRequestData: SubredditModeratorRequestData,
   ): Promise<void> {
     await knexClient(Tables.ModeratorRequest).insert(moderatorRequestData);
-      
+  }
+
   async manageModeratorRequest(
     moderatorRequestData: ManageModeratorRequestData,
   ): Promise<void> {

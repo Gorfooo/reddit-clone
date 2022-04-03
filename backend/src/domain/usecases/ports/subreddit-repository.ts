@@ -9,6 +9,7 @@ export interface SubredditRepository {
   addUser: (SubredditUserData: SubredditUserData) => Promise<void>;
   addModeratorRequest: (
     moderatorRequestData: SubredditModeratorRequestData,
+  ) => Promise<void>;
   manageModeratorRequest: (
     moderatorRequestData: ManageModeratorRequestData,
   ) => Promise<void>;
