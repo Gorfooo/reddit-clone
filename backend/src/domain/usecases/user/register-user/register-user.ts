@@ -1,6 +1,6 @@
-import { UserData } from '../../../entities/user-entities/user/user-data';
+import { RegisterUserData } from '../../../entities/user-entities/user/register-user-data';
 import { left, right } from '../../../../shared/Either';
-import { CreateRegisterUser } from '../../../entities/user-entities/user/create-user';
+import { CreateRegisterUser } from '../../../entities/user-entities/user/create/create-user';
 import { RegisterUserResponse } from './register-user-response';
 import { UserRepository } from '../../ports/user-repository';
 import { IRegisterUser } from './register-user-interface';
@@ -8,7 +8,7 @@ import { IRegisterUser } from './register-user-interface';
 export class RegisterUser implements IRegisterUser {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async execute(userData: UserData): Promise<RegisterUserResponse> {
+  async execute(userData: RegisterUserData): Promise<RegisterUserResponse> {
     const userIdOrError = await this.saveUser(userData);
 
     if (userIdOrError.isLeft()) return left(userIdOrError.value);
@@ -16,7 +16,9 @@ export class RegisterUser implements IRegisterUser {
     return right({ id: userIdOrError.value.id });
   }
 
-  private async saveUser(userData: UserData): Promise<RegisterUserResponse> {
+  private async saveUser(
+    userData: RegisterUserData,
+  ): Promise<RegisterUserResponse> {
     const userOrError = await CreateRegisterUser.create(userData);
 
     if (userOrError.isLeft()) return left(userOrError.value);

@@ -1,4 +1,4 @@
-export interface UserData {
+export interface UpdateUserData {
   idUsuario?: number;
   nome?: string;
   email?: string;

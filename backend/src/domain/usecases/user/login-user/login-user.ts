@@ -1,4 +1,4 @@
-import { UserData } from '../../../entities/user-entities/user/user-data';
+import { LoginUserData } from '../../../entities/user-entities/user/login-user-data';
 import { left, right } from '../../../../shared/Either';
 import { LoginUserResponse } from './login-user-response';
 import { UserRepository } from '../../ports/user-repository';
@@ -8,7 +8,7 @@ import { UserNotFoundError } from '../../../entities/user-entities/user/errors/u
 export class LoginUser implements ILoginUser {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async execute(userData: UserData): Promise<LoginUserResponse> {
+  async execute(userData: LoginUserData): Promise<LoginUserResponse> {
     const userIdOrError = await this.findUser(userData);
 
     if (userIdOrError.isLeft()) return left(userIdOrError.value);
@@ -16,7 +16,7 @@ export class LoginUser implements ILoginUser {
     return right({ id: userIdOrError.value.id });
   }
 
-  private async findUser(userData: UserData): Promise<LoginUserResponse> {
+  private async findUser(userData: LoginUserData): Promise<LoginUserResponse> {
     const userIdOrNotFound = await this.userRepository.findUser({
       email: userData.email,
       senha: userData.senha,

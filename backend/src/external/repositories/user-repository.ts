@@ -1,4 +1,4 @@
-import { UserData } from '../../domain/entities/user-entities/user/user-data';
+import { RegisterUserData } from '../../domain/entities/user-entities/user/register-user-data';
 import { UserRepository } from '../../domain/usecases/ports/user-repository';
 import { ManagedId } from '../../domain/usecases/ports/repository';
 import { Tables } from '../database/ports/tables';
@@ -7,9 +7,11 @@ import { FollowerData } from '../../domain/entities/user-entities/user/follower-
 import { BlockData } from '../../domain/entities/user-entities/user/block-data';
 import { MessageData } from '../../domain/entities/user-entities/user/message-data';
 import { ReportData } from '../../domain/entities/user-entities/user/report-data';
+import { UpdateUserData } from '../../domain/entities/user-entities/user/update-user-data';
+import { LoginUserData } from '../../domain/entities/user-entities/user/login-user-data';
 
 export class PostgresUserRepository implements UserRepository {
-  async add(user: UserData): Promise<ManagedId> {
+  async add(user: RegisterUserData): Promise<ManagedId> {
     const [insertedId] = await knexClient(Tables.User)
       .insert(user)
       .returning('idUsuario');
@@ -27,7 +29,7 @@ export class PostgresUserRepository implements UserRepository {
     return emailFound;
   }
 
-  async update(user: UserData, id: number): Promise<ManagedId> {
+  async update(user: UpdateUserData, id: number): Promise<ManagedId> {
     const [userUpdatedId] = await knexClient(Tables.User)
       .update(user)
       .where('idUsuario', id)
@@ -36,7 +38,7 @@ export class PostgresUserRepository implements UserRepository {
     return { id: userUpdatedId };
   }
 
-  async findUser(user: UserData): Promise<ManagedId | null> {
+  async findUser(user: LoginUserData): Promise<ManagedId | null> {
     const [userFoundId] = await knexClient(Tables.User)
       .select('idUsuario')
       .where('email', user.email)

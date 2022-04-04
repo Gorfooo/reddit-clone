@@ -1,6 +1,6 @@
-import { UserData } from '../../../entities/user-entities/user/user-data';
+import { LoginUserData } from '../../../entities/user-entities/user/login-user-data';
 import { LoginUserResponse } from './login-user-response';
 
 export interface ILoginUser {
-  execute: (user: UserData) => Promise<LoginUserResponse>;
+  execute: (user: LoginUserData) => Promise<LoginUserResponse>;
 }

@@ -2,14 +2,16 @@ import { BlockData } from '../../entities/user-entities/user/block-data';
 import { FollowerData } from '../../entities/user-entities/user/follower-data';
 import { MessageData } from '../../entities/user-entities/user/message-data';
 import { ReportData } from '../../entities/user-entities/user/report-data';
-import { UserData } from '../../entities/user-entities/user/user-data';
+import { RegisterUserData } from '../../entities/user-entities/user/register-user-data';
 import { ManagedId } from './repository';
+import { UpdateUserData } from '../../entities/user-entities/user/update-user-data';
+import { LoginUserData } from '../../entities/user-entities/user/login-user-data';
 
 export interface UserRepository {
-  add: (user: UserData) => Promise<ManagedId>;
-  update: (user: UserData, id: number) => Promise<ManagedId>;
+  add: (user: RegisterUserData) => Promise<ManagedId>;
+  update: (user: UpdateUserData, id: number) => Promise<ManagedId>;
   findIdenticalEmail: (email: string) => Promise<string | null>;
-  findUser: (user: UserData) => Promise<ManagedId>;
+  findUser: (user: LoginUserData) => Promise<ManagedId>;
   addNewFollower: (userIds: FollowerData) => Promise<void>;
   deleteFollower: (userIds: FollowerData) => Promise<void>;
   block: (userIds: BlockData) => Promise<void>;

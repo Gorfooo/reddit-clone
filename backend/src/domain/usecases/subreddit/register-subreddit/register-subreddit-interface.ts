@@ -1,6 +1,8 @@
-import { SubredditData } from '../../../entities/subreddit-entities/subreddit/subreddit-data';
+import { RegisterSubredditData } from '../../../entities/subreddit-entities/subreddit/register-subreddit-data';
 import { RegisterSubredditResponse } from './register-subreddit-response';
 
 export interface ISubreddit {
-  execute: (subreddit: SubredditData) => Promise<RegisterSubredditResponse>;
+  execute: (
+    subreddit: RegisterSubredditData,
+  ) => Promise<RegisterSubredditResponse>;
 }

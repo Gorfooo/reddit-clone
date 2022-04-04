@@ -1,11 +1,12 @@
-import { PostData } from '../../../entities/post-entities/post/post-data';
+import { UpdatePostData } from '../../../entities/post-entities/post/update-post-data';
 import { PostRepository } from '../../ports/post-repository';
 import { IUpdatePost } from './update-post-interface';
+import { UpdatePostResponse } from './update-post-response';
 
 export class UpdatePost implements IUpdatePost {
   constructor(private readonly postRepository: PostRepository) {}
 
-  async execute(postData: PostData): Promise<boolean> {
+  async execute(postData: UpdatePostData): Promise<UpdatePostResponse> {
     await this.updatePost(postData);
 
     await this.updatePostTags(postData);
@@ -13,7 +14,7 @@ export class UpdatePost implements IUpdatePost {
     return true;
   }
 
-  private async updatePost(postData: PostData): Promise<void> {
+  private async updatePost(postData: UpdatePostData): Promise<void> {
     await this.postRepository.update(
       {
         titulo: postData.titulo,
@@ -23,7 +24,7 @@ export class UpdatePost implements IUpdatePost {
     );
   }
 
-  private async updatePostTags(post: PostData): Promise<void> {
+  private async updatePostTags(post: UpdatePostData): Promise<void> {
     await this.postRepository.updatePostTags(post.idPost, post.tags);
   }
 }

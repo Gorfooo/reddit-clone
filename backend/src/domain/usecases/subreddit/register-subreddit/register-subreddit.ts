@@ -1,12 +1,15 @@
-import { SubredditData } from '../../../entities/subreddit-entities/subreddit/subreddit-data';
+import { RegisterSubredditData } from '../../../entities/subreddit-entities/subreddit/register-subreddit-data';
 import { ManagedId } from '../../ports/repository';
 import { SubredditRepository } from '../../ports/subreddit-repository';
 import { ISubreddit } from './register-subreddit-interface';
+import { RegisterSubredditResponse } from './register-subreddit-response';
 
 export class RegisterSubreddit implements ISubreddit {
   constructor(private readonly subredditRepository: SubredditRepository) {}
 
-  async execute(subreddit: SubredditData): Promise<boolean> {
+  async execute(
+    subreddit: RegisterSubredditData,
+  ): Promise<RegisterSubredditResponse> {
     const subredditId = await this.saveSubreddit(subreddit);
 
     await this.saveSubredditCreatorUser(
@@ -17,7 +20,9 @@ export class RegisterSubreddit implements ISubreddit {
     return true;
   }
 
-  private async saveSubreddit(subreddit: SubredditData): Promise<ManagedId> {
+  private async saveSubreddit(
+    subreddit: RegisterSubredditData,
+  ): Promise<ManagedId> {
     const subredditId = await this.subredditRepository.add(subreddit);
 
     return subredditId;

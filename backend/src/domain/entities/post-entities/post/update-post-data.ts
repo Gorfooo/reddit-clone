@@ -1,6 +1,5 @@
-export interface PostData {
+export interface UpdatePostData {
   idPost?: number;
-  idUsuario?: number;
   titulo?: string;
   conteudo?: string;
   tags?: number[];

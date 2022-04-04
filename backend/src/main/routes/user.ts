@@ -43,13 +43,13 @@ userRoutes.post(
 );
 
 userRoutes.post(
-  '/user/newfollower',
+  '/user/newFollower',
   validateNewFollowerFields(),
   adaptRoute(makeNewFollowerController()),
 );
 
 userRoutes.post(
-  '/user/deletefollower',
+  '/user/deleteFollower',
   validateDeleteFollowerFields(),
   adaptRoute(makeDeleteFollowerController()),
 );
@@ -67,13 +67,13 @@ userRoutes.post(
 );
 
 userRoutes.post(
-  '/user/sendmessage',
+  '/user/sendMessage',
   validateSendMessageFields(),
   adaptRoute(makeSendMessageController()),
 );
 
 userRoutes.post(
-  '/user/readmessage',
+  '/user/readMessage',
   validateReadMessageFields(),
   adaptRoute(makeReadMessageController()),
 );

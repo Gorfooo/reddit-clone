@@ -1,11 +1,14 @@
-import { PostData } from '../../domain/entities/post-entities/post/post-data';
+import { PostAnswearData } from '../../domain/entities/post-entities/post/post-answear-data';
+import { PostCommentData } from '../../domain/entities/post-entities/post/post-comment-data';
+import { RegisterPostData } from '../../domain/entities/post-entities/post/register-post-data';
+import { UpdatePostData } from '../../domain/entities/post-entities/post/update-post-data';
 import { PostRepository } from '../../domain/usecases/ports/post-repository';
 import { ManagedId } from '../../domain/usecases/ports/repository';
 import { Tables } from '../database/ports/tables';
 import { knexClient } from '../database/postgres/knex/client';
 
 export class PostgresPostRepository implements PostRepository {
-  async add(post: PostData): Promise<ManagedId> {
+  async add(post: RegisterPostData): Promise<ManagedId> {
     const [insertedId] = await knexClient(Tables.Post)
       .insert(post)
       .returning('idPost');
@@ -28,7 +31,7 @@ export class PostgresPostRepository implements PostRepository {
     return false;
   }
 
-  async update(postData: PostData, idPost: number): Promise<void> {
+  async update(postData: UpdatePostData, idPost: number): Promise<void> {
     await knexClient(Tables.Post).update(postData).where('idPost', idPost);
   }
 
@@ -55,5 +58,13 @@ export class PostgresPostRepository implements PostRepository {
 
   async deletePostTags(idPost: number): Promise<void> {
     await knexClient(Tables.PostTags).where('idPost', idPost).del();
+  }
+
+  async addComment(postComment: PostCommentData): Promise<void> {
+    await knexClient(Tables.PostComment).insert(postComment);
+  }
+
+  async addAnswear(postAnswear: PostAnswearData): Promise<void> {
+    await knexClient(Tables.PostAnswear).insert(postAnswear);
   }
 }

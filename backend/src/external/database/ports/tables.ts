@@ -9,4 +9,7 @@ export enum Tables {
   Subreddit = 'subreddit',
   SubredditUser = 'subredditUsuario',
   ModeratorRequest = 'solicitacaoModerador',
+  SubredditRule = 'subredditRegra',
+  PostComment = 'postComentario',
+  PostAnswear = 'postComentarioResposta',
 }

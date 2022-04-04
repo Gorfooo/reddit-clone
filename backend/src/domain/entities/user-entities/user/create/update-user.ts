@@ -1,7 +1,7 @@
-import { PostgresUserRepository } from '../../../../external/repositories/user-repository';
-import { Either, left, right } from '../../../../shared/Either';
-import { UserData } from './user-data';
-import { EmailAlreadyRegisteredError } from './errors/email-already-registered-error';
+import { PostgresUserRepository } from '../../../../../external/repositories/user-repository';
+import { Either, left, right } from '../../../../../shared/Either';
+import { UpdateUserData } from '../update-user-data';
+import { EmailAlreadyRegisteredError } from '../errors/email-already-registered-error';
 
 export class CreateUpdateUser {
   constructor(
@@ -15,7 +15,7 @@ export class CreateUpdateUser {
   ) {}
 
   static async create(
-    userData: UserData,
+    userData: UpdateUserData,
   ): Promise<Either<EmailAlreadyRegisteredError, CreateUpdateUser>> {
     const emailIsAlreadyRegistered = await this.verifyEmailAlreadyRegistered(
       userData,
@@ -40,7 +40,7 @@ export class CreateUpdateUser {
   }
 
   static async verifyEmailAlreadyRegistered(
-    userData: UserData,
+    userData: UpdateUserData,
   ): Promise<Either<EmailAlreadyRegisteredError, null>> {
     const userRepository = new PostgresUserRepository();
 

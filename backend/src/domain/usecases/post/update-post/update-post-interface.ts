@@ -1,5 +1,6 @@
-import { PostData } from '../../../entities/post-entities/post/post-data';
+import { UpdatePostData } from '../../../entities/post-entities/post/update-post-data';
+import { UpdatePostResponse } from './update-post-response';
 
 export interface IUpdatePost {
-  execute: (post: PostData) => Promise<boolean>;
+  execute: (post: UpdatePostData) => Promise<UpdatePostResponse>;
 }
